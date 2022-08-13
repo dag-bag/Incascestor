@@ -141,7 +141,7 @@ const FeaturedData = [
         />
       </svg>
     ),
-    title: "Lavado",
+    title: "Lavad",
     description: "Todos tus productos vienen con instrucciones de lavado.",
   },
 ];

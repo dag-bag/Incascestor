@@ -3,6 +3,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Carousel from "../components/home/Carousel";
+
 import Features from "../components/home/Features";
 import MainSlider from "../components/home/MainSlider";
 import Mission from "../components/home/Mission";
@@ -29,10 +30,32 @@ export default function Home() {
       <main className="md:space-y-16">
         <MainSlider />
         <Carousel />
-        <Mission />
+        <Mission
+          title={"Somos"}
+          description={
+            " Inca Ancestry was born with the mission to make a change in the lives of the Andean communities while helping them to maintain ancestral traditions alive by visibility to their finest artisans to the world."
+          }
+          image={"/assets/home/Artesano.jpg"}
+          boxType="left-right"
+        />
         <Features />
-        <Mission />
+        <Mission
+          title={"Nuestros productos"}
+          description={
+            "Loving my new KAILI watch from @matoa_id, the first ever Indonesian watch local brand that uses wood as their main material. Like any other Matoa products, KAILI is inspired by Indonesian heritage."
+          }
+          image={"/assets/home/group.png"}
+          boxType="center-left"
+        />
         <Video />
+        <Mission
+          title={"¿Quieres comprar en grandes cantidades?"}
+          description={
+            "Loving my new KAILI watch from @matoa_id, the first ever Indonesian watch local brand that uses wood as their main material. Like any other Matoa products, KAILI is inspired by Indonesian heritage."
+          }
+          image={"/assets/home/PEluches.jpg"}
+          boxType="center-center"
+        />
       </main>
     </div>
   );
