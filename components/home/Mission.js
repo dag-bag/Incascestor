@@ -80,18 +80,16 @@ function Mission({ title, description, image, boxType }) {
         </button>
       </div>
       <div
-        className={`flex-1 flex  ml-2 relative ${
-          boxType === "center-left" && "justify-center mr-2 ml-0"
-        } ${
+        className={`flex-1 flex  ml-2 relative  ${
           boxType === "center-center" && "justify-center  ml-0"
-        } justify-center `}
+        }  `}
       >
         <div
           className={`w-[70%] h-[100%] rounded-[3px]  ${
             boxType === "center-center" ? "bg-[#e8e8e8]" : "bg-[#bd9575]"
           } absolute md:w-1/2 -top-12  ${
             boxType === "left-right" && "right-0"
-          }      ${boxType === "center-left" && "left-0"} `}
+          }      ${boxType === "center-left" && "left-0"} md:right-12`}
         ></div>
         <div className="w-[70%] rounded-[3px]  md:w-1/2">
           <Image

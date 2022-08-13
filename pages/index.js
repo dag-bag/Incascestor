@@ -11,6 +11,7 @@ import SearchInput from "../components/home/SearchInput";
 import Topheader from "../components/home/Topheader";
 import Video from "../components/home/Video";
 import Navbar from "../components/Navbar";
+import ReverseMissoin from "../components/ReverseMissoin";
 
 export default function Home() {
   return (
@@ -39,13 +40,12 @@ export default function Home() {
           boxType="left-right"
         />
         <Features />
-        <Mission
+        <ReverseMissoin
           title={"Nuestros productos"}
           description={
             "Loving my new KAILI watch from @matoa_id, the first ever Indonesian watch local brand that uses wood as their main material. Like any other Matoa products, KAILI is inspired by Indonesian heritage."
           }
           image={"/assets/home/group.png"}
-          boxType="center-left"
         />
         <Video />
         <Mission
