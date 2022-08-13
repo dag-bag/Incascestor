@@ -151,7 +151,7 @@ function Features() {
       <h1 className=" text-2xl font-medium text-center text-[#bd9575] py-8">
         Sabemos que amas las <br /> alpacas
       </h1>
-      <div className="grid grid-cols-1 p-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 p-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto md:py-16">
         {FeaturedData.map((i) => {
           return (
             <div
