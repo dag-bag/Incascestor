@@ -5,7 +5,7 @@ import React from "react";
 
 function MainSlider() {
   return (
-    <div className="w-11/12 mx-auto h-32 mt-2 md:mt-0 relative md:h-[50vh] object-cover max-w-6xl">
+    <div className="w-11/12 mx-auto h-52 mt-2 md:mt-0 relative md:h-[50vh] object-cover max-w-6xl">
       {/* Buttons */}
       <div className="flex w-full justify-between items-center absolute top-[50%] md:top-1/2 md:px-4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
         <div>
