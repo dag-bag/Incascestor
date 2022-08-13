@@ -72,14 +72,14 @@ function Mission() {
           Cosmos
         </button>
       </div>
-      <div className="flex-1 flex ml-2 relative">
-        <div className="w-[70%] h-[100%] rounded-[3px]  bg-[#bd9575] absolute -top-12  right-0"></div>
-        <div className="w-[70%] rounded-[3px] ">
+      <div className="flex-1 flex ml-2 relative ">
+        <div className="w-[70%] h-[100%] rounded-[3px]  bg-[#bd9575] absolute -top-12  right-0 md:w-1/2"></div>
+        <div className="w-[70%] rounded-[3px]  md:w-1/2">
           <Image
             src={"/assets/home/Artesano.jpg"}
             alt="Artesano"
             width={576}
-            height={682}
+            height={576}
             layout="responsive"
           />
         </div>

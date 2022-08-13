@@ -8,6 +8,7 @@ import MainSlider from "../components/home/MainSlider";
 import Mission from "../components/home/Mission";
 import SearchInput from "../components/home/SearchInput";
 import Topheader from "../components/home/Topheader";
+import Video from "../components/home/Video";
 import Navbar from "../components/Navbar";
 
 export default function Home() {
@@ -30,6 +31,8 @@ export default function Home() {
         <Carousel />
         <Mission />
         <Features />
+        <Mission />
+        <Video />
       </main>
     </div>
   );
