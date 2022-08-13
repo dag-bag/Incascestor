@@ -3,6 +3,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Carousel from "../components/home/Carousel";
+import Features from "../components/home/Features";
 import MainSlider from "../components/home/MainSlider";
 import Mission from "../components/home/Mission";
 import SearchInput from "../components/home/SearchInput";
@@ -28,6 +29,7 @@ export default function Home() {
         <MainSlider />
         <Carousel />
         <Mission />
+        <Features />
       </main>
     </div>
   );
