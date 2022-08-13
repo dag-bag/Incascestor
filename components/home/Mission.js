@@ -79,11 +79,7 @@ function Mission({ title, description, image, boxType }) {
           Cosmos
         </button>
       </div>
-      <div
-        className={`flex-1 flex  ml-2 relative  ${
-          boxType === "center-center" && "justify-center  ml-0"
-        }  `}
-      >
+      <div className={`flex-1 flex  ml-2 relative justify-center  `}>
         <div
           className={`w-[70%] h-[100%] rounded-[3px]  ${
             boxType === "center-center" ? "bg-[#e8e8e8]" : "bg-[#bd9575]"
@@ -91,7 +87,7 @@ function Mission({ title, description, image, boxType }) {
             boxType === "left-right" && "right-0"
           }      ${boxType === "center-left" && "left-0"} md:right-12`}
         ></div>
-        <div className="w-[70%] rounded-[3px]  md:w-1/2">
+        <div className="w-[70%] rounded-[3px]   md:w-1/2">
           <Image
             src={image}
             alt="Artesano"
