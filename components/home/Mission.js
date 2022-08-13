@@ -9,7 +9,7 @@ function Mission({ title, description, image, boxType }) {
         <div
           className={` ${
             boxType === "center-left" ? "text-left" : "text-right"
-          }`}
+          } mb-6`}
         >
           <p className="relative  text-2xl  lg:text-4xl  text-[#333]">
             {title}
@@ -72,7 +72,7 @@ function Mission({ title, description, image, boxType }) {
         <button
           className={`${
             boxType === "center-left" ? "mr-auto" : "ml-auto"
-          }  px-14 md:px-24 py-3 md:py-2 border  border-[#bd9575]  md:text-lg font-medium text-center text-[#bd9575]`}
+          }  px-14 md:px-24 py-3 md:py-2 border  border-[#bd9575]  md:text-lg font-medium text-center text-[#bd9575] `}
         >
           Cosmos
         </button>

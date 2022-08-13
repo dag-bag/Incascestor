@@ -156,12 +156,13 @@ function Features() {
           return (
             <div
               key={i.title}
-              className="flex justify-center items-center flex-col text-center space-y-5"
+              className="flex justify-center items-center flex-col text-center space-y-4 pb-14"
             >
               {i.svg}
               <h2 className="text-2xl font-semibold text-center text-[#333]">
                 {i.title}
               </h2>
+              <span className="w-[27.44px] h-[1.42px] rounded-[54px] bg-[#bd9575]"></span>
               <p className="text-sm text-center text-[#333] w-[60%] m-auto">
                 {i.description}
               </p>
