@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import Image from "next/image";
+import Footer from "../components/Footer";
 import Carousel from "../components/home/Carousel";
 import CoreValues from "../components/home/CoreValues";
 
@@ -61,6 +62,7 @@ export default function Home() {
         <CoreValues />
       </main>
       <HomeFooter />
+      <Footer />
     </div>
   );
 }

@@ -170,49 +170,101 @@ const CoreData = [
 
 function CoreValues() {
   return (
-    <div className="py-14">
-      <div className="relative   m-auto w-full">
-        <div className="w-[100%] h-full absolute left-0 top-0 bottom-0 opacity-60 bg-[#bd9575] mix-blend-multiply z-20"></div>
-        <div className="absolute top-0 left-0 z-40  items-center w-full h-full">
-          <h1 className="text-lg font-medium text-center text-white py-14">
-            100% alpaca y además
-          </h1>
-          <div className="flex justify-center items-center flex-wrap pt-5">
-            {CoreData.map((i) => {
-              return (
-                <div
-                  key={i.title}
-                  className="flex w-[45%] justify-center items-center pb-5 flex-col space-y-3"
-                >
-                  {i.svg}
-                  <p className=" text-xs text-center text-white">{i.title}</p>
-                </div>
-              );
-            })}
+    <>
+      {/* For the mobile Version
+       */}
+      <div className="py-14 max-w-6xl m-auto md:hidden">
+        <div className="relative   m-auto w-full h-[500px] ">
+          <div className="w-[100%] h-full absolute left-0 top-0 bottom-0 opacity-60 bg-[#bd9575] mix-blend-multiply z-20"></div>
+          <div className="absolute top-0 left-0 z-40  items-center w-full h-full">
+            <h1 className="text-lg font-medium text-center text-white py-14">
+              100% alpaca y además
+            </h1>
+            <div className="flex justify-center items-center flex-wrap pt-5">
+              {CoreData.map((i) => {
+                return (
+                  <div
+                    key={i.title}
+                    className="flex w-[45%] justify-center items-center pb-5 flex-col space-y-3"
+                  >
+                    {i.svg}
+                    <p className=" text-xs text-center text-white">{i.title}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
+
+          <Image
+            src={"/assets/home/Lombu.png"}
+            height={260}
+            width={200}
+            layout="responsive"
+            alt="Lombu"
+            // objectFit="cover"
+          />
         </div>
-        <Image
-          src={"/assets/home/Lombu.png"}
-          height={270}
-          width={200}
-          layout="responsive"
-          alt="Lombu"
-        />
+        <form className="m-auto p-5 mt-5 space-y-9 max-w-xl">
+          <h4 className=" text-sm text-left text-[#333]">
+            Recibe promociones exclusivas, ventas privadas y <br /> novedades
+          </h4>
+          <input
+            type="text"
+            placeholder="Escribe tu e-mail"
+            className="placeholder:text-[#333] w-full border-b-2 border-gray-800 text-sm pb-3 outline-none"
+          />
+          <button className="rounded-sm bg-[#bd9575] border border-[#bd9575] text-white px-4 w-full py-5">
+            Suscribirme
+          </button>
+        </form>
       </div>
-      <form className="m-auto p-5 mt-5 space-y-9 max-w-xl">
-        <h4 className=" text-sm text-left text-[#333]">
-          Recibe promociones exclusivas, ventas privadas y <br /> novedades
-        </h4>
-        <input
-          type="text"
-          placeholder="Escribe tu e-mail"
-          className="placeholder:text-[#333] w-full border-b-2 border-gray-800 text-sm pb-3 outline-none"
-        />
-        <button className="rounded-sm bg-[#bd9575] border border-[#bd9575] text-white px-4 w-full py-5">
-          Suscribirme
-        </button>
-      </form>
-    </div>
+      {/* For the web version */}
+      <div className="py-14 max-w-6xl m-auto hidden md:block">
+        <div className="relative   m-auto w-full  ">
+          <div className="w-[100%] h-[88%] m-auto absolute left-0 top-0 bottom-0 opacity-60 bg-[#bd9575] mix-blend-multiply z-20"></div>
+          <div className="absolute top-0 left-0 z-40  items-center w-full h-full pt-36">
+            <h1 className="text-lg font-medium text-center text-white py-14">
+              100% alpaca y además
+            </h1>
+            <div className="flex justify-center items-center flex-wrap pt-5">
+              {CoreData.map((i) => {
+                return (
+                  <div
+                    key={i.title}
+                    className="flex w-[45%] justify-center items-center pb-5 flex-col space-y-3"
+                  >
+                    {i.svg}
+                    <p className=" text-xs text-center text-white">{i.title}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <Image
+            src={"/assets/home/animal.png"}
+            height={200}
+            width={300}
+            layout="responsive"
+            alt="Lombu"
+            objectFit="contain"
+          />
+        </div>
+        <form className="m-auto p-5 mt-5 space-y-9 max-w-xl">
+          <h4 className=" text-sm text-left text-[#333]">
+            Recibe promociones exclusivas, ventas privadas y <br /> novedades
+          </h4>
+          <input
+            type="text"
+            placeholder="Escribe tu e-mail"
+            className="placeholder:text-[#333] w-full border-b-2 border-gray-800 text-sm pb-3 outline-none"
+          />
+          <button className="rounded-sm bg-[#bd9575] border border-[#bd9575] text-white px-4 w-full py-5">
+            Suscribirme
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 

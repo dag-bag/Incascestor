@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-const iconStyle = "";
+const iconStyle = "h-10 w-10 md:h-12 md:w-12";
 const FooterFeaturesData = [
   {
     svg: (
@@ -211,12 +211,12 @@ const FooterFeaturesData = [
 ];
 function HomeFooter() {
   return (
-    <div className=" bg-[#e8e8e8]/80  flex justify-evenly items-center flex-wrap h-[500px] py-5">
+    <div className=" bg-[#e8e8e8]/80  flex justify-evenly items-center flex-wrap h-[500px] md:h-[200px] py-5 border-b-2 border-[#bd9575]">
       {FooterFeaturesData.map((item) => {
         return (
           <div
             key={item.p}
-            className="w-[45%] flex justify-center items-center flex-col text-center space-y-5"
+            className="w-[45%] md:w-auto md:h-auto flex justify-center items-center flex-col text-center space-y-5"
           >
             {item.svg}
             <p className="text-xs  text-center text-[#333] w-36">{item.p}</p>
