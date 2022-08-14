@@ -173,7 +173,7 @@ function Navbar() {
       <div className="hidden justify-center items-end space-x-8   md:flex">
         {centerDivData.map((i) => {
           return (
-            <Link key={i.title} href={i.title}>
+            <Link key={i.title} href={i.title.toLocaleLowerCase()}>
               <li className="text-base text-left text-[#333] cursor-pointer list-none pt-9 ">
                 {i.title}
               </li>

@@ -12,7 +12,7 @@ function ReverseMissoin({ title, description, image }) {
         ></div>
         <div className="w-[70%] rounded-[3px]  md:w-1/2">
           <Image
-            src={"/assets/home/group.png"}
+            src={image}
             alt="Artesano"
             width={576}
             height={576}

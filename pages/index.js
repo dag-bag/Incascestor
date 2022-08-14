@@ -3,8 +3,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import Carousel from "../components/home/Carousel";
+import CoreValues from "../components/home/CoreValues";
 
 import Features from "../components/home/Features";
+import HomeFooter from "../components/home/HomeFooter";
 import MainSlider from "../components/home/MainSlider";
 import Mission from "../components/home/Mission";
 import SearchInput from "../components/home/SearchInput";
@@ -24,7 +26,7 @@ export default function Home() {
       <header>
         <Topheader />
         <Navbar />
-        <div className="mt-2 md:hidden md:inline">
+        <div className="mt-2 md:hidden inline">
           <SearchInput />
         </div>
       </header>
@@ -45,7 +47,7 @@ export default function Home() {
           description={
             "Loving my new KAILI watch from @matoa_id, the first ever Indonesian watch local brand that uses wood as their main material. Like any other Matoa products, KAILI is inspired by Indonesian heritage."
           }
-          image={"/assets/home/group.png"}
+          image={"/assets/home/Group.png"}
         />
         <Video />
         <Mission
@@ -56,7 +58,9 @@ export default function Home() {
           image={"/assets/home/PEluches.jpg"}
           boxType="center-center"
         />
+        <CoreValues />
       </main>
+      <HomeFooter />
     </div>
   );
 }
