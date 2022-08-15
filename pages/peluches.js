@@ -6,8 +6,11 @@ import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
 import TopNavbar from "../components/Topheader";
 import Footer from "../components/Footer";
+import Filters from "../components/Filters";
+import { filterAtom } from "../atoms/filterAtom";
+import { useRecoilState } from "recoil";
 function Peluches() {
-  const [isSelected, setSelect] = React.useState(false);
+  const [isSelected, setSelect] = useRecoilState(filterAtom);
   return (
     <div>
       <Head>
@@ -23,72 +26,10 @@ function Peluches() {
       <main className="max-w-6xl  m-auto w-full relative">
         <div
           className={`w-full ${
-            isSelected ? "h-[40vh]" : "h-0"
+            isSelected ? "h-[50vh]" : "h-0"
           } overflow-hidden absolute top-0 left-0 bg-white z-50 duration-200 transform `}
         >
-          <div className="relative w-full h-full flex justify-evenly items-center flex-wrap">
-            {/* All the data and filter here */}
-            <div className="w-[10rem] text-right">
-              <p className="text-sm font-light text-right text-[#333]">
-                ORDENAR POR
-              </p>
-              {/* For the checkbox */}
-              <div className="space-x-4 mt-4">
-                <label
-                  htmlFor="i"
-                  className="flex-grow-0 flex-shrink-0 w-32 h-8 text-sm font-light text-left text-[#333]"
-                >
-                  Recomendados
-                </label>
-                <input type="checkbox" name="" id="i" />
-              </div>
-            </div>
-            <div>
-              <p className="text-sm font-light text-left text-[#333]">
-                ORDENAR POR
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-light text-left text-[#333]">
-                ORDENAR POR
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-light text-left text-[#333]">
-                ORDENAR POR
-              </p>
-            </div>
-            {/* For the Deactive filter and close filter section */}
-            <span
-              className="absolute right-5 top-5 cursor-pointer"
-              onClick={() => {
-                setSelect(false);
-              }}
-            >
-              <svg
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M18.75 5.25L5.25 18.75"
-                  stroke="#333333"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M18.75 18.75L5.25 5.25"
-                  stroke="#333333"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-          </div>
+          <Filters />
         </div>
         <h1 className=" text-[40px] font-medium text-center text-[#333] my-4">
           Peluches
