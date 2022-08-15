@@ -116,11 +116,11 @@ const rightDivData = [
   },
 ];
 const centerDivData = [
-  { title: "Nosotros" },
-  { title: "Blog" },
-  { title: "Home" },
-  { title: "Ropa" },
-  { title: "Peluches" },
+  { title: "Nosotros", href: "/nosotros" },
+  { title: "Blog", href: "/blog" },
+  { title: "Home", href: "/" },
+  { title: "Ropa", href: "/ropa" },
+  { title: "Peluches", href: "/peluches" },
 ];
 function Navbar() {
   return (
@@ -173,7 +173,7 @@ function Navbar() {
       <div className="hidden justify-center items-end space-x-8   md:flex">
         {centerDivData.map((i) => {
           return (
-            <Link key={i.title} href={i.title.toLocaleLowerCase()}>
+            <Link key={i.title} href={i.href}>
               <li className="text-base text-left text-[#333] cursor-pointer list-none pt-9 ">
                 {i.title}
               </li>

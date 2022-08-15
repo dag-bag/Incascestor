@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import Btn1 from "../buttons/Btn1";
 
 function ReverseMissoin({ title, description, image }) {
   return (
@@ -42,11 +43,7 @@ function ReverseMissoin({ title, description, image }) {
           <p className=" text-base  text-[#333] mt-12 ">{description}</p>
         </div>
 
-        <button
-          className={`mr-auto px-14 md:px-24 py-3 md:py-2 border  border-[#bd9575]  md:text-lg font-medium text-center text-[#bd9575] `}
-        >
-          Cosmos
-        </button>
+        <Btn1>Cosmos</Btn1>
       </div>
     </div>
   );

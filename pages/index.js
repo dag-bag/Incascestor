@@ -11,10 +11,10 @@ import HomeFooter from "../components/home/HomeFooter";
 import MainSlider from "../components/home/MainSlider";
 import Mission from "../components/home/Mission";
 import SearchInput from "../components/home/SearchInput";
-import Topheader from "../components/home/Topheader";
+import Topheader from "../components/Topheader";
 import Video from "../components/home/Video";
 import Navbar from "../components/Navbar";
-import ReverseMissoin from "../components/ReverseMissoin";
+import ReverseMissoin from "../components/home/ReverseMissoin";
 
 export default function Home() {
   return (

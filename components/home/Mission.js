@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Btn2 from "../buttons/Btn2";
 function Mission({ title, description, image, boxType }) {
   return (
     <div className={`flex  justify-evenly  flex-wrap-reverse  py-16 `}>
@@ -71,13 +72,7 @@ function Mission({ title, description, image, boxType }) {
             </svg>
           </div>
         </div> */}
-        <button
-          className={`${
-            boxType === "center-left" ? "mr-auto" : "ml-auto"
-          }  px-14 md:px-24 py-3 md:py-2 border  border-[#bd9575]  md:text-lg font-medium text-center text-[#bd9575] `}
-        >
-          Cosmos
-        </button>
+        <Btn2>Cosmos</Btn2>
       </div>
       <div className={`flex-1 flex  ml-2 relative justify-center  `}>
         <div

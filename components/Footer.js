@@ -5,7 +5,7 @@ import React from "react";
 function Footer() {
   return (
     <div className=" bg-[#e8e8e8]/80 w-full flex justify-evenly items-center flex-wrap ">
-      <div className="w-[45%] h-44 mt-10">
+      <div className="w-[45%] md:w-auto h-44 mt-10">
         <h1 className="text-sm font-medium text-left text-[#bd9575] py-3">
           Sobre nosotros
         </h1>
@@ -23,7 +23,7 @@ function Footer() {
           <li className="text-xs font-light text-left text-[#333]">Contacto</li>
         </div>
       </div>{" "}
-      <div className="w-[45%] h-44 mt-10">
+      <div className="w-[45%] md:w-auto h-44 mt-10">
         <h1 className="text-sm font-medium text-left text-[#bd9575] py-2">
           Categorías
         </h1>
@@ -41,7 +41,7 @@ function Footer() {
           </li>
         </div>
       </div>
-      <div className="w-[45%] mt-10">
+      <div className="w-[45%] md:w-auto mt-10 h-44 ">
         {" "}
         <h1 className="text-sm font-medium text-left text-[#bd9575] py-3">
           Atención al cliente
@@ -55,11 +55,14 @@ function Footer() {
           </li>
         </div>
       </div>
-      <div className="w-[45%]  mt-10">
+      <div className="w-[45%]  md:w-auto mt-10 h-44">
         <h1 className="text-sm font-medium text-left text-[#bd9575]">
           Síguenos
         </h1>
-        <div className="flex space-x-3 mt-4">
+        <div
+          className="flex space-x-3 mt-4  
+        "
+        >
           <div>
             <svg
               width={24}
