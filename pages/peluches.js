@@ -24,7 +24,7 @@ function Peluches() {
       <main className="max-w-6xl  m-auto w-full relative">
         <div
           className={`w-full ${
-            isSelected ? "h-[50vh]" : "h-0"
+            isSelected ? "h-auto md:h-[60vh]" : "h-0"
           } overflow-hidden absolute top-0 left-0 bg-white z-50 duration-200 transform `}
         >
           <Filters />
@@ -129,10 +129,3 @@ function Peluches() {
 }
 
 export default Peluches;
-
-// export async function getServerSideProps(context) {
-//   console.log(context);
-//   return {
-//     props: {},
-//   };
-// }

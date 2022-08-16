@@ -32,6 +32,18 @@ function ProductDetails() {
             alt="Product"
             objectFit="cover"
           />
+          <div className="flex space-x-4 mt-4 justify-end">
+            {hashTag.map((item, index) => {
+              return (
+                <p
+                  key={index}
+                  className="bg-[#e8e8e8] text-lg font-light text-left text-[#333]"
+                >
+                  {item.tag}
+                </p>
+              );
+            })}
+          </div>
         </div>
       </div>
       {/* Right container */}

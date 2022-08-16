@@ -28,9 +28,9 @@ function Filters() {
   const [price, setPrice] = React.useState(30);
   const [isSelected, setSelect] = useRecoilState(filterAtom);
   return (
-    <div className="relative w-full h-full flex justify-evenly flex-wrap p-2">
+    <div className="relative w-full h-full grid grid-col-1 md:flex justify-evenly flex-wrap p-2 space-y-5 py-10">
       {/* All the data and filter here */}
-      <div className=" text-right">
+      <div className=" text-right ">
         <p className="text-sm font-light text-center text-[#333]">
           ORDENAR POR
         </p>
@@ -40,7 +40,7 @@ function Filters() {
             <div className="space-x-4 mt-4" key={index}>
               <label
                 htmlFor={item.filterName}
-                className="flex-grow-0 flex-shrink-0 w-36 h-8 text-sm font-light text-left text-[#333]"
+                className="flex-grow-0 flex-shrink-0 w-36 h-8 text-sm font-light text-right text-[#333]"
               >
                 {item.filterName}
               </label>
@@ -93,7 +93,7 @@ function Filters() {
             <div className="space-x-4 mt-4" key={index}>
               <label
                 htmlFor={item.color}
-                className="flex-grow-0 flex-shrink-0 w-36 h-8 text-sm font-light text-left text-[#333]"
+                className="flex-grow-0 flex-shrink-0 w-36 h-8 text-sm font-light text-center text-[#333]"
               >
                 {item.color}
               </label>
