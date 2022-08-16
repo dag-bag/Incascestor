@@ -114,6 +114,7 @@ const rightDivData = [
       </svg>
     ),
     text: "Mi bolso",
+    link: "/bolso",
   },
 ];
 const centerDivData = [

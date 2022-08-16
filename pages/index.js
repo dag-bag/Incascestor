@@ -15,6 +15,7 @@ import Topheader from "../components/Topheader";
 import Video from "../components/home/Video";
 import Navbar from "../components/Navbar";
 import ReverseMissoin from "../components/home/ReverseMissoin";
+import Cart from "../components/Cart";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       </div>
 
       <main className="md:space-y-16">
+        <Cart />
         <MainSlider />
         <Carousel />
         <Mission
