@@ -48,8 +48,30 @@ function ProductDetails() {
       </div>
       {/* Right container */}
       <div
-        className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[50%]`}
+        className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[50%] relative`}
       >
+        <div className="absolute top-5 right-44 flex items-center justify-center flex-col">
+          <div className="bg-primary-1 h-[70vh] w-1 "></div>
+          <div className="flex flex-col justify-center items-center w-[34px] h-[34px]  gap-2.5 p-2 bg-[#bd9575] mt-2">
+            <svg
+              width={22}
+              height={12}
+              viewBox="0 0 22 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-grow-0 flex-shrink-0"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M1 11L11 1L21 11"
+                stroke="white"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
         <div className={` text-left mb-6 md:w-[70%] flex  h-full`}>
           <div className="w-full ">
             {/* first container */}

@@ -32,7 +32,10 @@ function ProductCard({ fav }) {
             </div>
             <a
               className="mt-5 px-8 py-3 rounded-full bg-[#bd9575] hover:bg-amber-600 duration-300 text-white"
-              href="#"
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("clicked");
+              }}
             >
               Add to Bag
             </a>

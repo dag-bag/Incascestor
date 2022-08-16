@@ -1,13 +1,16 @@
 /** @format */
 
+import react from "react";
 import React from "react";
-
+import { cartAtom } from "../atoms/CartAtom";
+import { useRecoilState } from "recoil";
 function Cart() {
+  const [isShow, seShow] = useRecoilState(cartAtom);
   return (
     <>
       {/* This example requires Tailwind CSS v2.0+ */}
       <div
-        className="relative z-10"
+        className={`relative z-10  ${isShow ? "block" : "hidden"}  `}
         aria-labelledby="slide-over-title"
         role="dialog"
         aria-modal="true"
@@ -22,7 +25,13 @@ function Cart() {
   From: "opacity-100"
   To: "opacity-0"
     */}
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        <div
+          className={`fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity ${
+            isShow
+              ? "ease-in-out duration-500 opacity-100"
+              : "ease-in-out duration-500 opacity-0"
+          }`}
+        />
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
@@ -36,7 +45,11 @@ function Cart() {
         From: "translate-x-0"
         To: "translate-x-full"
     */}
-              <div className="pointer-events-auto w-screen max-w-md">
+              <div
+                className={`pointer-events-auto w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700 ${
+                  isShow ? "translate-x-0" : "translate-x-full"
+                }`}
+              >
                 <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                   <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                     <div className="flex items-start justify-between">
@@ -50,6 +63,9 @@ function Cart() {
                         <button
                           type="button"
                           className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+                          onClick={() => {
+                            seShow(false);
+                          }}
                         >
                           <span className="sr-only">Close panel</span>
                           {/* Heroicon name: outline/x */}

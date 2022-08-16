@@ -31,7 +31,6 @@ export default function Home() {
       </div>
 
       <main className="md:space-y-16">
-        <Cart />
         <MainSlider />
         <Carousel />
         <Mission

@@ -66,3 +66,11 @@
     font-family: "Poppins", system-ui, sans-serif;
   }
 }
+
+@layer utilities {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}

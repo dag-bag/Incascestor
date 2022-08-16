@@ -85,6 +85,7 @@ const rightDivData = [
       </svg>
     ),
     text: "Mi Cuenta",
+    link: "/login",
   },
   {
     svg: (
@@ -176,7 +177,7 @@ function Navbar() {
         {centerDivData.map((i) => {
           return (
             <Link key={i.title} href={i.href}>
-              <li className="text-base text-left text-[#333] cursor-pointer list-none pt-9 ">
+              <li className=" text-base text-left text-[#333] cursor-pointer list-none pt-9 ">
                 {i.title}
               </li>
             </Link>
