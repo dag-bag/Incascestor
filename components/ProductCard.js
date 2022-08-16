@@ -2,40 +2,42 @@
 
 import React from "react";
 import Image from "next/image";
-function ProductCard() {
+import Link from "next/link";
+function ProductCard({ fav }) {
   return (
     <div>
-      <div className="flex group relative  md:w-[80%] bg-[#e8e8e8] h-[300px] md:h-[360px] justify-end items-center flex-col">
-        <img
-          src="product.jpg"
-          alt="black chair and white table"
-          className="object-cover object-center w-full h-[60%] cursor-pointer"
-        />
+      <Link href={"/product/product1"}>
+        <div className="flex group relative  md:w-[80%] bg-[#e8e8e8] h-[300px] md:h-[360px] justify-end items-center flex-col">
+          <img
+            src="product.jpg"
+            alt="black chair and white table"
+            className="object-cover object-center w-full h-[60%] cursor-pointer"
+          />
 
-        <div className="absolute bottom-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-white/60 opacity-0 group-hover:h-[60%] group-hover:opacity-100 duration-500">
-          <h1 className="text-xl text-[#333]">Tallas</h1>
-          <div className="space-x-1 mt-4">
-            <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
-              34
-            </span>
-            <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
-              34
-            </span>
-            <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-4">
-              34
-            </span>
-            <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
-              34
-            </span>
+          <div className="absolute bottom-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-white/60 opacity-0 group-hover:h-[60%] group-hover:opacity-100 duration-500">
+            <h1 className="text-xl text-[#333]">Tallas</h1>
+            <div className="space-x-1 mt-4">
+              <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
+                34
+              </span>
+              <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
+                34
+              </span>
+              <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-4">
+                34
+              </span>
+              <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
+                34
+              </span>
+            </div>
+            <a
+              className="mt-5 px-8 py-3 rounded-full bg-[#bd9575] hover:bg-amber-600 duration-300 text-white"
+              href="#"
+            >
+              Add to Bag
+            </a>
           </div>
-          <a
-            className="mt-5 px-8 py-3 rounded-full bg-[#bd9575] hover:bg-amber-600 duration-300 text-white"
-            href="#"
-          >
-            Add Cart
-          </a>
-        </div>
-        {/* <div className="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+          {/* <div className="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
         <h2 className="lg:text-xl leading-4 text-base lg:leading-5 text-white">
           Catalog 2
         </h2>
@@ -45,7 +47,8 @@ function ProductCard() {
           </h3>
         </div>
       </div> */}
-      </div>
+        </div>
+      </Link>
       <div className="flex justify-between  w-[80%] mt-2">
         <div className="w-[218px] h-[72px]">
           <p className=" text-base font-medium text-left text-black">
@@ -61,7 +64,7 @@ function ProductCard() {
             width={36}
             height={36}
             viewBox="0 0 36 36"
-            fill="none"
+            fill={`${fav ? "#333" : "none"}`}
             xmlns="http://www.w3.org/2000/svg"
             className="w-9 h-9 relative cursor-pointer "
             preserveAspectRatio="none"

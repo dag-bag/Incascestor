@@ -1,8 +1,8 @@
 /** @format */
-
 import React from "react";
 import { filterAtom } from "../atoms/filterAtom";
 import { useRecoilState } from "recoil";
+import react from "react";
 const opeRarData = [
   {
     filterName: "Recomendados",
@@ -25,12 +25,15 @@ const color = [
 ];
 const sizeData = [{ size: 15 }, { size: 25 }, { size: 35 }, { size: 45 }];
 function Filters() {
+  const [price, setPrice] = React.useState(30);
   const [isSelected, setSelect] = useRecoilState(filterAtom);
   return (
-    <div className="relative w-full h-full flex justify-evenly items-center flex-wrap">
+    <div className="relative w-full h-full flex justify-evenly flex-wrap p-2">
       {/* All the data and filter here */}
-      <div className="w-[10rem] text-right">
-        <p className="text-sm font-light text-right text-[#333]">ORDENAR POR</p>
+      <div className=" text-right">
+        <p className="text-sm font-light text-center text-[#333]">
+          ORDENAR POR
+        </p>
         {/* For the checkbox */}
         {opeRarData.map((item, index) => {
           return (
@@ -51,29 +54,28 @@ function Filters() {
         })}
       </div>
       <div>
-        <p className="text-sm font-light text-left text-[#333]">PRISO</p>
+        <p className="text-sm font-light text-center text-[#333]">PRISO</p>
         <input
           type="range"
           name=""
           id=""
-          className=" form-range
-      appearance-none
-      w-full
-      h-6
-      p-0
-       bg-black
-       rounded-full
-      focus:outline-none focus:ring-0 focus:shadow-none"
+          className="slider mt-4"
+          min={30}
+          max={50}
+          onChange={(e) => setPrice(e.target.value)}
+          value={price}
         />
       </div>
       <div>
-        <p className="text-sm font-light text-right text-[#333]">ORDENAR POR</p>
+        <p className="text-sm font-light text-center text-[#a36565]">
+          ORDENAR POR
+        </p>
         {sizeData.map((item, index) => {
           return (
             <div className="space-x-4 mt-4" key={index}>
               <label
                 htmlFor={item.size}
-                className="flex-grow-0 flex-shrink-0 w-36 h-8 text-sm font-light text-left text-[#333]"
+                className="flex-grow-0 flex-shrink-0 w-36 h-8 text-sm font-light text-right text-[#564b4b]"
               >
                 {item.size}
               </label>
@@ -83,7 +85,9 @@ function Filters() {
         })}
       </div>
       <div>
-        <p className="text-sm font-light text-right text-[#333]">ORDENAR POR</p>
+        <p className="text-sm font-light text-center text-[#5b5858]">
+          ORDENAR POR
+        </p>
         {color.map((item, index) => {
           return (
             <div className="space-x-4 mt-4" key={index}>

@@ -54,7 +54,8 @@ const rightDivData = [
         ></path>
       </svg>
     ),
-    text: "Mi Cuenta",
+    text: "Favraritos",
+    link: "/favoritos",
   },
   {
     svg: (
@@ -83,7 +84,7 @@ const rightDivData = [
         ></path>
       </svg>
     ),
-    text: "Favraritos",
+    text: "Mi Cuenta",
   },
   {
     svg: (
@@ -184,10 +185,23 @@ function Navbar() {
       {/* Right */}
       <div className="flex justify-center items-center md:space-x-10 space-x-6">
         {rightDivData.map((i) => {
-          return (
+          return i.link ? (
+            <Link key={i.text} href={i.link}>
+              <div className="flex flex-col items-center justify-center cursor-pointer">
+                {i.svg}
+                <p
+                  className={
+                    "text-sm font-light leading-6 md:inline  tracking-[-0.17600000381469727px] text-[rgba(51,51,51,1)] hidden"
+                  }
+                >
+                  {i.text}
+                </p>
+              </div>
+            </Link>
+          ) : (
             <div
               key={i.text}
-              className="flex flex-col items-center justify-center"
+              className="flex flex-col items-center justify-center cursor-pointer"
             >
               {i.svg}
               <p
