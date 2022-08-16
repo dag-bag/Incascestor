@@ -91,27 +91,27 @@ function ProductDetails() {
             <div className="">
               {/* Temp */}
               <div className="py-10">
-                <p className="text-sm font-light text-left text-black">
-                  Envío gratis a tu casa
+                <p className="text-sm font-light text-left text-black flex items-center space-x-2">
+                  <svg
+                    width={18}
+                    height={14}
+                    viewBox="0 0 18 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M17.3218 0.971861L6.25742 13.6281L0 6.47037L0.849625 5.49851L6.25742 11.6843L16.4722 0L17.3218 0.971861V0.971861Z"
+                      fill="#04D200"
+                    />
+                  </svg>
+                  <span>Envío gratis a tu casa</span>
                 </p>
                 <p className="text-sm font-light text-left text-[#bd9575]">
                   Información sobre envíos y devoluciones
                 </p>
-                <svg
-                  width={18}
-                  height={14}
-                  viewBox="0 0 18 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M17.3218 0.971861L6.25742 13.6281L0 6.47037L0.849625 5.49851L6.25742 11.6843L16.4722 0L17.3218 0.971861V0.971861Z"
-                    fill="#04D200"
-                  />
-                </svg>
               </div>
               {/* Details */}
               <div className="space-y-5">
