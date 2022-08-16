@@ -1,7 +1,7 @@
 /** @format */
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 const hashTag = [
   {
@@ -15,6 +15,8 @@ const hashTag = [
   },
 ];
 function ProductDetails() {
+  useEffect(() => {}, []);
+
   return (
     <div
       className={`grid grid-cols-1 md:flex  justify-evenly  flex-wrap   py-16 `}
@@ -249,7 +251,7 @@ function ProductDetails() {
                     </p>
                   </div>
                   <p className="ml-[3.8rem] text-sm font-light text-left text-[#5c5c5c]">
-                    <p className="w-[387px] text-sm font-light text-left text-[#5c5c5c]">
+                    <p className=" text-sm font-light text-left text-[#5c5c5c]">
                       <span className=" text-sm font-light text-left text-[#5c5c5c]">
                         1. Rinde in water with a mild shampoo, don’t sook.
                       </span>
