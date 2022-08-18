@@ -29,7 +29,7 @@ function ProductDetails({ product, varients }) {
     console.log("hello" + varients[newColor][newSize]);
     setColor(newColor);
     setSize(newSize);
-    let url = `http://localhost:3000/product/${varients[newColor][newSize]}`;
+    let url = `/product/${varients[newColor][newSize]}`;
     next.router.push(url);
   };
 
