@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-function bolsa() {
+function Bolsa() {
   return (
     <>
       <div className="bg-white">
@@ -243,4 +243,4 @@ function bolsa() {
   );
 }
 
-export default bolsa;
+export default Bolsa;
