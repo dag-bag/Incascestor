@@ -10,8 +10,11 @@ import Filters from "../components/Filters";
 import { filterAtom } from "../atoms/filterAtom";
 import { useRecoilState } from "recoil";
 import H1 from "../components/H1";
+import Product from "../models/Product";
+import mongoose from "mongoose";
 
-function Peluches() {
+function Peluches({ products }) {
+  console.log(products);
   var [isSelected, setSelect] = useRecoilState(filterAtom);
   return (
     <div>
@@ -116,12 +119,21 @@ function Peluches() {
           </button>
         </div>
         <div className="grid px-2 grid-cols-2 md:grid-cols-3 gap-5 py-16">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {Object.keys(products).map((item) => {
+            return (
+              <ProductCard
+                key={products[item].slug}
+                title={products[item].title}
+                src={products[item].img}
+                desc={products[item].desc}
+                slug={products[item].slug}
+                category={products[item].category}
+                size={products[item].size}
+                price={products[item].price}
+                color={products[item].color}
+              />
+            );
+          })}
         </div>
       </main>
     </div>
@@ -129,3 +141,38 @@ function Peluches() {
 }
 
 export default Peluches;
+
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGODB_URI);
+  }
+  let products = await Product.find({ category: "slipers" });
+  let tshirts = {};
+  for (let item of products) {
+    if (item.title in tshirts) {
+      if (
+        !tshirts[item.title].color?.includes(item.color) &&
+        item.availableQty > 0
+      ) {
+        await tshirts[item.title].color.push(item.color);
+      }
+      if (
+        !tshirts[item.title].size?.includes(item.size) &&
+        item.availableQty > 0
+      ) {
+        await tshirts[item.title].size.push(item.size);
+      }
+    } else {
+      tshirts[item.title] = await JSON.parse(JSON.stringify(item));
+      if (item.availableQty > 0) {
+        tshirts[item.title].color = [item.color];
+        tshirts[item.title].size = [item.size];
+      }
+    }
+  }
+  // const resp = await fetch("http://localhost:3000/api/getproducts");
+  // const products = await resp.json();
+  return {
+    props: { products: JSON.parse(JSON.stringify(tshirts)) }, // will be passed to the page component as props
+  };
+}

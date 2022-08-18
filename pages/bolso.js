@@ -20,7 +20,7 @@ function bolsa() {
                 className="border-t border-b border-gray-200 divide-y divide-gray-200"
               >
                 <li className="flex py-6 sm:py-10">
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 ">
                     <Image
                       src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg"
                       alt="Front of men's Basic Tee in sienna."
@@ -28,6 +28,29 @@ function bolsa() {
                       width={150}
                       height={150}
                     />
+                    <div className="w-[77px] h-[21px] flex space-x-1 items-center mt-2 cursor-pointer">
+                      <svg
+                        width={12}
+                        height={12}
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-3 h-3 relative"
+                        preserveAspectRatio="none"
+                      >
+                        <path d="M4.5 4.5H5.25V9H4.5V4.5Z" fill="black" />
+                        <path d="M6.75 4.5H7.5V9H6.75V4.5Z" fill="black" />
+                        <path
+                          d="M1.5 2.25V3H2.25V10.5C2.25 10.6989 2.32902 10.8897 2.46967 11.0303C2.61032 11.171 2.80109 11.25 3 11.25H9C9.19891 11.25 9.38968 11.171 9.53033 11.0303C9.67098 10.8897 9.75 10.6989 9.75 10.5V3H10.5V2.25H1.5ZM3 10.5V3H9V10.5H3Z"
+                          fill="black"
+                        />
+                        <path d="M4.5 0.75H7.5V1.5H4.5V0.75Z" fill="black" />
+                      </svg>
+
+                      <p className=" text-sm font-light text-left text-black">
+                        Eliminar
+                      </p>
+                    </div>
                   </div>
                   <div className="ml-4 flex-1 flex flex-col justify-between sm:ml-6">
                     <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
@@ -40,24 +63,24 @@ function bolsa() {
                               </span>
                               <br />
                               <span className="text-lg font-medium text-left text-black">
-                                Color:
+                                Color :
                               </span>
-                              <span className="text-lg font-light text-left text-black">
+                              <span className=" font-light text-left text-black">
                                 {" "}
                                 Blanco
                               </span>
                               <br />
                               <span className="text-lg font-medium text-left text-black">
-                                Cantidad:{" "}
+                                Cantidad :{" "}
                               </span>
-                              <span className="text-lg font-light text-left text-black">
+                              <span className=" font-light text-left text-black">
                                 1
                               </span>
                               <br />
                               <span className="text-lg font-medium text-left text-black">
-                                Talla:
+                                Talla :
                               </span>
-                              <span className="text-lg font-light text-left text-black">
+                              <span className=" font-light text-left text-black">
                                 {" "}
                                 36
                               </span>
@@ -74,45 +97,16 @@ function bolsa() {
                         <label htmlFor="quantity-0" className="sr-only">
                           Quantity, Basic Tee
                         </label>
-                        <select
-                          id="quantity-0"
-                          name="quantity-0"
-                          className="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black sm:text-sm"
-                        >
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                          <option value={4}>4</option>
-                          <option value={5}>5</option>
-                          <option value={6}>6</option>
-                          <option value={7}>7</option>
-                          <option value={8}>8</option>
-                        </select>
+
                         <div className="absolute top-0 right-0">
-                          <button
-                            type="button"
-                            className="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500"
-                          >
-                            <span className="sr-only">Remove</span>
-                            {/* Heroicon name: solid/x */}
-                            <svg
-                              className="h-5 w-5"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                              aria-hidden="true"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </button>
+                          {/* Heroicon name: solid/x */}
+                          <h4 className="text-2xl font-medium text-left text-black">
+                            79,99 $
+                          </h4>
                         </div>
                       </div>
                     </div>
-                    <p className="mt-4 flex text-sm text-gray-700 space-x-2">
+                    <p className="mt-4 flex text-sm  items-center text-gray-700 space-x-2">
                       {/* Heroicon name: solid/check */}
                       <svg
                         className="flex-shrink-0 h-5 w-5 text-green-500"
@@ -127,7 +121,7 @@ function bolsa() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span>In stock</span>
+                      <span className="font-medium text-lg">In stock</span>
                     </p>
                   </div>
                 </li>
@@ -175,7 +169,26 @@ function bolsa() {
                       </svg>
                     </a>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">$5.00</dd>
+                  <dd className="text-sm font-medium text-gray-900">
+                    {" "}
+                    <p className="mt-4 flex text-sm text-gray-700 space-x-2">
+                      {/* Heroicon name: solid/check */}
+                      <svg
+                        className="flex-shrink-0 h-5 w-5 text-green-500"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span>Free Delivery</span>
+                    </p>
+                  </dd>
                 </div>
                 <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
                   <dt className="flex text-sm text-gray-600">
@@ -203,14 +216,14 @@ function bolsa() {
                       </svg>
                     </a>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">$8.32</dd>
+                  <dd className="text-sm font-medium text-gray-900">$0</dd>
                 </div>
                 <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
                   <dt className="text-base font-medium text-gray-900">
                     Order total
                   </dt>
                   <dd className="text-base font-medium text-gray-900">
-                    $112.32
+                    $99.00{" "}
                   </dd>
                 </div>
               </dl>

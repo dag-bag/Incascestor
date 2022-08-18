@@ -3,32 +3,42 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-function ProductCard({ fav }) {
+function ProductCard({ fav, slug, title, desc, price, color, size, img }) {
+  const truncate = (string, n) =>
+    string?.length > n ? string.substr(0, n - 1) + "....." : string;
   return (
     <div>
-      <Link href={"/product/product1"}>
+      <Link href={`/product/${slug}`}>
         <div className="flex group relative  md:w-[80%] bg-[#e8e8e8] h-[300px] md:h-[360px] justify-end items-center flex-col">
           <img
-            src="product.jpg"
+            src={"/product.jpg"}
             alt="black chair and white table"
             className="object-cover object-center w-full h-[60%] cursor-pointer"
           />
 
           <div className="absolute bottom-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-white/60 opacity-0 group-hover:h-[60%] group-hover:opacity-100 duration-500">
-            <h1 className="text-xl text-[#333]">Tallas</h1>
+            <h1 className="text-xl text-[#333]">{title}</h1>
             <div className="space-x-1 mt-4">
-              <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
-                34
-              </span>
-              <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
-                34
-              </span>
-              <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-4">
-                34
-              </span>
-              <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
-                34
-              </span>
+              {size.includes("SM") && (
+                <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
+                  SM
+                </span>
+              )}
+              {size.includes("XL") && (
+                <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
+                  XL
+                </span>
+              )}
+              {size.includes("LG") && (
+                <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
+                  LG
+                </span>
+              )}
+              {size.includes("XXL") && (
+                <span className="text-base text-left text-black cursor-pointer rounded-full hover:bg-white/60 p-3">
+                  XXL
+                </span>
+              )}
             </div>
             <a
               className="mt-5 px-8 py-3 rounded-full bg-[#bd9575] hover:bg-amber-600 duration-300 text-white"
@@ -54,13 +64,11 @@ function ProductCard({ fav }) {
       </Link>
       <div className="flex justify-between  w-[80%] mt-2">
         <div className="w-[218px] h-[72px]">
-          <p className=" text-base font-medium text-left text-black">
-            Pantuflas Alpha
-          </p>
+          <p className=" text-base font-medium text-left text-black">{title}</p>
           <p className=" text-base font-light text-left text-black">
-            Zapatos cómodos de casa.
+            {truncate(desc, 25)}
           </p>
-          <p className=" text-base text-left text-black">79,99 $</p>
+          <p className=" text-base text-left text-black">{price} $</p>
         </div>
         <div>
           <svg

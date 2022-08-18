@@ -223,21 +223,25 @@ function CoreValues() {
         <div className="relative   m-auto w-full  ">
           <div className="w-[100%] h-[88%] m-auto absolute left-0 top-0 bottom-0 opacity-60 bg-[#bd9575] mix-blend-multiply z-20"></div>
           <div className="absolute top-0 left-0 z-40  items-center w-full h-full pt-36">
-            <h1 className="text-lg font-medium text-center text-white py-14">
-              100% alpaca y además
-            </h1>
-            <div className="flex justify-center items-center flex-wrap pt-5">
-              {CoreData.map((i) => {
-                return (
-                  <div
-                    key={i.title}
-                    className="flex w-[45%] justify-center items-center pb-5 flex-col space-y-3"
-                  >
-                    {i.svg}
-                    <p className=" text-xs text-center text-white">{i.title}</p>
-                  </div>
-                );
-              })}
+            <div className="flex w-auto justify-start items-center  pt-5 max-w-4xl h-[400px]  m-auto bg-white bg-opacity-25 rounded shadow-xl flex-col mt-24">
+              <h1 className=" font-medium text-center text-white py-14 capitalize text-2xl">
+                100% alpaca y además
+              </h1>
+              <div className="flex items-center justify-center w-full mt-5">
+                {CoreData.map((i) => {
+                  return (
+                    <div
+                      key={i.title}
+                      className="flex w-[45%] justify-center items-center pb-5 flex-col space-y-3"
+                    >
+                      {i.svg}
+                      <p className=" text-xs md:text-xl text-center text-white">
+                        {i.title}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -250,7 +254,7 @@ function CoreValues() {
             objectFit="contain"
           />
         </div>
-        <form className="m-auto p-5 mt-5 space-y-9 max-w-xl">
+        <form className="m-auto p-5 mt-5 space-y-9 max-w-xl ">
           <h4 className=" text-sm text-left text-[#333]">
             Recibe promociones exclusivas, ventas privadas y <br /> novedades
           </h4>

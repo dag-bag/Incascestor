@@ -33,7 +33,7 @@ const instagramData = [
 ];
 function Siderbar() {
   return (
-    <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
+    <aside className="w-full md:w-1/3 flex flex-col items-center px-3 max-w-sm">
       <div className="w-full bg-white shadow flex flex-col my-4 p-6">
         <p className="text-xl font-semibold pb-5">About Us</p>
         <p className="pb-2">

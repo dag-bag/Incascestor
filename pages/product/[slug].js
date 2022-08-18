@@ -1,8 +1,10 @@
 /** @format */
 
+import mongoose from "mongoose";
 import Image from "next/image";
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import ColorBtn from "../../components/buttons/ColorBtn";
+import Product from "../../models/Product";
 const hashTag = [
   {
     tag: "#Alpaca",
@@ -14,7 +16,23 @@ const hashTag = [
     tag: "#AlpacaLovers",
   },
 ];
-function ProductDetails() {
+
+function ProductDetails({ product, varients }) {
+  console.log(varients["black"]);
+
+  // COlor and Size Variables
+  const [color, setColor] = useState(product.color);
+  console.log(color);
+  const [size, setSize] = useState(product.size);
+
+  const refreshVarient = (newSize, newColor) => {
+    console.log("hello" + varients[newColor][newSize]);
+    setColor(newColor);
+    setSize(newSize);
+    let url = `http://localhost:3000/product/${varients[newColor][newSize]}`;
+    next.router.push(url);
+  };
+
   useEffect(() => {}, []);
 
   return (
@@ -77,11 +95,11 @@ function ProductDetails() {
             {/* first container */}
             <div className="text-left text-black ">
               <span className="text-lg font-semibold text-left text-black">
-                ALpaca Mini
+                {product.title} ({product.size}/{product.color})
               </span>
               <br />
               <span className="text-lg font-light text-left text-black">
-                29,99 €
+                {product.price} €
               </span>
               <br />
               <br />
@@ -91,30 +109,104 @@ function ProductDetails() {
             </div>
             {/* Sec container */}
             <div className="space-y-7">
-              <ul className="flex flex-row  items-center mt-2">
-                <li className="mr-4 last:mr-0">
-                  <span className="block p-1 border-2 border-gray-500 rounded-full transition ease-in duration-300">
-                    <a
-                      href="#blue"
-                      className="block w-6 h-6 bg-blue-900 rounded-full"
-                    ></a>
-                  </span>
-                </li>
-                <li className="mr-4 last:mr-0">
-                  <span className="block p-1 border-2 border-white hover:border-gray-500 rounded-full transition ease-in duration-300">
-                    <a
-                      href="#yellow"
-                      className="block w-6 h-6 bg-yellow-500 rounded-full"
-                    ></a>
-                  </span>
-                </li>
+              <ul className="flex flex-row  items-center mt-2 space-x-2">
+                {Object.keys(varients).includes("white") &&
+                  Object.keys(varients["white"]).includes(size) && (
+                    <button
+                      onClick={() => {
+                        refreshVarient(size, "white");
+                      }}
+                    >
+                      <span
+                        className={`block p-1 border-2  border-gray-500 rounded-full transition ease-in duration-300`}
+                      >
+                        <a
+                          href="#green"
+                          className="block w-6 h-6 bg-gray-200 rounded-full"
+                        ></a>
+                      </span>
+                    </button>
+                  )}
+                {Object.keys(varients).includes("black") &&
+                  Object.keys(varients["black"]).includes(size) && (
+                    <button
+                      onClick={() => {
+                        refreshVarient(size, "black");
+                      }}
+                    >
+                      <ColorBtn color={"black"} />
+                    </button>
+                  )}
+                {Object.keys(varients).includes("yellow") &&
+                  Object.keys(varients["yellow"]).includes(size) && (
+                    <button
+                      onClick={() => {
+                        refreshVarient(size, "yellow");
+                      }}
+                    >
+                      <ColorBtn color={"yellow"} />
+                    </button>
+                  )}
+                {Object.keys(varients).includes("red") &&
+                  Object.keys(varients["red"]).includes(size) && (
+                    <button
+                      onClick={() => {
+                        refreshVarient(size, "red");
+                      }}
+                    >
+                      <ColorBtn color={"red"} />
+                    </button>
+                  )}
+                {Object.keys(varients).includes("green") &&
+                  Object.keys(varients["green"]).includes(size) && (
+                    <button
+                      onClick={() => {
+                        refreshVarient(size, "green");
+                      }}
+                    >
+                      <ColorBtn color={"green"} />
+                    </button>
+                  )}
+                {Object.keys(varients).includes("blue") &&
+                  Object.keys(varients["blue"]).includes(size) && (
+                    <button
+                      onClick={() => {
+                        refreshVarient(size, "blue");
+                      }}
+                    >
+                      <ColorBtn color={"blue"} />
+                    </button>
+                  )}
+                {Object.keys(varients).includes("pink") &&
+                  Object.keys(varients["pink"]).includes(size) && (
+                    <button
+                      onClick={() => {
+                        refreshVarient(size, "pink");
+                      }}
+                    >
+                      <ColorBtn color={"pink"} />
+                    </button>
+                  )}
               </ul>
               <div>
-                <select className="w-full max-w-sm h-[58px] bg-white border border-[#333] p-4 ">
-                  <option className=" h-[58px] bg-white p-4">SM</option>
-                  <option className=" h-[58px] bg-white p-4">M</option>
-                  <option className=" h-[58px] bg-white p-4">L</option>
-                  <option className=" h-[58px] bg-white p-4">XL</option>
+                <select
+                  className="w-full max-w-sm h-[58px] bg-white border border-[#333] p-4 "
+                  onChange={(e) => {
+                    refreshVarient(e.target.value, color);
+                  }}
+                >
+                  {Object.keys(varients[color]).includes("SM") && (
+                    <option>SM</option>
+                  )}
+                  {Object.keys(varients[color]).includes("XL") && (
+                    <option>XL</option>
+                  )}
+                  {Object.keys(varients[color]).includes("LG") && (
+                    <option>LG</option>
+                  )}
+                  {Object.keys(varients[color]).includes("XXL") && (
+                    <option>XXL</option>
+                  )}
                 </select>
               </div>
               <button className="rounded-[3px] bg-[#bd9575] w-full text-white py-3 max-w-sm ">
@@ -322,3 +414,29 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
+
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGODB_URI);
+  }
+
+  let product = await Product.findOne({ slug: context.query.slug });
+  let varients = await Product.find({ title: product.title });
+
+  let colorSizeSlug = {};
+  for (let item of varients) {
+    if (Object.keys(colorSizeSlug).includes(item.color)) {
+      colorSizeSlug[item.color][item.size] = item.slug;
+    } else {
+      colorSizeSlug[item.color] = {};
+      colorSizeSlug[item.color][item.size] = item.slug;
+    }
+  }
+  console.log(colorSizeSlug);
+  return {
+    props: {
+      product: JSON.parse(JSON.stringify(product)),
+      varients: JSON.parse(JSON.stringify(colorSizeSlug)),
+    }, // will be passed to the page component as props
+  };
+}
