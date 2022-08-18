@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-function signup() {
+function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // const id = toast.loading("Please wait...");
