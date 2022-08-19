@@ -7,8 +7,6 @@ import CommentBox from "../../components/blog/CommentBox";
 
 const Post = ({ post }) => {
   const { title, text, img, date, category, author, createAt } = post;
-  const dateFormated = new Date(createAt);
-  console.log(dateFormated);
 
   return (
     <div className="container mx-auto flex flex-wrap py-6">
@@ -173,7 +171,7 @@ const Post = ({ post }) => {
 export default Post;
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost:3000/api/params");
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/params`);
   const posts = await res.json();
 
   // Get the paths we want to pre-render based on posts
@@ -189,7 +187,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const postJson = await fetch(
-    `http://localhost:3000/api/blog?slug=${params.blog}`
+    `${process.env.NEXTAUTH_URL}/api/blog?slug=${params.blog}`
   );
   const post = await postJson.json();
   // console.log(post);
