@@ -171,7 +171,7 @@ const Post = ({ post }) => {
 export default Post;
 
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/params`);
+  const res = await fetch(`https://incascestor.vercel.app/api/params`);
   const posts = await res.json();
 
   // Get the paths we want to pre-render based on posts
