@@ -1,5 +1,6 @@
 /** @format */
 
+import mongoose from "mongoose";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,8 +8,9 @@ import BlogCard from "../components/blog/BlogCard";
 import BlogContainer from "../components/blog/BlogContainer";
 import Siderbar from "../components/blog/Siderbar";
 import H1 from "../components/H1";
+import Blogs from "../models/Blog";
 
-function Blog() {
+function Blog({ blogs }) {
   return (
     <div>
       <H1>Blogs</H1>
@@ -23,11 +25,19 @@ function Blog() {
         {/* Posts Section */}
         <section className="w-full md:w-2/3 flex flex-col items-center  px-3">
           <BlogContainer>
-            <BlogCard href="blog-post" sig="1" />
-            <BlogCard href="blog-post" sig="2" />
-            <BlogCard href="blog-post" sig="3" />
-            <BlogCard href="blog-post" sig="4" />
-            <BlogCard href="blog-post" sig="5" />
+            {blogs.map((blog) => {
+              return (
+                <BlogCard
+                  key={blog._id}
+                  title={blog.title}
+                  text={blog.text}
+                  image={blog.img}
+                  date={blog.date}
+                  slug={blog.slug}
+                  category={blog.category}
+                />
+              );
+            })}
           </BlogContainer>
           {/* Pagination */}
           <div className="flex items-center py-8 ">
@@ -58,3 +68,15 @@ function Blog() {
 }
 
 export default Blog;
+
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGODB_URI);
+  }
+  let blogs = await Blogs.find({});
+  // const resp = await fetch("http://localhost:3000/api/getproducts");
+  // const products = await resp.json();
+  return {
+    props: { blogs: JSON.parse(JSON.stringify(blogs)) }, // will be passed to the page component as props
+  };
+}

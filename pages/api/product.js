@@ -6,6 +6,17 @@ import Product from "../../models/Product";
 const handler = async (req, res) => {
   if (req.method === "POST") {
     for (let i = 0; i < req.body.length; i++) {
+      const slug = await req.body[i].slug;
+
+      const slugExists = await Product.findOne({ slug });
+
+      if (slugExists) {
+        return res.status(400).json({
+          error: "Slug already exists",
+          success: false,
+          msg: "Slug already exists",
+        });
+      }
       let newProduct = new Product({
         title: req.body[i].title,
         desc: req.body[i].desc,

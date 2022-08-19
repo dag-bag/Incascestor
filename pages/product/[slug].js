@@ -18,7 +18,7 @@ const hashTag = [
 ];
 
 function ProductDetails({ product, varients }) {
-  console.log(varients["black"]);
+  const [mounted, setMounted] = useState(false);
 
   // COlor and Size Variables
   const [color, setColor] = useState(product.color);
@@ -32,9 +32,8 @@ function ProductDetails({ product, varients }) {
     let url = `/product/${varients[newColor][newSize]}`;
     next.router.push(url);
   };
-
-  useEffect(() => {}, []);
-
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
   return (
     <div
       className={`grid grid-cols-1 md:flex  justify-evenly  flex-wrap   py-16 `}

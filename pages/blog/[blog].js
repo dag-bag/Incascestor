@@ -1,9 +1,15 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
 import Siderbar from "../../components/blog/Siderbar";
 import Image from "next/image";
-function Post() {
+import CommentBox from "../../components/blog/CommentBox";
+
+const Post = ({ post }) => {
+  const { title, text, img, date, category, author, createAt } = post;
+  const dateFormated = new Date(createAt);
+  console.log(dateFormated);
+
   return (
     <div className="container mx-auto flex flex-wrap py-6">
       {/* Post Section */}
@@ -12,7 +18,7 @@ function Post() {
           {/* Article Image */}
           <a href="#" className="hover:opacity-75">
             <Image
-              src="https://source.unsplash.com/collection/1346951/1000x500?sig=1"
+              src={img}
               width={200}
               height={100}
               layout="responsive"
@@ -24,17 +30,17 @@ function Post() {
               href="#"
               className="text-primary-1 text-sm font-bold uppercase pb-4"
             >
-              Technology
+              {category}
             </a>
             <a href="#" className="text-3xl font-bold hover:text-gray-700 pb-4">
-              Lorem Ipsum Dolor Sit Amet Dolor Sit Amet
+              {title}
             </a>
             <p href="#" className="text-sm pb-8">
               By{" "}
               <a href="#" className="font-semibold hover:text-gray-800">
-                Jhosep Guzman
+                {author} <span className="text-gray-700 text-xs">— {date}</span>
               </a>
-              , Published on April 25th, 2020
+              {createAt}
             </p>
             <h1 className="text-2xl font-bold pb-3">Introduction</h1>
             <p className="pb-3">
@@ -103,6 +109,7 @@ function Post() {
             </p>
           </div>
         </article>
+        <CommentBox id={post._id} />
         <div className="w-full flex pt-6">
           <a
             href="#"
@@ -123,6 +130,7 @@ function Post() {
             <p className="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
           </a>
         </div>
+
         <div className="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
           <div className="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
             <Image
@@ -134,7 +142,7 @@ function Post() {
             />
           </div>
           <div className="flex-1 flex flex-col justify-center md:justify-start">
-            <p className="font-semibold text-2xl">Jhosep Guzman</p>
+            <p className="font-semibold text-2xl">{author}</p>
             <p className="pt-2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
               vel neque non libero suscipit suscipit eu eu urna.
@@ -160,6 +168,39 @@ function Post() {
       <Siderbar />
     </div>
   );
-}
+};
 
 export default Post;
+
+export async function getStaticPaths() {
+  const res = await fetch("http://localhost:3000/api/params");
+  const posts = await res.json();
+
+  // Get the paths we want to pre-render based on posts
+  const paths = posts.map((post) => ({
+    params: { blog: post.slug },
+  }));
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: blocking } will server-render pages
+  // on-demand if the path doesn't exist.
+  return { paths, fallback: "blocking" };
+}
+
+export async function getStaticProps({ params }) {
+  const postJson = await fetch(
+    `http://localhost:3000/api/blog?slug=${params.blog}`
+  );
+  const post = await postJson.json();
+  // console.log(post);
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { post },
+    revalidate: 60,
+  };
+}

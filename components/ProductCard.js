@@ -3,9 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import truncate from "../lib/Ese";
 function ProductCard({ fav, slug, title, desc, price, color, size, img }) {
-  const truncate = (string, n) =>
-    string?.length > n ? string.substr(0, n - 1) + "....." : string;
   return (
     <div>
       <Link href={`/product/${slug}`}>
