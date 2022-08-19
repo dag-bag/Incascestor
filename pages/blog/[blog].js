@@ -6,7 +6,7 @@ import Image from "next/image";
 import CommentBox from "../../components/blog/CommentBox";
 
 const Post = ({ post }) => {
-  const { title, text, img, date, category, author, createAt } = post;
+  // const { title, text, img, date, category, author, createAt } = post;
 
   return (
     <div></div>
