@@ -1,6 +1,7 @@
 /** @format */
 
 import mongoose from "mongoose";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -13,6 +14,7 @@ import Blogs from "../models/Blog";
 function Blog({ blogs }) {
   return (
     <div>
+      <Head></Head>
       <H1>Blogs</H1>
       <h3 className=" text-xl font-light text-center  text-[#333]">
         Somos Incancestry
