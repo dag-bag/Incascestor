@@ -1,7 +1,6 @@
 /** @format */
 
 import Head from "next/head";
-import React from "react";
 
 const ProductCard = dynamic(() => import("../components/ProductCard"));
 
