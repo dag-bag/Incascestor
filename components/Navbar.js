@@ -33,7 +33,6 @@ const rightDivData = [
         ></path>
       </svg>
     ),
-    text: "Buscar",
   },
   {
     svg: (
@@ -55,7 +54,7 @@ const rightDivData = [
         ></path>
       </svg>
     ),
-    text: "Favraritos",
+
     link: "/favoritos",
   },
 
@@ -86,7 +85,7 @@ const rightDivData = [
         ></path>
       </svg>
     ),
-    text: "Mi bolso",
+
     link: "/bolso",
   },
 ];
@@ -159,7 +158,7 @@ function Navbar() {
         })}
       </div>
       {/* Right */}
-      <div className="flex justify-center items-center md:space-x-10 space-x-6">
+      <div className="flex justify-center items-center md:space-x-10 space-x-6 mt-6">
         {rightDivData.map((i) => {
           return i.link ? (
             <Link key={i.text} href={i.link}>

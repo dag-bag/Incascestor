@@ -62,7 +62,7 @@ function Index({ Cart }) {
       <div className="flex  justify-center md:p-10 flex-wrap px-2">
         <div className=" md:w-[45rem] h-[60vh]">
           <form
-            onClick={(e) => {
+            onSubmit={(e) => {
               LoginUser(e);
             }}
             className="p-5 flex justify-center items-center flex-col border-2 border-black md:w-[70%] py-10 m-auto space-y-6"
