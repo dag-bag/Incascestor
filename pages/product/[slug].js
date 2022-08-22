@@ -427,12 +427,16 @@ function ProductDetails({
 
 export default ProductDetails;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ query, res }) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
 
-  let product = await Product.findOne({ slug: context.query.slug });
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=3600, stale-while-revalidate=60"
+  );
+  let product = await Product.findOne({ slug: query.slug });
   let varients = await Product.find({ title: product.title });
 
   let colorSizeSlug = {};

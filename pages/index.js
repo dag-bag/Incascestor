@@ -2,21 +2,22 @@
 
 import Head from "next/head";
 import Image from "next/image";
-import Footer from "../components/Footer";
-import Carousel from "../components/home/Carousel";
+
 import CoreValues from "../components/home/CoreValues";
 
 import Features from "../components/home/Features";
 import HomeFooter from "../components/home/HomeFooter";
 import MainSlider from "../components/home/MainSlider";
-import Mission from "../components/home/Mission";
 import SearchInput from "../components/home/SearchInput";
-import Topheader from "../components/Topheader";
-import Video from "../components/home/Video";
-import Navbar from "../components/Navbar";
-import ReverseMissoin from "../components/home/ReverseMissoin";
-import Cart from "../components/Cart";
+
 import dynamic from "next/dynamic";
+import Video from "../components/home/Video";
+
+import ReverseMissoin from "../components/home/ReverseMissoin";
+
+const Mission = dynamic(() => import("../components/home/Mission"));
+
+const Carousel = dynamic(() => import("../components/home/Carousel"));
 
 export default function Home() {
   return (
