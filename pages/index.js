@@ -16,6 +16,7 @@ import Video from "../components/home/Video";
 import Navbar from "../components/Navbar";
 import ReverseMissoin from "../components/home/ReverseMissoin";
 import Cart from "../components/Cart";
+import dynamic from "next/dynamic";
 
 export default function Home() {
   return (
