@@ -3,7 +3,11 @@
 import mongoose from "mongoose";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+
 import ColorBtn from "../../components/buttons/ColorBtn";
+import { useAddProduct } from "../../lib/cartHooks";
+
 import Product from "../../models/Product";
 const hashTag = [
   {
@@ -17,16 +21,21 @@ const hashTag = [
   },
 ];
 
-function ProductDetails({ product, varients }) {
+function ProductDetails({
+  product,
+  varients,
+  addToCart,
+  Cart,
+  removeFromCart,
+}) {
   const [mounted, setMounted] = useState(false);
 
   // COlor and Size Variables
   const [color, setColor] = useState(product.color);
-  console.log(color);
+
   const [size, setSize] = useState(product.size);
 
   const refreshVarient = (newSize, newColor) => {
-    console.log("hello" + varients[newColor][newSize]);
     setColor(newColor);
     setSize(newSize);
     let url = `/product/${varients[newColor][newSize]}`;
@@ -208,7 +217,21 @@ function ProductDetails({ product, varients }) {
                   )}
                 </select>
               </div>
-              <button className="rounded-[3px] bg-[#bd9575] w-full text-white py-3 max-w-sm ">
+              <button
+                className="rounded-[3px] bg-[#bd9575] w-full text-white py-3 max-w-sm "
+                onClick={() => {
+                  // addToCart(product.slug, 1, product.price);
+                  addToCart(
+                    product.slug,
+                    1,
+                    size,
+                    product.title,
+                    product.price,
+                    color,
+                    product.img
+                  );
+                }}
+              >
                 Añadir a la bolsa
               </button>
             </div>
@@ -234,9 +257,9 @@ function ProductDetails({ product, varients }) {
                   </svg>
                   <span>Envío gratis a tu casa</span>
                 </p>
-                <p className="text-sm font-light text-left text-[#bd9575]">
+                <span className="text-sm font-light text-left text-[#bd9575]">
                   Información sobre envíos y devoluciones
-                </p>
+                </span>
               </div>
               {/* Details */}
               <div className="space-y-5">
@@ -305,17 +328,7 @@ function ProductDetails({ product, varients }) {
                     </p>
                   </div>
                   <p className="ml-[3.8rem] text-sm font-light text-left text-[#5c5c5c]">
-                    <span className=" text-sm font-light text-left text-[#5c5c5c]">
-                      Hecho a mano por artesanos andinos.
-                    </span>
-                    <br />
-                    <span className=" text-sm font-light text-left text-[#5c5c5c]">
-                      100% piel de alpaca.
-                    </span>
-                    <br />
-                    <span className=" text-sm font-light text-left text-[#5c5c5c]">
-                      ¡Experimenta la experiencia más suave!
-                    </span>
+                    {product.desc}
                   </p>
                 </div>
                 <div>
@@ -376,7 +389,7 @@ function ProductDetails({ product, varients }) {
                     </p>
                   </div>
                   <p className="ml-[3.8rem] text-sm font-light text-left text-[#5c5c5c]">
-                    <p className=" text-sm font-light text-left text-[#5c5c5c]">
+                    <span className=" text-sm font-light text-left text-[#5c5c5c]">
                       <span className=" text-sm font-light text-left text-[#5c5c5c]">
                         1. Rinde in water with a mild shampoo, don’t sook.
                       </span>
@@ -392,7 +405,7 @@ function ProductDetails({ product, varients }) {
                       <span className=" text-sm font-light text-left text-[#5c5c5c]">
                         4. Dry
                       </span>
-                    </p>
+                    </span>
                   </p>
                 </div>
                 <div className="ml-9">
@@ -431,7 +444,7 @@ export async function getServerSideProps(context) {
       colorSizeSlug[item.color][item.size] = item.slug;
     }
   }
-  console.log(colorSizeSlug);
+
   return {
     props: {
       product: JSON.parse(JSON.stringify(product)),

@@ -13,6 +13,7 @@ const nextConfig = {
       "cdn.sanity.io",
       "images.unsplash.com",
       "lh3.googleusercontent.com",
+      "adn-static1.nykaa.com",
     ],
   },
 };

@@ -1,10 +1,13 @@
 /** @format */
 
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import TimeAgo from "timeago-react";
 function CommentBox({ id }) {
+  const { data: session } = useSession();
   const [comments, setComments] = useState([]);
+
   const [fetchComments, setFetchComments] = useState(false);
 
   useEffect(() => {
@@ -20,18 +23,25 @@ function CommentBox({ id }) {
   const [comment, setComment] = useState("");
   const createComment = async (e) => {
     e.preventDefault();
-    const res = await fetch("/api/comment", {
-      method: "POST",
-      body: JSON.stringify({
-        text: comment,
-        blog: id,
-        createdAtPost: new Date().getTime().toString(),
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    setFetchComments(true);
+    if (comment.length === 0) {
+      console.log("Please Add something in comment box.");
+      return;
+    } else {
+      const res = await fetch("/api/comment", {
+        method: "POST",
+        body: JSON.stringify({
+          text: comment,
+          blog: id,
+          user: session ? session.user.name : "62fe5e4596b61603c42bd2d3",
+          createdAtPost: new Date().getTime().toString(),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setComment("");
+      setFetchComments(true);
+    }
   };
   return (
     <div className="w-full ">
@@ -41,7 +51,14 @@ function CommentBox({ id }) {
       <div className="flex ">
         {/* Image */}
         <div className="mr-5">
-          <Image src={"/assets/Comment.jpg"} alt="" width={50} height={50} />
+          <Image
+            src={
+              session?.user?.image ? session.user.image : "/assets/Comment.jpg"
+            }
+            alt=""
+            width={50}
+            height={50}
+          />
         </div>
         {/* Box */}
         <form
@@ -74,7 +91,7 @@ function CommentBox({ id }) {
                 <Image
                   src={
                     comment?.user?.image
-                      ? comment.user.image
+                      ? comment?.user?.image
                       : "/assets/Comment.jpg"
                   }
                   alt=""
@@ -82,6 +99,9 @@ function CommentBox({ id }) {
                   height={50}
                 />
               </div>
+              {comment.length === 0 && (
+                <p className="text-red-500">Please add something in comment</p>
+              )}
               <div className="border border-primary-1 p-4">
                 <p className="text-primary-1 font-medium">
                   {comment?.user?.name ? comment.user.name : "Anonimo"}

@@ -68,16 +68,17 @@ export default NextAuth({
 
       if (token) return true; // If there is a token, the user is authenticated
     },
-    async jwt({ token, account, user }) {
-      if (user) {
-        token.sub = user.userId;
-        return token;
-      }
-      return token;
-      // console.log("user:", user);
-      // console.log(user);
-      // console.log(token);
-    },
+    // async jwt({ token, account, user }) {
+
+    //   if (user) {
+    //     token.sub = user.userId;
+    //     return token;
+    //   }
+    //   return token;
+    //   // console.log("user:", user);
+    //   // console.log(user);
+    //   // console.log(token);
+    // },
     session({ req, session, token, user }) {
       session.user.id = token.sub;
       return session;

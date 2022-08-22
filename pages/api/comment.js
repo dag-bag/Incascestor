@@ -12,7 +12,7 @@ const handler = async (req, res) => {
       let query = req.query;
       console.log("query:", query);
       const comments = await Comment.find({ blog: query.id })
-        .populate("user")
+        .populate("user", "name image")
         .sort({ _id: -1 });
       res.status(200).json(comments);
     } catch (error) {
@@ -22,6 +22,7 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       const { text, blog, user, createdAtPost } = req.body;
+      console.log(user);
 
       if (!text) {
         return res.status(400).json({
@@ -43,7 +44,7 @@ const handler = async (req, res) => {
       });
 
       // push the comment into the post.comments array
-      postRelated.comments.push(comment);
+
       if (comment) {
         res.status(201).json(comment);
       } else {

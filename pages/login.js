@@ -4,26 +4,35 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { getProviders, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-
+import { isValidEmail } from "../lib/Ese";
 function Login({ provider }) {
+  const [error, setError] = useState();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const router = useRouter();
   const LoginUser = async (e) => {
     e.preventDefault();
-    const res = await signIn("credentials", {
-      email: email,
-      password: password,
-      redirect: false,
-      callbackUrl: "/",
-    });
-    console.log(res);
-    if (res?.error) {
-      console.log(res);
+    let isValid = isValidEmail(email);
+
+    if (!isValid) {
+      setError("Please enter a valid email");
     }
-    if (res?.status === 200) {
-      router.push("/");
+    if (isValid) {
+      const res = await signIn("credentials", {
+        email: email,
+        password: password,
+        redirect: false,
+        callbackUrl: "/",
+      });
+
+      if (res?.error) {
+        setError(res.error);
+      }
+      if (res?.status === 200) {
+        router.push("/");
+      }
     }
   };
 
@@ -58,6 +67,7 @@ function Login({ provider }) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
+                      <p className="text-red-500">{error}</p>
                     </div>
                   </div>
                   <div className="space-y-1">

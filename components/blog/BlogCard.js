@@ -39,7 +39,7 @@ function BlogCard({ title, text, image, date, category, slug }) {
           <a
             aria-label="Category"
             title="Film It!"
-            className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
+            className="inline-block mb-3 text-xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
           >
             {title}
           </a>

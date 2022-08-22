@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import truncate from "../lib/Ese";
+import { addToCartAtom } from "../selectors/cartSelectors";
+import { useRecoilState } from "recoil";
 function ProductCard({ fav, slug, title, desc, price, color, size, img }) {
   return (
     <div>
@@ -43,7 +45,6 @@ function ProductCard({ fav, slug, title, desc, price, color, size, img }) {
               className="mt-5 px-8 py-3 rounded-full bg-[#bd9575] hover:bg-amber-600 duration-300 text-white"
               onClick={(e) => {
                 e.stopPropagation();
-                console.log("clicked");
               }}
             >
               Add to Bag

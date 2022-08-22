@@ -2,46 +2,94 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-function Signup() {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // const id = toast.loading("Please wait...");
-    const response = await fetch("/api/user", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const respData = await response.json();
-    const { success, msg } = respData;
-    console.log(respData);
-    // if (success) {
-    //   toast.update(id, {
-    //     render: msg,
-    //     type: "success",
-    //     isLoading: false,
-    //     autoClose: 5000,
-    //   });
-    // }
-    // if (!success) {
-    //   toast.update(id, {
-    //     render: msg,
-    //     type: "error",
-    //     isLoading: false,
-    //     autoClose: 5000,
-    //   });
-    // }
-  };
 
+import { isValidEmail, LoginUser } from "../lib/Ese";
+import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
+function Signup() {
+  const router = useRouter();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState("");
+  const [confirmError, setConfimError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [strong, setIsStrong] = useState(false);
+  const [conFirmPass, setConFirmPass] = useState("");
+  const [currenPassmatch, setConfirmPassMatch] = useState(false);
 
   const [passShow, setPassShow] = useState(false);
   const [conFirmPassShow, setConfirmPassShow] = useState(false);
+  const LoginUser = async (email, password) => {
+    let isValid = isValidEmail(email);
+
+    if (!isValid) {
+      setError("Please enter a valid email");
+    }
+    if (isValid) {
+      const res = await signIn("credentials", {
+        email: email,
+        password: password,
+        redirect: false,
+        callbackUrl: "/",
+      });
+
+      if (res?.error) {
+        setError(res.error);
+      }
+      if (res?.status === 200) {
+        router.push("/");
+      }
+    }
+  };
+  const checkPassMathc = () => {
+    if (password === conFirmPass) {
+      setConfirmPassMatch(true);
+      setConfimError("Password Matched");
+    } else {
+      setConfirmPassMatch(false);
+      setConfimError("Password not Matched");
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let isValid = isValidEmail(email);
+    let passMatch = checkPassMathc();
+
+    if (!isValid) {
+      setError("Please enter a valid email");
+      return null;
+    }
+
+    if (!currenPassmatch) {
+      console.log("Password does not match");
+      return null;
+    }
+
+    if (isValid && currenPassmatch) {
+      const response = await fetch("/api/user", {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const respData = await response.json();
+      const { success, msg, error } = respData;
+      if (success) {
+        LoginUser(email, password);
+      }
+      if (error) {
+        setError(error);
+      }
+
+      console.log(respData);
+    }
+  };
+
   return (
     <section>
       <div className="flex min- overflow-hidden">
@@ -81,6 +129,7 @@ function Signup() {
                           setEmail(e.target.value);
                         }}
                       />
+                      <p className="text-red-500">{error}</p>
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -102,6 +151,13 @@ function Signup() {
                           setPassword(e.target.value);
                         }}
                       />
+                      <p
+                        className={`${
+                          strong ? "text-green-500" : "text-red-500"
+                        } `}
+                      >
+                        {errorMessage}
+                      </p>
                       <span
                         className="absolute top-3 right-0 cursor-pointer"
                         onClick={() => {
@@ -140,7 +196,18 @@ function Signup() {
                         required=""
                         placeholder="Confirm Your Password"
                         className="block w-full px-5 py-3 text-base  transition duration-500 ease-in-out transform  text-[#333]  focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#333] border-b-2 border-[#333] placeholder:text-[#333]"
+                        value={conFirmPass}
+                        onChange={(e) => {
+                          setConFirmPass(e.target.value);
+                        }}
                       />
+                      <p
+                        className={`${
+                          currenPassmatch ? "text-green-500" : "text-red-500"
+                        } `}
+                      >
+                        {confirmError}
+                      </p>
                       <span
                         className="absolute top-3 right-0 cursor-pointer"
                         onClick={() => {
@@ -201,6 +268,9 @@ function Signup() {
                   <button
                     type="submit"
                     className="w-full items-center block px-10 py-3.5 text-base font-medium text-center text-[#333] transition duration-500 ease-in-out transform border-2 border-white shadow-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                    onClick={() => {
+                      signIn("google", { callbackUrl: "/" });
+                    }}
                   >
                     <div className="flex items-center justify-center">
                       <svg
