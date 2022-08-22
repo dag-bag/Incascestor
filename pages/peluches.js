@@ -2,8 +2,6 @@
 
 import Head from "next/head";
 
-const ProductCard = dynamic(() => import("../components/ProductCard"));
-
 import Filters from "../components/Filters";
 import { filterAtom } from "../atoms/filterAtom";
 import { useRecoilState } from "recoil";
@@ -11,6 +9,8 @@ import H1 from "../components/H1";
 import Product from "../models/Product";
 import mongoose from "mongoose";
 import dynamic from "next/dynamic";
+const ProductCard = dynamic(() => import("../components/ProductCard"));
+import { Suspense } from "react";
 
 function Peluches({ products }) {
   console.log(products);
@@ -118,21 +118,23 @@ function Peluches({ products }) {
           </button>
         </div>
         <div className="grid px-2 grid-cols-2 md:grid-cols-3 gap-5 py-16">
-          {Object.keys(products).map((item) => {
-            return (
-              <ProductCard
-                key={products[item].slug}
-                title={products[item].title}
-                src={products[item].img}
-                desc={products[item].desc}
-                slug={products[item].slug}
-                category={products[item].category}
-                size={products[item].size}
-                price={products[item].price}
-                color={products[item].color}
-              />
-            );
-          })}
+          <Suspense fallback={<div>loading....</div>}>
+            {Object.keys(products).map((item) => {
+              return (
+                <ProductCard
+                  key={products[item].slug}
+                  title={products[item].title}
+                  src={products[item].img}
+                  desc={products[item].desc}
+                  slug={products[item].slug}
+                  category={products[item].category}
+                  size={products[item].size}
+                  price={products[item].price}
+                  color={products[item].color}
+                />
+              );
+            })}
+          </Suspense>
         </div>
       </main>
     </div>
