@@ -137,6 +137,7 @@ const Post = ({ post }) => {
               width={100}
               height={100}
               objectFit="cover"
+              alt=""
             />
           </div>
           <div className="flex-1 flex flex-col justify-center md:justify-start">
