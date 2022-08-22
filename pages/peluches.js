@@ -2,16 +2,16 @@
 
 import Head from "next/head";
 import React from "react";
-import Navbar from "../components/Navbar";
-import ProductCard from "../components/ProductCard";
-import TopNavbar from "../components/Topheader";
-import Footer from "../components/Footer";
+
+const ProductCard = dynamic(() => import("../components/ProductCard"));
+
 import Filters from "../components/Filters";
 import { filterAtom } from "../atoms/filterAtom";
 import { useRecoilState } from "recoil";
 import H1 from "../components/H1";
 import Product from "../models/Product";
 import mongoose from "mongoose";
+import dynamic from "next/dynamic";
 
 function Peluches({ products }) {
   console.log(products);
