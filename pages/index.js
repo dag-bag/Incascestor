@@ -13,7 +13,7 @@ import SearchInput from "../components/home/SearchInput";
 import dynamic from "next/dynamic";
 import Video from "../components/home/Video";
 
-import ReverseMissoin from "../components/home/ReverseMissoin";
+// import ReverseMissoin from "../components/home/ReverseMissoin";
 
 const Main = dynamic(() => import("../components/Main"));
 
