@@ -15,7 +15,7 @@ import Video from "../components/home/Video";
 
 import ReverseMissoin from "../components/home/ReverseMissoin";
 
-const Mission = dynamic(() => import("../components/home/Mission"));
+const Main = dynamic(() => import("../components/Main"));
 
 const Carousel = dynamic(() => import("../components/home/Carousel"));
 
@@ -33,7 +33,7 @@ export default function Home() {
         <SearchInput />
       </div>
 
-      <main className="md:space-y-16">
+      {/* <main className="md:space-y-16">
         <MainSlider />
         <Carousel />
         <Mission
@@ -62,7 +62,8 @@ export default function Home() {
           boxType="center-center"
         />
         <CoreValues />
-      </main>
+      </main> */}
+      <Main />
       <HomeFooter />
     </div>
   );
