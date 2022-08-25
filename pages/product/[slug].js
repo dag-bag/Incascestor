@@ -409,12 +409,7 @@ function ProductDetails({
                   </p>
                 </div>
                 <div className="ml-9">
-                  <Image
-                    src="/assets/product/warning.png"
-                    alt=""
-                    width={200}
-                    height={70}
-                  />
+                  <Image src={product.image} alt="" width={200} height={70} />
                 </div>
               </div>
             </div>
@@ -432,10 +427,10 @@ export async function getServerSideProps({ query, res }) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
 
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=3600, stale-while-revalidate=60"
-  );
+  // res.setHeader(
+  //   "Cache-Control",
+  //   "public, s-maxage=3600, stale-while-revalidate=60"
+  // );
   let product = await Product.findOne({ slug: query.slug });
   let varients = await Product.find({ title: product.title });
 
