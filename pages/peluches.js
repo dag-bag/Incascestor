@@ -126,6 +126,7 @@ function Peluches({ products }) {
                 <ProductCard
                   key={products[item].slug}
                   title={products[item].title}
+                  img={products[item].img}
                   src={products[item].img}
                   desc={products[item].desc}
                   slug={products[item].slug}

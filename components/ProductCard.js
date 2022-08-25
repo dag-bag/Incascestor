@@ -6,17 +6,14 @@ import Link from "next/link";
 import truncate from "../lib/Ese";
 import { addToCartAtom } from "../selectors/cartSelectors";
 import { useRecoilState } from "recoil";
+import { BlurImage } from "./BlurImage";
 function ProductCard({ fav, slug, title, desc, price, color, size, img }) {
+  console.log(img);
   return (
     <div>
       <Link href={`/product/${slug}`}>
         <div className="flex group relative  md:w-[80%] bg-[#e8e8e8] h-[300px] md:h-[360px] justify-end items-center flex-col">
-          <img
-            src={"/product.jpg"}
-            alt="black chair and white table"
-            className="object-cover object-center w-full h-[60%] cursor-pointer"
-          />
-
+          <BlurImage image={img} />
           <div className="absolute bottom-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-white/60 opacity-0 group-hover:h-[60%] group-hover:opacity-100 duration-500">
             <h1 className="text-xl text-[#333]">{title}</h1>
             <div className="space-x-1 mt-4">

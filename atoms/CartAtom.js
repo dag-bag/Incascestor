@@ -1,6 +1,5 @@
 /** @format */
 
-import { set } from "mongoose";
 import { atom, selector } from "recoil";
 
 export const cartAtom = atom({

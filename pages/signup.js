@@ -13,7 +13,6 @@ function Signup() {
   const [confirmError, setConfimError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [strong, setIsStrong] = useState(false);
   const [conFirmPass, setConFirmPass] = useState("");
   const [currenPassmatch, setConfirmPassMatch] = useState(false);
 
@@ -45,9 +44,11 @@ function Signup() {
     if (password === conFirmPass) {
       setConfirmPassMatch(true);
       setConfimError("Password Matched");
+      return true;
     } else {
       setConfirmPassMatch(false);
       setConfimError("Password not Matched");
+      return false;
     }
   };
 
@@ -55,18 +56,19 @@ function Signup() {
     e.preventDefault();
     let isValid = isValidEmail(email);
     let passMatch = checkPassMathc();
+    console.log("passMatch:", passMatch);
 
     if (!isValid) {
       setError("Please enter a valid email");
       return null;
     }
 
-    if (!currenPassmatch) {
+    if (!passMatch) {
       console.log("Password does not match");
       return null;
     }
 
-    if (isValid && currenPassmatch) {
+    if (isValid && passMatch) {
       const response = await fetch("/api/user", {
         method: "POST",
         body: JSON.stringify({
@@ -151,13 +153,7 @@ function Signup() {
                           setPassword(e.target.value);
                         }}
                       />
-                      <p
-                        className={`${
-                          strong ? "text-green-500" : "text-red-500"
-                        } `}
-                      >
-                        {errorMessage}
-                      </p>
+
                       <span
                         className="absolute top-3 right-0 cursor-pointer"
                         onClick={() => {

@@ -14,6 +14,8 @@ const nextConfig = {
       "images.unsplash.com",
       "lh3.googleusercontent.com",
       "adn-static1.nykaa.com",
+      "images.pexels.com",
+      "www.pexels.com",
     ],
   },
 };
