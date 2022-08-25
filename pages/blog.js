@@ -18,9 +18,9 @@ function Blog({ blogs }) {
   return (
     <div>
       <Head></Head>
-      <div className="relative hidden md:block ">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center items-center flex-col">
-          <h1 className=" text-white text-5xl text-center leading-tight font-bold">
+      <div className="relative  md:block ">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center items-center flex-col w-full px-4">
+          <h1 className=" text-white text-5xl text-center leading-tight font-bold ">
             Latest post on, <br /> animal world
           </h1>
         </div>
@@ -33,12 +33,12 @@ function Blog({ blogs }) {
           width={100}
           height={35}
         /> */}
-        <div className="w-full h-[50vh] relative">
+        <div className="w-full h-[40vh] md:h-[50vh] relative">
           <BlurImage image={blogs[0].img} />
         </div>
       </div>
 
-      <div className=" flex flex-wrap py-6 justify-center px-20">
+      <div className=" flex flex-wrap py-6 justify-center md:px-20">
         {/* Posts Section */}
         <section className="w-full md:w-2/3 ">
           <BlogContainer>
