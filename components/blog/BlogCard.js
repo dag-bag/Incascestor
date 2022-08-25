@@ -4,39 +4,118 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import truncate from "../../lib/Ese";
+import { BlurImage } from "../BlurImage";
 
 function BlogCard({ title, text, image, date, category, slug }) {
   return (
     <Link href={`/blog/${slug}`}>
-      <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-        <div aria-label="Article">
+      <>
+        <div className="rounded overflow-hidden shadow-lg">
+          <a href="#" />
+          <div className="relative">
+            <div className="relative w-full h-56">
+              <BlurImage image={image} />
+              <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25" />
+            </div>
+            <a href="#!">
+              <div className="absolute bottom-0 left-0 bg-primary-1 px-4 py-2 text-white text-sm hover:bg-white hover:text-amber-600 transition duration-500 ease-in-out">
+                {category}
+              </div>
+            </a>
+            <a href="!#">
+              <div className="text-sm absolute top-0 right-0 bg-primary-1 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-amber-600 transition duration-500 ease-in-out">
+                <span className="font-bold">{new Date(date).getDate()}</span>
+                <small>
+                  {new Date(date).toLocaleString("default", { month: "short" })}
+                </small>
+              </div>
+            </a>
+          </div>
+          <div className="px-6 py-4">
+            <a
+              href="#"
+              className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out"
+            >
+              {title}
+            </a>
+            <p className="text-gray-500 text-sm">{truncate(text, 100)}</p>
+          </div>
+          <div className="px-6 ">
+            <button className=" bg-primary-1 px-4 py-2 text-white text-sm hover:bg-white hover:text-amber-600 transition duration-500 ease-in-out">
+              read more
+            </button>
+          </div>
+          <div className="px-6 py-4 flex flex-row items-center">
+            {/* <span
+              href="#"
+              className="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center"
+            >
+              <svg
+                height="13px"
+                width="13px"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 512 512"
+                style={{ enableBackground: "new 0 0 512 512" }}
+                xmlSpace="preserve"
+              >
+                <g>
+                  <g>
+                    <path
+                      d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256
+			c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128
+			c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <span className="ml-1">6 mins ago</span>
+            </span> */}
+          </div>
+        </div>
+      </>
+
+      {/* <div className="transition-shadow duration-300 bg-white rounded h-[500px]">
+        <div aria-label="Article" className="relative w-full h-56">
           <Image
-            src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
+            src={image}
             className="object-cover w-full h-64 rounded"
             alt=""
             width={100}
             height={100}
             layout="responsive"
           />
+          <BlurImage image={image} />
         </div>
         <div className="py-5">
-          <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-            13 Jul 2020
-          </p>
           <a
-            href="/"
             aria-label="Article"
             className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
           >
-            <p className="text-2xl font-bold leading-5">Diving to the deep</p>
+            <h2 className="text-2xl  leading-5">{title}</h2>
           </a>
-          <p className="mb-4 text-gray-700">
-            Sed ut perspiciatis unde omnis iste natus error sit sed quia
-            consequuntur magni voluptatem doloremque.
+          <p className="mb-2 text-xs  text-gray-600 uppercase py-1 space-x-3">
+            <span>By: Gurnaaz lopez -</span>
+            <span>
+              <Image
+                src="/assets/1.svg"
+                alt=""
+                width={10}
+                height={10}
+                className=""
+              /> {new Date(date).toDateString()}
+            </span>
+            <span></span>
+          </p>
+          <p className="mb-4 text-gray-500 text-xs font-light">
+            {truncate(text, 100)}
           </p>
           <div className="flex space-x-4">
             <a
-              href="/"
               aria-label="Likes"
               className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
             >
@@ -100,7 +179,7 @@ function BlogCard({ title, text, image, date, category, slug }) {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
     </Link>
   );
 }

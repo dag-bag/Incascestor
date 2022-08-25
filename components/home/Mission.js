@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Btn2 from "../buttons/Btn2";
+import { BlurImage } from "../BlurImage";
 function Mission({ title, description, image, boxType }) {
   return (
     <div className={`flex  justify-evenly  flex-wrap-reverse  py-16 `}>
@@ -90,6 +91,7 @@ function Mission({ title, description, image, boxType }) {
             height={576}
             layout="responsive"
           />
+          {/* <BlurImage image={image} /> */}
         </div>
       </div>
     </div>
