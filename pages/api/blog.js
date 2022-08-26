@@ -57,7 +57,7 @@ const handler = async (req, res) => {
       });
 
       if (blog) {
-        res.status(201).json({
+        res.res.status(201).json({
           success: true,
           msg: "blog created successfully",
           //   token: generateToken(user._id),

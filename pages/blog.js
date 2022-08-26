@@ -100,7 +100,7 @@ export async function getStaticProps({ res }) {
   // const products = await resp.json();
   return {
     props: { blogs: JSON.parse(JSON.stringify(blogs)) },
-    revalidate: 60,
+    // revalidate: 60,
     // will be passed to the page component as props
   };
 }
