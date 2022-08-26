@@ -11,7 +11,7 @@ function ProductCard({ fav, slug, title, desc, price, color, size, img }) {
   return (
     <div>
       <Link href={`/product/${slug}`}>
-        <div className="flex group relative  md:w-full bg-[#e8e8e8] h-[200px] md:h-[260px] justify-end items-center flex-col">
+        <div className="flex group relative  md:w-full bg-[#e8e8e8] h-[200px] md:h-[330px] justify-end items-center flex-col">
           <BlurImage image={img} />
           <div className="absolute bottom-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-white/60 opacity-0 group-hover:h-[60%] group-hover:opacity-100 duration-500">
             <h1 className="text-xl text-center text-[#333]">{title}</h1>

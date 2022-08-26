@@ -41,9 +41,11 @@ function BlogCard({ title, text, image, date, category, slug }) {
             <p className="text-gray-500 text-sm">{truncate(text, 100)}</p>
           </div>
           <div className="px-6 ">
-            <button className=" bg-primary-1 px-4 py-2 text-white text-sm hover:bg-white hover:text-amber-600 transition duration-500 ease-in-out">
-              read more
-            </button>
+            <Link href={`/blog/${slug}`}>
+              <button className=" bg-primary-1 px-4 py-2 text-white text-sm hover:bg-white hover:text-amber-600 transition duration-500 ease-in-out">
+                read more
+              </button>
+            </Link>
           </div>
           <div className="px-6 py-4 flex flex-row items-center">
             {/* <span

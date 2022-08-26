@@ -438,7 +438,7 @@ export async function getStaticPaths() {
   return { paths, fallback: "blocking" };
 }
 
-export async function getStaticProps({ query, res }) {
+export async function getStaticProps({ query, slug }) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
@@ -447,7 +447,7 @@ export async function getStaticProps({ query, res }) {
   //   "Cache-Control",
   //   "public, s-maxage=3600, stale-while-revalidate=60"f
   // );
-  let product = await Product.findOne({ slug: query.slug });
+  let product = await Product.findOne({ slug: slug });
   let varients = await Product.find({ title: product.title });
 
   let colorSizeSlug = {};

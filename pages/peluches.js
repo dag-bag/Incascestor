@@ -119,7 +119,7 @@ function Peluches({ products }) {
             </span>
           </button>
         </div>
-        <div className="grid px-2 grid-cols-2 md:grid-cols-4 gap-5 py-16">
+        <div className="grid px-2 grid-cols-2 md:grid-cols-3 gap-5 py-16">
           <Suspense fallback={<div>Loading...</div>}>
             {Object.keys(products).map((item) => {
               return (
