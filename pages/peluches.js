@@ -178,7 +178,7 @@ export async function getStaticProps(context) {
   // const products = await resp.json();
   return {
     props: { products: JSON.parse(JSON.stringify(tshirts)) },
-    revalidate: 60,
+    // revalidate: 60,
     // will be passed to the page component as props
   };
 }
