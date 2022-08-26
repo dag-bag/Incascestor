@@ -445,7 +445,7 @@ export async function getStaticProps({ query, res }) {
 
   // res.setHeader(
   //   "Cache-Control",
-  //   "public, s-maxage=3600, stale-while-revalidate=60"
+  //   "public, s-maxage=3600, stale-while-revalidate=60"f
   // );
   let product = await Product.findOne({ slug: query.slug });
   let varients = await Product.find({ title: product.title });
