@@ -91,10 +91,10 @@ export async function getStaticProps({ res }) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=3600, stale-while-revalidate=60"
-  );
+  // res.setHeader(
+  //   "Cache-Control",
+  //   "public, s-maxage=3600, stale-while-revalidate=60"
+  // );
   let blogs = await Blogs.find({});
   // const resp = await fetch("http://localhost:3000/api/getproducts");
   // const products = await resp.json();
