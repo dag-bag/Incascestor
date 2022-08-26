@@ -423,8 +423,22 @@ function ProductDetails({
 }
 
 export default ProductDetails;
+export async function getStaticPaths() {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/allparams`);
+  const posts = await res.json();
 
-export async function getServerSideProps({ query, res }) {
+  // Get the paths we want to pre-render based on posts
+  const paths = posts.map((post) => ({
+    params: { blog: post.slug },
+  }));
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: blocking } will server-render pages
+  // on-demand if the path doesn't exist.
+  return { paths, fallback: "blocking" };
+}
+
+export async function getStaticProps({ query, res }) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
@@ -450,6 +464,7 @@ export async function getServerSideProps({ query, res }) {
     props: {
       product: JSON.parse(JSON.stringify(product)),
       varients: JSON.parse(JSON.stringify(colorSizeSlug)),
+      revalidate: 60,
     }, // will be passed to the page component as props
   };
 }
