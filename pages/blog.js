@@ -87,7 +87,7 @@ function Blog({ blogs }) {
 
 export default Blog;
 
-export async function getServerSideProps({ res }) {
+export async function getStaticProps({ res }) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
@@ -99,6 +99,8 @@ export async function getServerSideProps({ res }) {
   // const resp = await fetch("http://localhost:3000/api/getproducts");
   // const products = await resp.json();
   return {
-    props: { blogs: JSON.parse(JSON.stringify(blogs)) }, // will be passed to the page component as props
+    props: { blogs: JSON.parse(JSON.stringify(blogs)) },
+    revalidate: 60,
+    // will be passed to the page component as props
   };
 }
