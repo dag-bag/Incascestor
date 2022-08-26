@@ -465,6 +465,6 @@ export async function getStaticProps({ query, res }) {
       product: JSON.parse(JSON.stringify(product)),
       varients: JSON.parse(JSON.stringify(colorSizeSlug)),
       revalidate: 60,
-    }, // will be passed to the page component as propsf
+    }, // will be passed to the page component as props
   };
 }
