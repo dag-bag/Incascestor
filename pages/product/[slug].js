@@ -45,6 +45,7 @@ function ProductDetails({
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
   return (
+    // <div></div>
     <div
       className={`grid grid-cols-1 md:flex  justify-evenly  flex-wrap   py-16 `}
     >
@@ -438,7 +439,7 @@ export async function getStaticPaths() {
   return { paths, fallback: "blocking" };
 }
 
-export async function getStaticProps({ query, slug }) {
+export async function getStaticProps({ params }) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
@@ -447,7 +448,8 @@ export async function getStaticProps({ query, slug }) {
   //   "Cache-Control",
   //   "public, s-maxage=3600, stale-while-revalidate=60"f
   // );
-  let product = await Product.findOne({ slug: slug });
+  let product = await Product.findOne({ slug: params.slug });
+
   let varients = await Product.find({ title: product.title });
 
   let colorSizeSlug = {};
