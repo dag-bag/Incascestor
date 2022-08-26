@@ -119,7 +119,7 @@ function Peluches({ products }) {
             </span>
           </button>
         </div>
-        <div className="grid px-2 grid-cols-2 md:grid-cols-3 gap-5 py-16">
+        <div className="grid px-2 grid-cols-2 md:grid-cols-4 gap-5 py-16">
           <Suspense fallback={<div>Loading...</div>}>
             {Object.keys(products).map((item) => {
               return (
@@ -146,7 +146,7 @@ function Peluches({ products }) {
 
 export default Peluches;
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
@@ -177,6 +177,8 @@ export async function getServerSideProps(context) {
   // const resp = await fetch("http://localhost:3000/api/getproducts");
   // const products = await resp.json();
   return {
-    props: { products: JSON.parse(JSON.stringify(tshirts)) }, // will be passed to the page component as props
+    props: { products: JSON.parse(JSON.stringify(tshirts)) },
+    revalidate: 60,
+    // will be passed to the page component as props
   };
 }

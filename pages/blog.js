@@ -9,9 +9,9 @@ import BlogCard from "../components/blog/BlogCard";
 
 import BlogContainer from "../components/blog/BlogContainer";
 import Siderbar from "../components/blog/Siderbar";
-import { Test } from "../components/blog/Test";
+
 import { BlurImage } from "../components/BlurImage";
-import H1 from "../components/H1";
+
 import Blogs from "../models/Blog";
 
 function Blog({ blogs }) {
@@ -79,7 +79,7 @@ function Blog({ blogs }) {
             </a>
           </div>
         </section>
-        <Siderbar />
+        <Siderbar blogs={blogs} />
       </div>
     </div>
   );

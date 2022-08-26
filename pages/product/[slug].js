@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+import { BlurImage } from "../../components/BlurImage";
 
 import ColorBtn from "../../components/buttons/ColorBtn";
 import { useAddProduct } from "../../lib/cartHooks";
@@ -49,28 +50,29 @@ function ProductDetails({
     >
       {/* Left container */}
       <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
-        <div className="w-[90%] rounded-[3px]  md:w-1/2 ">
-          <Image
+        <div className="w-full rounded-[3px] h-96  md:w-1/2 relative">
+          <BlurImage image={product.img} />
+          {/* <Image
             src={"/assets/product/1.jpg"}
             height={70}
             width={50}
             layout="responsive"
             alt="Product"
             objectFit="cover"
-          />
-          <div className="flex space-x-4 mt-4 justify-end">
-            {hashTag.map((item, index) => {
-              return (
-                <p
-                  key={index}
-                  className="bg-[#e8e8e8] text-lg font-light text-left text-[#333]"
-                >
-                  {item.tag}
-                </p>
-              );
-            })}
-          </div>
+          /> */}
         </div>
+        {/* <div className="flex space-x-4 mt-4 justify-end flex-col">
+          {hashTag.map((item, index) => {
+            return (
+              <p
+                key={index}
+                className="bg-[#e8e8e8] text-lg font-light text-left text-[#333]"
+              >
+                {item.tag}
+              </p>
+            );
+          })}
+        </div> */}
       </div>
       {/* Right container */}
       <div

@@ -17,12 +17,12 @@ function BlogCard({ title, text, image, date, category, slug }) {
               <BlurImage image={image} />
               <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25" />
             </div>
-            <a href="#!">
+            <a>
               <div className="absolute bottom-0 left-0 bg-primary-1 px-4 py-2 text-white text-sm hover:bg-white hover:text-amber-600 transition duration-500 ease-in-out">
                 {category}
               </div>
             </a>
-            <a href="!#">
+            <a>
               <div className="text-sm absolute top-0 right-0 bg-primary-1 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-amber-600 transition duration-500 ease-in-out">
                 <span className="font-bold">{new Date(date).getDate()}</span>
                 <small>

@@ -16,6 +16,7 @@ const nextConfig = {
       "adn-static1.nykaa.com",
       "images.pexels.com",
       "www.pexels.com",
+      "cdn.shopify.com",
     ],
   },
 };
