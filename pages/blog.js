@@ -93,7 +93,7 @@ export async function getStaticProps({ res }) {
   }
   // res.setHeader(
   //   "Cache-Control",
-  //   "public, s-maxage=3600, stale-while-revalidate=60"
+  //   "public, s-maxage=3600, stale-while-revalidate=60"f
   // );
   let blogs = await Blogs.find({});
   // const resp = await fetch("http://localhost:3000/api/getproducts");
