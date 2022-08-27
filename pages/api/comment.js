@@ -10,7 +10,7 @@ const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
       let query = req.query;
-      console.log("query:", query);
+
       const comments = await Comment.find({ blog: query.id })
         .populate("user", "name image")
         .sort({ _id: -1 });

@@ -9,7 +9,6 @@ function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export function BlurImage({ image }) {
-  console.log(image);
   const [isLoading, setLoading] = useState(true);
 
   return (
