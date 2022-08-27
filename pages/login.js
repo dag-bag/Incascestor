@@ -5,30 +5,53 @@ import Link from "next/link";
 import { getProviders, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { isValidEmail } from "../lib/Ese";
+import Input from "../components/utils/Input";
+import Error from "../components/utils/Error";
 function Login({ provider }) {
-  const [error, setError] = useState();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const router = useRouter();
+  const [error, setError] = useState({
+    emailError: "",
+    passwordError: "",
+    respError: "",
+  });
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   const LoginUser = async (e) => {
     e.preventDefault();
-    let isValid = isValidEmail(email);
+    let isValid = isValidEmail(user.email);
 
     if (!isValid) {
-      setError("Please enter a valid email");
+      setError((prev) => ({
+        ...prev,
+        emailError: "Please provide a valid email",
+      }));
     }
-    if (isValid) {
+    if (user.password.length <= 0) {
+      setError((prev) => ({
+        ...prev,
+        passwordError: "Please provide a password",
+      }));
+    }
+    if (isValid && user.password.length > 0) {
+      console.log("valid");
       const res = await signIn("credentials", {
-        email: email,
-        password: password,
+        email: user.email,
+        password: user.password,
         redirect: false,
         callbackUrl: "/",
       });
 
       if (res?.error) {
-        setError(res.error);
+        setError((prev) => ({ ...prev, respError: res.error }));
       }
       if (res?.status === 200) {
         router.push("/");
@@ -39,14 +62,15 @@ function Login({ provider }) {
   const [passShow, setPassShow] = useState(false);
   return (
     <section>
-      <div className="flex min- overflow-hidden">
+      <div className="flex justify-center items-center overflow-hidden">
         <div className="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-          <div className="w-full max-w-xl mx-auto lg:w-96">
+          <div className="w-full max-w-xl mx-auto ">
             <div>
-              <h1 className="mt-6 text-2xl font-semibold text-center text-[#333] uppercase">
-                Identifícate
+              <h1 className="mt-6 text-4xl font-bold text-center text-[#333] uppercase">
+                My Incaster Account
               </h1>
             </div>
+            <Error error={error.respError} />
             <div className="mt-8">
               <div className="mt-6">
                 <form action="#" method="POST" className="space-y-6">
@@ -56,18 +80,17 @@ function Login({ provider }) {
                       className="block text-sm font-medium text-neutral-600"
                     ></label>
                     <div className="mt-1">
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        required=""
-                        placeholder="Your Email"
-                        className="block w-full px-5 py-3 text-base  transition duration-500 ease-in-out transform  text-[#333]  focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#333] border-b-2 border-[#333] placeholder:text-[#333]"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                      <Input
+                        name={"email"}
+                        placeholder="Enter your Email"
+                        onChange={handleChange}
+                        value={user.email}
+                        required={true}
                       />
-                      <p className="text-red-500">{error}</p>
+                      <Error
+                        className="text-red-500"
+                        error={error.emailError}
+                      ></Error>
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -76,17 +99,15 @@ function Login({ provider }) {
                       className="block text-sm font-medium text-neutral-600"
                     ></label>
                     <div className="mt-1 relative">
-                      <input
-                        id="password"
-                        name="password"
+                      <Input
+                        name={"password"}
+                        placeholder="Enter your password"
+                        onChange={handleChange}
+                        value={user.password}
+                        required={true}
                         type={`${passShow ? "text" : "password"}`}
-                        autoComplete="password"
-                        required=""
-                        placeholder="Your Password"
-                        className="block w-full px-5 py-3 text-base  transition duration-500 ease-in-out transform  text-[#333]  focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#333] border-b-2 border-[#333] placeholder:text-[#333]"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
                       />
+                      <Error error={error.passwordError}></Error>
                       <span
                         className="absolute top-3 right-0 cursor-pointer"
                         onClick={() => {
@@ -118,7 +139,7 @@ function Login({ provider }) {
                         className="font-medium text-[#333] hover:text-gray-600 underline"
                       >
                         {" "}
-                        ¿Has olvidado tu contraseña?
+                        Don&#39;t remember your password?{" "}
                       </a>
                     </div>
                   </div>
@@ -130,7 +151,7 @@ function Login({ provider }) {
                         LoginUser(e);
                       }}
                     >
-                      Indentifícate
+                      Log in
                     </button>
                   </div>
                 </form>
@@ -188,7 +209,7 @@ function Login({ provider }) {
                           d="M48 48L17 24l-4-3 35-10z"
                         />
                       </svg>
-                      <span className="ml-4"> Regístrate con Google</span>
+                      <span className="ml-4"> Login with Google</span>
                     </div>
                   </button>
                   <div className="pt-12 pb-12 text-center">
@@ -196,7 +217,7 @@ function Login({ provider }) {
                       <p>
                         Don&#x27;t have an account?
                         <a href="#" className="font-semibold underline">
-                          Register here.
+                          Sign Up here.
                         </a>
                       </p>
                     </Link>
@@ -205,13 +226,6 @@ function Login({ provider }) {
               </div>
             </div>
           </div>
-        </div>
-        <div className="relative flex-1 hidden w-0 overflow-hidden lg:block">
-          <img
-            className="absolute inset-0 object-cover w-full h-full"
-            src="/assets/product/login.jpg"
-            alt=""
-          />
         </div>
       </div>
     </section>

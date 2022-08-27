@@ -7,11 +7,11 @@ import { signOut, useSession } from "next-auth/react";
 const svgClass = "md:w-8 md:h-8 h-6 w-6 cursor-pointer";
 
 const centerDivData = [
-  { title: "Nosotros", href: "/nosotros" },
-  { title: "Blog", href: "/blog" },
+  { title: "Alpaca Toys", href: "/alpaca-toys" },
+  { title: "Wear", href: "/wear" },
   { title: "Home", href: "/" },
-  { title: "Ropa", href: "/ropa" },
-  { title: "Peluches", href: "/peluches" },
+  { title: "About", href: "/about" },
+  { title: "blog", href: "/blog" },
 ];
 function Navbar() {
   const { data: session } = useSession();

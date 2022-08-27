@@ -73,4 +73,7 @@
     margin: 0 auto;
     padding: 0 20px;
   }
+  .inputAll {
+    @apply block w-full px-5 py-3 text-base  transition duration-500 ease-in-out transform  text-[#333]  border-[#333] focus:ring-white focus:ring-offset-2 focus:ring-offset-[#333]  placeholder:text-[#333] outline-none;
+  }
 }
