@@ -57,7 +57,6 @@ const handler = async (req, res) => {
       });
 
       if (blog) {
-        await res.revalidate("/blog");
         res.status(201).json({
           success: true,
           msg: "blog created successfully",
