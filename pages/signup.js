@@ -67,9 +67,12 @@ function Signup() {
     }
 
     if (isValid && user.password.length > 0) {
+      let username = user.email.split("@")[0];
       const response = await fetch("/api/user", {
         method: "POST",
         body: JSON.stringify({
+          username,
+          name: username,
           email: user.email,
           password: user.password,
         }),

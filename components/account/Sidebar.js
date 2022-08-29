@@ -2,46 +2,28 @@
 
 import { useSession } from "next-auth/react";
 import React from "react";
-import { BsEmojiSmile } from "react-icons/bs";
-import { GrNotes } from "react-icons/gr";
-import { BiLock } from "react-icons/bi";
 import Sideboxes from "./Sideboxes";
-const dataForSideBoxes = [
-  {
-    label: "Account Overview",
-    icon: BsEmojiSmile,
-  },
-  {
-    label: "Order History",
-    icon: GrNotes,
-  },
-  {
-    label: "Personal Details",
-    icon: BsEmojiSmile,
-  },
-  {
-    label: "Change Password",
-    icon: BiLock,
-  },
-  {
-    label: "Address Book",
-    icon: BsEmojiSmile,
-  },
-];
+
+import { useRecoilValue } from "recoil";
+import { accountAtom } from "../../atoms/accountAtom";
+
 function Sidebar() {
   const { data: session } = useSession();
+  const accountData = useRecoilValue(accountAtom);
+
   return (
-    <div className="p-10 max-w-sm">
-      <div className="space-y-4">
-        <h1 className="mt-6 text-xl font-bold  text-[#333] uppercase flex justify-center items-center">
-          Hello {session.user.email}!
-        </h1>
-        <button className="underline font-medium">Sign out</button>
-      </div>
+    <div className="p-10 max-w-4xl w-[24rem] md:ml-10">
       {/* Side boxes */}
       <div>
-        {dataForSideBoxes.map((i, index) => {
-          return <Sideboxes key={index} label={i.label} Icon={i.icon} />;
+        {accountData.map((i, index) => {
+          return (
+            <Sideboxes
+              key={index}
+              label={i.label}
+              Icon={i.icon}
+              link={i.link}
+            />
+          );
         })}
       </div>
     </div>

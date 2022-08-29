@@ -49,6 +49,7 @@ export default NextAuth({
           session.name = verifiedUser.name;
           session.email = verifiedUser.email;
           session.userId = fetchedUser._id;
+
           return session;
         }
       },
@@ -64,23 +65,22 @@ export default NextAuth({
   secret: process.env.JWT_SECRET,
   callbacks: {
     authorized({ req, token }) {
-      console.log("token:", token);
-
       if (token) return true; // If there is a token, the user is authenticated
     },
-    // async jwt({ token, account, user }) {
-
-    //   if (user) {
-    //     token.sub = user.userId;
-    //     return token;
-    //   }
-    //   return token;
-    //   // console.log("user:", user);
-    //   // console.log(user);
-    //   // console.log(token);
-    // },
+    async jwt({ token, account, user }) {
+      if (user) {
+        token.sub = user.userId;
+        return token;
+      }
+      return token;
+      // console.log("user:", user);
+      // console.log(user);
+      // console.log(token);
+    },
     session({ req, session, token, user }) {
+      console.log(token);
       session.user.id = token.sub;
+
       return session;
     },
   },

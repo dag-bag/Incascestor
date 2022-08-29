@@ -9,11 +9,11 @@ import Mission from "./home/Mission";
 import ReverseMissoin from "./home/ReverseMissoin";
 import Video from "./home/Video";
 
-function Main() {
+function Main({ products }) {
   return (
     <main className="md:space-y-16">
       <MainSlider />
-      <Carousel />
+      <Carousel products={products} />
       <Mission
         title={"Somos"}
         description={

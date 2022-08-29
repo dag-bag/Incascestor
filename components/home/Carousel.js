@@ -3,10 +3,12 @@
 import { useState, useRef, useEffect } from "react";
 
 import Product from "../Product";
+import ProductCard from "../ProductCard";
 
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
-export default function Carousel() {
+export default function Carousel({ products }) {
+  console.log(products);
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
@@ -138,18 +140,22 @@ export default function Carousel() {
               ref={carousel}
               className="carousel-container relative flex gap-16 overflow-x-scroll scroll-smooth snap-x snap-mandatory touch-pan-x z-0 pb-16 scrollbar"
             >
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
+              {Object.keys(products).map((item) => {
+                return (
+                  <ProductCard
+                    key={products[item].slug}
+                    title={products[item].title}
+                    img={products[item].img}
+                    src={products[item].img}
+                    desc={products[item].desc}
+                    slug={products[item].slug}
+                    category={products[item].category}
+                    size={products[item].size}
+                    price={products[item].price}
+                    color={products[item].color}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

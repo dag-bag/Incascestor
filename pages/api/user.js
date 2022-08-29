@@ -6,26 +6,19 @@ var bcrypt = require("bcryptjs");
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 const handler = async (req, res) => {
-  //   if (req.method === "GET") {
-  //     try {
-  //       const keywords = req.query.search
-  //         ? {
-  //             $or: [
-  //               { name: { $regex: req.query.search, $options: "i" } },
-  //               { email: { $regex: req.query.search, $options: "i" } },
-  //             ],
-  //           }
-  //         : {};
+  if (req.method === "GET") {
+    try {
+      const email = req.query.email;
 
-  //       const users = await User.find(keywords).find({
-  //         _id: { $ne: req.query.id },
-  //       });
+      const users = await User.findOne({ email: email }).select(
+        "name email username"
+      );
 
-  //       res.status(200).json(users);
-  //     } catch (error) {
-  //       res.status(500).json({ error: error.message });
-  //     }
-  //   }
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
   if (req.method === "POST") {
     try {
       const { email, password } = req.body;
@@ -78,16 +71,16 @@ const handler = async (req, res) => {
       res.status(500).json({ error: error.message, success: false });
     }
   }
-  //   if (req.method === "PUT") {
-  //     try {
-  //       const post = await Post.findByIdAndUpdate(req.body._id, req.body);
+  if (req.method === "PUT") {
+    try {
+      console.log(req.query.id);
+      const user = await User.findOneAndUpdate(req.query.id, req.body);
 
-  //       res.status(200).json(post);
-  //     } catch (error) {
-  //       res.status(500).json({ error: error.message });
-  //     }
-
-  //   }
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
   //   if (req.method === "DELETE") {
   //     try {
   //       const post = await Post.findByIdAndDelete(req.body._id);

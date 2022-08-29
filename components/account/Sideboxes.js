@@ -1,13 +1,16 @@
 /** @format */
 
+import Link from "next/link";
 import React from "react";
 
-function Sideboxes({ label, Icon }) {
+function Sideboxes({ label, Icon, link }) {
   return (
-    <div className="flex   items-center border-t border-gray-400 p-4 cursor-pointer">
-      <Icon className="mr-5 text-xl" />
-      <h2>{label}</h2>
-    </div>
+    <Link href={link}>
+      <div className="flex   items-center border-t border-gray-400 p-4 cursor-pointer">
+        <Icon className="mr-5 text-xl" />
+        <h2>{label}</h2>
+      </div>
+    </Link>
   );
 }
 
