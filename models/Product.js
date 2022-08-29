@@ -40,6 +40,10 @@ let productSchema = new Schema({
     type: Number,
     required: true,
   },
+  tag: {
+    type: String,
+    default: "General",
+  },
 });
 mongoose.models = {};
 export default mongoose.model("Product", productSchema);

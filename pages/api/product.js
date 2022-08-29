@@ -19,6 +19,7 @@ const handler = async (req, res) => {
       }
       let newProduct = new Product({
         title: req.body[i].title,
+        tag: req.body[i].tag,
         desc: req.body[i].desc,
         slug: req.body[i].slug,
         img: req.body[i].img,
