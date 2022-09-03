@@ -1,66 +1,40 @@
 /** @format */
 
-import { atom, selector } from "recoil";
+import { selector, atom } from "recoil";
+import _ from "lodash";
+import { recoilPersist } from "recoil-persist";
 
-export const cartAtom = atom({
-  key: "cart",
-  default: true,
+const { persistAtom } = recoilPersist();
+export const favAtom = atom({
+  key: "favAtom",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
 });
 
-export const cartItemsAtom = atom({
-  key: "cartItems",
-  default: {},
-});
+export const favSelector = selector({
+  key: "favSelector",
+  get: ({ get }) => {
+    let favItems = get(favAtom);
+    if (favItems.length > 0) null;
+    // let localFavItems = JSON.parse(localStorage.getItem("favItems"));
+    return favItems;
+  },
+  set: ({ set, get }, newItem) => {
+    const favItems = get(favAtom);
+    const alreadyExists = _.find(favItems, { id: newItem.id });
+    if (alreadyExists) {
+      console.log("already exists");
+    } else {
+      set(favAtom, newItem);
+      localStorage.setItem("favItems", JSON.stringify([...favItems, newItem]));
+    }
 
-export const addToCart = (cart, product) => {
-  const newCart = cart;
-  console.log("newCart:", newCart);
-
-  const foundIndex = cart.findIndex((x) => x._id === product._id);
-  console.log(foundIndex);
-  // Increase quantity if existing
-  if (foundIndex >= 0) {
-    newCart[foundIndex] = {
-      ...cart[foundIndex],
-      quantity: cart[foundIndex].quantity + 1,
-    };
-    return newCart;
-  }
-
-  // Add new item
-  newCart.push({
-    product,
-    id: product._id,
-    quantity: 1,
-  });
-  return newCart;
-};
-
-export const testSelector = selector({
-  key: "testSelector",
-  get: ({ get }) => {},
-  set: ({ set, get }, newValue) => {
-    const Cart = get(cartItemsAtom);
-    Cart = newValue;
-
-    set(cartItemsAtom, newValue);
+    // let favItem = _.find(favItems, { id: newValue.id });
+    // if (favItem) {
+    //   console.log("Favorite item already exists");
+    // } else {
+    //   set(favAtom, [...favItems, newValue]);
+    //   console.log(favItems);
+    // }
   },
 });
-// const useRemoveProduct = () => {
-//   const [cart, setCart] = useRecoilState(cartState);
-
-//   return (product) => {
-//     const index = cart.findIndex((item) => item.id === product.id);
-
-//     if (index === -1) {
-//       alert("Product not found in cart!");
-//       return;
-//     }
-
-//     const newCart = cart.filter((item) => item.Id !== product.Id);
-
-//     setCart(newCart);
-//   };
-// };
-
-// export { useRemoveProduct };

@@ -1,20 +1,16 @@
 /** @format */
 
 import Head from "next/head";
-import Image from "next/image";
 
-import CoreValues from "../components/home/CoreValues";
-
-import Features from "../components/home/Features";
 import HomeFooter from "../components/home/HomeFooter";
-import MainSlider from "../components/home/MainSlider";
+
 import SearchInput from "../components/home/SearchInput";
 
 import dynamic from "next/dynamic";
-import Video from "../components/home/Video";
 
 import mongoose from "mongoose";
 import Product from "../models/Product";
+import SmallMenu from "../components/SmallMenu";
 
 // import ReverseMissoin from "../components/home/ReverseMissoin";
 
@@ -23,9 +19,9 @@ const Main = dynamic(() => import("../components/Main"));
 const Carousel = dynamic(() => import("../components/home/Carousel"));
 
 export default function Home({ products }) {
-  console.log("products:", products);
   return (
     <div>
+      <SmallMenu />
       <Head>
         <title>Incascestor</title>
         <meta name="keywords" content="" />

@@ -5,7 +5,9 @@ import { BsFillPatchCheckFill } from "react-icons/bs";
 function Input({ label, value, onChange, type, placeholder, error, name }) {
   return (
     <div className="border border-[#333] flex flex-col px-4 py-2 relative">
-      <BsFillPatchCheckFill className="absolute right-5 top-6 text-green-500" />
+      {value && (
+        <BsFillPatchCheckFill className="absolute right-5 top-6 text-green-500" />
+      )}
       <label htmlFor="">{label}*</label>
       <input
         type="text"

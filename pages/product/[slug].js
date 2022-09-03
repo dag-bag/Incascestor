@@ -30,7 +30,7 @@ function ProductDetails({
   removeFromCart,
 }) {
   const [mounted, setMounted] = useState(false);
-
+  console.log(varients);
   // COlor and Size Variables
   const [color, setColor] = useState(product.color);
 

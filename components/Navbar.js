@@ -4,6 +4,10 @@ import Image from "next/image";
 
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
+import { menuState } from "./SmallMenu";
+import { MyDropdown } from "./utils/DropDown";
+
 const svgClass = "md:w-8 md:h-8 h-6 w-6 cursor-pointer";
 
 const centerDivData = [
@@ -14,9 +18,11 @@ const centerDivData = [
   { title: "blog", href: "/blog" },
 ];
 function Navbar() {
+  const [hide, setHide] = useRecoilState(menuState);
   const { data: session } = useSession();
   const rightDivData = [
     {
+      hide: true,
       svg: (
         <svg
           width="32"
@@ -131,9 +137,66 @@ function Navbar() {
   ];
 
   return (
-    <div className="flex justify-between md:justify-evenly items-center shadow-sm px-5 md:px-0 md:py-4 max-w-8xl m-auto">
+    <div className="flex justify-between md:justify-evenly items-center shadow-sm px-5 md:px-0 md:py-4 max-w-8xl m-auto py-1">
       {/* Left */}
       <div className="flex items-center justify-center space-x-2">
+        <div className="relative w-7 sm:w-10 md:w-16 cursor-pointer">
+          <Link href={"/"}>
+            <Image
+              src={"/logo.png"}
+              alt="logo"
+              width={97}
+              height={139}
+              layout="responsive"
+            />
+          </Link>
+        </div>
+      </div>
+      {/* Center */}
+      <div className="hidden justify-center items-end space-x-8   md:flex">
+        {centerDivData.map((i) => {
+          return (
+            <Link key={i.title} href={i.href}>
+              <li className=" text-base text-left text-[#333] cursor-pointer list-none pt-9 ">
+                {i.title}
+              </li>
+            </Link>
+          );
+        })}
+        <MyDropdown />
+      </div>
+      {/* Right */}
+      <div className="flex justify-center items-center md:space-x-10 space-x-6 md:mt-6">
+        {rightDivData.map((i, index) => {
+          return i.link ? (
+            <Link key={i.link} href={i.link}>
+              <div className="flex flex-col items-center justify-center cursor-pointer">
+                {i.svg}
+                <p
+                  className={
+                    "text-sm font-light leading-6 md:inline  tracking-[-0.17600000381469727px] text-[rgba(51,51,51,1)] hidden"
+                  }
+                ></p>
+              </div>
+            </Link>
+          ) : (
+            <div
+              key={index}
+              className={`flex flex-col items-center justify-center cursor-pointer ${
+                i.hide && "hidden"
+              }`}
+            >
+              {i.svg}
+              <p
+                className={
+                  "text-sm font-light leading-6 md:inline  tracking-[-0.17600000381469727px] text-[rgba(51,51,51,1)] hidden"
+                }
+              >
+                {i.text}
+              </p>
+            </div>
+          );
+        })}
         <svg
           width={32}
           height={32}
@@ -142,6 +205,9 @@ function Navbar() {
           xmlns="http://www.w3.org/2000/svg"
           className="w-8 h-8 relative inline md:hidden cursor-pointer"
           preserveAspectRatio="none"
+          onClick={() => {
+            setHide(!hide);
+          }}
         >
           <path
             d="M5 16H27"
@@ -165,61 +231,6 @@ function Navbar() {
             strokeLinejoin="round"
           />
         </svg>
-
-        <div className="relative w-7 sm:w-10 md:w-16 cursor-pointer">
-          <Image
-            src={"/logo.png"}
-            alt="logo"
-            width={97}
-            height={139}
-            layout="responsive"
-          />
-        </div>
-      </div>
-      {/* Center */}
-      <div className="hidden justify-center items-end space-x-8   md:flex">
-        {centerDivData.map((i) => {
-          return (
-            <Link key={i.title} href={i.href}>
-              <li className=" text-base text-left text-[#333] cursor-pointer list-none pt-9 ">
-                {i.title}
-              </li>
-            </Link>
-          );
-        })}
-      </div>
-      {/* Right */}
-      <div className="flex justify-center items-center md:space-x-10 space-x-6 mt-6">
-        {rightDivData.map((i, index) => {
-          return i.link ? (
-            <Link key={i.link} href={i.link}>
-              <div className="flex flex-col items-center justify-center cursor-pointer">
-                {i.svg}
-                <p
-                  className={
-                    "text-sm font-light leading-6 md:inline  tracking-[-0.17600000381469727px] text-[rgba(51,51,51,1)] hidden"
-                  }
-                >
-                  {i.text}
-                </p>
-              </div>
-            </Link>
-          ) : (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center cursor-pointer"
-            >
-              {i.svg}
-              <p
-                className={
-                  "text-sm font-light leading-6 md:inline  tracking-[-0.17600000381469727px] text-[rgba(51,51,51,1)] hidden"
-                }
-              >
-                {i.text}
-              </p>
-            </div>
-          );
-        })}
       </div>
     </div>
   );

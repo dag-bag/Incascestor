@@ -67,7 +67,7 @@ function PersonalDetails() {
     <div>
       <Detail />{" "}
       <form
-        className="flex "
+        className="flex px-2 flex-wrap-reverse m-auto justify-center md:justify-start"
         onSubmit={(e) => {
           handleFormChange(e);
         }}
@@ -85,7 +85,7 @@ function PersonalDetails() {
             />
             <Input
               label={UserData[1].label}
-              value={user.name}
+              value={User.name}
               onChange={handleChange}
               name={"name"}
               placeholder="Enter your name"

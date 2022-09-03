@@ -5,10 +5,12 @@ import React from "react";
 
 function Detail() {
   const { data: session } = useSession();
+  const username = session?.user.email.split("@")[0];
+
   return (
     <div className="space-y-4 md:ml-20 px-5">
       <h1 className="mt-6 text-2xl font-bold  text-[#333] uppercase ">
-        Hello {session?.user?.email}!
+        Hello {username}!
       </h1>
       <button
         className="underline font-medium"

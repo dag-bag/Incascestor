@@ -11,6 +11,7 @@ import BlogContainer from "../components/blog/BlogContainer";
 import Siderbar from "../components/blog/Siderbar";
 
 import { BlurImage } from "../components/BlurImage";
+import H1 from "../components/utils/H1";
 
 import Blogs from "../models/Blog";
 
@@ -20,9 +21,7 @@ function Blog({ blogs }) {
       <Head></Head>
       <div className="relative  md:block ">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center items-center flex-col w-full px-4">
-          <h1 className=" text-white text-5xl text-center leading-tight font-bold ">
-            Latest post on, <br /> animal world
-          </h1>
+          <H1 h1={"  Latest post on, <br /> animal world"} />
         </div>
         {/* <Image
           src="/frame.jpg"

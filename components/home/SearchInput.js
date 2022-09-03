@@ -5,7 +5,7 @@ import React from "react";
 function SearchInput() {
   const svgClass = "md:w-8 md:h-8 h-6 w-6 cursor-pointer mr-3 text-black";
   return (
-    <div className="w-11/12 h-[37px] opacity-50 rounded-[1px] bg-[#e8e8e8] mx-auto flex justify-center items-center px-3">
+    <div className="w-11/12 h-[37px] opacity-50 rounded-[1px] bg-[#e8e8e8] mx-auto flex justify-center items-center px-3 my-2">
       <svg
         width="32"
         height="32"
