@@ -14,8 +14,8 @@ function SmallMenu() {
     <>
       {/* This example requires Tailwind CSS v2.0+ */}
       <div
-        className={`h-screen transition-all duration-200 absolute left-0 z-50 inset-y-0 transform  w-[80vw]  ease-in-out ${
-          hide ? "-translate-x-full" : ""
+        className={`h-screen transition-all duration-200 absolute right-0 z-50 inset-y-0 transform  w-[80vw]  ease-in-out overflow-hidden ${
+          hide ? "translate-x-full" : ""
         }`}
       >
         <div
