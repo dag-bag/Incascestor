@@ -5,17 +5,26 @@ import connectDb from "../../lib/mongodb";
 import Product from "../../models/Product";
 import Cors from "cors";
 import initMiddleware from "../../lib/initiateMiddleware";
+import NextCors from "nextjs-cors";
 const cors = initMiddleware(
   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
   Cors({
     // Only allow requests with GET, POST and OPTIONS
     methods: ["POST", "GET", "PUT"],
+    origin: "*",
+    optionsSuccessStatus: 200,
   })
 );
 
 const handler = async (req, res) => {
-  await cors(req, res);
   if (req.method === "POST") {
+    await NextCors(req, res, {
+      // Options
+      methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+      origin: "*",
+      optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    });
+    await cors(req, res);
     console.log("I'm working Post");
     for (let i = 0; i < req.body.length; i++) {
       const slug = await req.body[i].slug;

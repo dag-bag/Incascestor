@@ -19,14 +19,14 @@ const nextConfig = {
       "cdn.shopify.com",
     ],
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/api/:path*",
-  //       destination: "https://localhost:3001/:path*",
-  //     },
-  //   ];
-  // },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://localhost:3001/:path*",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
