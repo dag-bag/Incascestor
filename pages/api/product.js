@@ -3,8 +3,20 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import connectDb from "../../lib/mongodb";
 import Product from "../../models/Product";
+import Cors from "cors";
+import initMiddleware from "../../lib/initiateMiddleware";
+const cors = initMiddleware(
+  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+  Cors({
+    // Only allow requests with GET, POST and OPTIONS
+    methods: ["GET", "POST", "PUT"],
+  })
+);
+
 const handler = async (req, res) => {
+  await cors(req, res);
   if (req.method === "POST") {
+    console.log("I'm working Post");
     for (let i = 0; i < req.body.length; i++) {
       const slug = await req.body[i].slug;
 
@@ -35,6 +47,7 @@ const handler = async (req, res) => {
     res.status(200).json({ success: "Product Created SuccessFully" });
   }
   if (req.method === "GET") {
+    // await cors(req, res);
     let products = await Product.find();
     res.status(200).json({ products });
   }
