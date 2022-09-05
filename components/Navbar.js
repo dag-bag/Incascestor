@@ -183,7 +183,7 @@ function Navbar() {
             <div
               key={index}
               className={`flex flex-col items-center justify-center cursor-pointer ${
-                i.hide && "hidden"
+                i.hide && "hidden md:block"
               }`}
             >
               {i.svg}

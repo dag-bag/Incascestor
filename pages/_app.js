@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import Topheader from "../components/Topheader";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
+import SmallMenu from "../components/SmallMenu";
 
 export default function App({
   Component,
@@ -74,6 +75,7 @@ export default function App({
     <SessionProvider session={session}>
       <RecoilRoot>
         <>
+          <SmallMenu />
           <Topheader />
           <Navbar />
           <Component

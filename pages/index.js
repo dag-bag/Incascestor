@@ -21,7 +21,6 @@ const Carousel = dynamic(() => import("../components/home/Carousel"));
 export default function Home({ products }) {
   return (
     <div>
-      <SmallMenu />
       <Head>
         <title>Incascestor</title>
         <meta name="keywords" content="" />
