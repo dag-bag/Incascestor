@@ -17,6 +17,7 @@ const nextConfig = {
       "images.pexels.com",
       "www.pexels.com",
       "cdn.shopify.com",
+      "res.cloudinary.com",
     ],
   },
   async headers() {
