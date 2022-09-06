@@ -5,7 +5,7 @@ import connectDb from "../../lib/mongodb";
 import Product from "../../models/Product";
 import Cors from "cors";
 import initMiddleware from "../../lib/initiateMiddleware";
-import NextCors from "nextjs-cors";
+// import NextCors from "nextjs-cors";
 const cors = initMiddleware(
   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
   Cors({
@@ -17,14 +17,14 @@ const cors = initMiddleware(
 );
 
 const handler = async (req, res) => {
+  await cors(req, res);
   if (req.method === "POST") {
-    await NextCors(req, res, {
-      // Options
-      methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-      origin: "*",
-      optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    });
-    await cors(req, res);
+    // await NextCors(req, res, {
+    //   // Options
+    //   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    //   origin: "*",
+    //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    // });
     console.log("I'm working Post");
     for (let i = 0; i < req.body.length; i++) {
       const slug = await req.body[i].slug;
@@ -56,7 +56,7 @@ const handler = async (req, res) => {
     res.status(200).json({ success: "Product Created SuccessFully yahhh" });
   }
   if (req.method === "GET") {
-    await cors(req, res);
+    // await cors(req, res);
     let products = await Product.find();
     res.status(200).json({ products });
   }
