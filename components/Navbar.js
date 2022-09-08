@@ -6,17 +6,34 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { menuState } from "./SmallMenu";
-import { MyDropdown } from "./utils/DropDown";
+import DropDown from "./utils/DropDown";
 
 const svgClass = "md:w-8 md:h-8 h-6 w-6 cursor-pointer";
 
 const centerDivData = [
   { title: "Alpaca Toys", href: "/alpaca-toys" },
-  { title: "Wear", href: "/wear" },
+  {
+    title: "Wear",
+    href: "/wear",
+    dropdown: true,
+    DropDownData: ["Slipers", "Ponchos", "Scarves", "Pashminas"],
+  },
   { title: "Home", href: "/" },
-  { title: "About", href: "/about" },
+  {
+    title: "About",
+    href: "/about",
+    dropdown: true,
+    DropDownData: [
+      "Our Story",
+      "Sustainability ",
+      "Our Values",
+      "Alpacas for good",
+      "Our Team",
+    ],
+  },
   { title: "blog", href: "/blog" },
 ];
+
 function Navbar() {
   const [hide, setHide] = useRecoilState(menuState);
   const { data: session } = useSession();
@@ -153,17 +170,18 @@ function Navbar() {
         </div>
       </div>
       {/* Center */}
-      <div className="hidden justify-center items-end space-x-8   md:flex">
+      <div className="hidden justify-center items-end space-x-8  mt-6  md:flex">
         {centerDivData.map((i) => {
-          return (
+          return i.dropdown ? (
+            <DropDown heading={i.title} DropDownData={i.DropDownData} />
+          ) : (
             <Link key={i.title} href={i.href}>
-              <li className=" text-base text-left text-[#333] cursor-pointer list-none pt-9 ">
+              <li className=" list-none  justify-center rounded-md  bg-white px-4 py-2  font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 cursor-pointer">
                 {i.title}
               </li>
             </Link>
           );
         })}
-        <MyDropdown />
       </div>
       {/* Right */}
       <div className="flex justify-center items-center md:space-x-10 space-x-6 md:mt-6">

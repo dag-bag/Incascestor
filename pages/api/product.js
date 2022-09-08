@@ -19,41 +19,58 @@ const cors = initMiddleware(
 const handler = async (req, res) => {
   await cors(req, res);
   if (req.method === "POST") {
-    // await NextCors(req, res, {
-    //   // Options
-    //   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-    //   origin: "*",
-    //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    // });
-    console.log("I'm working Post");
-    for (let i = 0; i < req.body.length; i++) {
-      const slug = await req.body[i].slug;
+    try {
+      // await NextCors(req, res, {
+      //   // Options
+      //   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+      //   origin: "*",
+      //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+      // });
 
-      const slugExists = await Product.findOne({ slug });
+      for (let i = 0; i < req.body.length; i++) {
+        let slug = await req.body[i].slug;
 
-      if (slugExists) {
-        return res.status(400).json({
-          error: "Slug already exists",
-          success: false,
-          msg: "Slug already exists",
+        let { title, price, desc, category, img } = req.body[i];
+
+        if (!title) return res.status(400).json({ error: "Name is required" });
+        console.log("I'm working Post");
+        if (!price) return res.status(400).json({ error: "Price is required" });
+        if (!desc)
+          return res.status(400).json({ error: "Description is required" });
+        if (!category)
+          return res.status(400).json({ error: "Category is required" });
+        if (!img) return res.status(400).json({ error: "Image is required" });
+        if (!slug) return res.status(400).json({ error: "Slug is required" });
+        const slugExists = await Product.findOne({ slug });
+        if (slugExists) {
+          return res.status(400).json({
+            error: "Slug already exists",
+            success: false,
+            msg: "Slug already exists",
+          });
+        }
+        let newProduct = new Product({
+          title: req.body[i].title,
+          tag: req.body[i].tag,
+          desc: req.body[i].desc,
+          slug: req.body[i].slug,
+          img: req.body[i].img,
+          category: req.body[i].category,
+          color: req.body[i].color,
+          size: req.body[i].size,
+          price: req.body[i].price,
+          availableQty: req.body[i].availableQty,
         });
+        let savedProduct = await newProduct.save();
+        console.log("savedProduct", savedProduct);
       }
-      let newProduct = new Product({
-        title: req.body[i].title,
-        tag: req.body[i].tag,
-        desc: req.body[i].desc,
-        slug: req.body[i].slug,
-        img: req.body[i].img,
-        category: req.body[i].category,
-        color: req.body[i].color,
-        size: req.body[i].size,
-        price: req.body[i].price,
-        availableQty: req.body[i].availableQty,
+      res.status(200).json({
+        success: true,
+        msg: "Product Created SuccessFully yahhh",
       });
-      await newProduct.save();
+    } catch (error) {
+      res.status(400).json({ error: "Product not Created", msg: error });
     }
-
-    res.status(200).json({ success: "Product Created SuccessFully yahhh" });
   }
   if (req.method === "GET") {
     // await cors(req, res);

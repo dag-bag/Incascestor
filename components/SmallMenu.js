@@ -16,6 +16,7 @@ function SmallMenu() {
   return (
     <>
       {/* This example requires Tailwind CSS v2.0+ */}
+      <div className="bg-red-200 h-screen  absolute left-0"></div>
       <div
         className={`h-screen transition-all duration-200 absolute left-0 z-50 inset-y-0 transform  w-[90vw]  ease-in-out ${
           hide ? "-translate-x-full" : ""
@@ -25,7 +26,7 @@ function SmallMenu() {
           className="w-full h-full shadow-md bg-white absolute"
           id="sidenavSecExample"
         >
-          <div className="pt-4 pb-2 px-6">
+          <div className="pt-4 pb-2 px-6 ">
             <a href="#!">
               <div className="flex items-center justify-between">
                 <div className="relative w-12 sm:w-10 md:w-16 cursor-pointer">
