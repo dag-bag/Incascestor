@@ -32,7 +32,7 @@ const handler = async (req, res) => {
 
         let { title, price, desc, category, img } = req.body[i];
 
-        if (!title) return res.status(400).json({ error: "Name is required" });
+        if (!title) return res.status(400).json({ error: "Name is required." });
         console.log("I'm working Post");
         if (!price) return res.status(400).json({ error: "Price is required" });
         if (!desc)
