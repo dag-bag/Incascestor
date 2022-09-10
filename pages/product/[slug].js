@@ -34,16 +34,18 @@ function ProductDetails({
   // COlor and Size Variables
   const [color, setColor] = useState(product.color);
 
-  const [size, setSize] = useState(product.size);
+  const [size, setSize] = useState(product.size[0]);
 
   const refreshVarient = (newSize, newColor) => {
     setColor(newColor);
     setSize(newSize);
-    let url = `/product/${varients[newColor][newSize]}`;
+    let url = `/product/${varients[newColor]}`;
+
     next.router.push(url);
   };
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
+
   return (
     // <div></div>
     <div
@@ -106,7 +108,7 @@ function ProductDetails({
             {/* first container */}
             <div className="text-left text-black ">
               <span className="text-lg font-semibold text-left text-black">
-                {product.title} ({product.size}/{product.color})
+                {product.title} ({size}cm/{product.color})
               </span>
               <br />
               <span className="text-lg font-light text-left text-black">
@@ -122,7 +124,7 @@ function ProductDetails({
             <div className="space-y-7">
               <ul className="flex flex-row  items-center mt-2 space-x-2">
                 {Object.keys(varients).includes("white") &&
-                  Object.keys(varients["white"]).includes(size) && (
+                  Object.keys(varients["white"]) && (
                     <button
                       onClick={() => {
                         refreshVarient(size, "white");
@@ -139,7 +141,7 @@ function ProductDetails({
                     </button>
                   )}
                 {Object.keys(varients).includes("black") &&
-                  Object.keys(varients["black"]).includes(size) && (
+                  Object.keys(varients["black"]) && (
                     <button
                       onClick={() => {
                         refreshVarient(size, "black");
@@ -149,7 +151,7 @@ function ProductDetails({
                     </button>
                   )}
                 {Object.keys(varients).includes("yellow") &&
-                  Object.keys(varients["yellow"]).includes(size) && (
+                  Object.keys(varients["yellow"]) && (
                     <button
                       onClick={() => {
                         refreshVarient(size, "yellow");
@@ -159,7 +161,7 @@ function ProductDetails({
                     </button>
                   )}
                 {Object.keys(varients).includes("red") &&
-                  Object.keys(varients["red"]).includes(size) && (
+                  Object.keys(varients["red"]) && (
                     <button
                       onClick={() => {
                         refreshVarient(size, "red");
@@ -169,7 +171,7 @@ function ProductDetails({
                     </button>
                   )}
                 {Object.keys(varients).includes("green") &&
-                  Object.keys(varients["green"]).includes(size) && (
+                  Object.keys(varients["green"]) && (
                     <button
                       onClick={() => {
                         refreshVarient(size, "green");
@@ -179,7 +181,7 @@ function ProductDetails({
                     </button>
                   )}
                 {Object.keys(varients).includes("blue") &&
-                  Object.keys(varients["blue"]).includes(size) && (
+                  Object.keys(varients["blue"]) && (
                     <button
                       onClick={() => {
                         refreshVarient(size, "blue");
@@ -189,7 +191,7 @@ function ProductDetails({
                     </button>
                   )}
                 {Object.keys(varients).includes("pink") &&
-                  Object.keys(varients["pink"]).includes(size) && (
+                  Object.keys(varients["pink"]) && (
                     <button
                       onClick={() => {
                         refreshVarient(size, "pink");
@@ -199,8 +201,8 @@ function ProductDetails({
                     </button>
                   )}
               </ul>
-              <div>
-                <select
+              <div className="space-x-4">
+                {/* <select
                   className="w-full max-w-sm h-[58px] bg-white border border-[#333] p-4 "
                   onChange={(e) => {
                     refreshVarient(e.target.value, color);
@@ -218,7 +220,24 @@ function ProductDetails({
                   {Object.keys(varients[color]).includes("XXL") && (
                     <option>XXL</option>
                   )}
-                </select>
+                </select> */}
+                {product?.size?.map((i) => {
+                  return (
+                    <span
+                      key={i}
+                      className={`${
+                        size === i
+                          ? "bg-white text-amber-600"
+                          : "bg-primary-1 text-white"
+                      }  py-2 px-4 rounded-md cursor-pointer  hover:bg-white hover:text-amber-600 transition duration-500 ease-in-out border`}
+                      onClick={() => {
+                        setSize(i);
+                      }}
+                    >
+                      {i}cm
+                    </span>
+                  );
+                })}
               </div>
               <button
                 className="rounded-[3px] bg-[#bd9575] w-full text-white py-3 max-w-sm "
@@ -455,10 +474,10 @@ export async function getStaticProps({ params }) {
   let colorSizeSlug = {};
   for (let item of varients) {
     if (Object.keys(colorSizeSlug).includes(item.color)) {
-      colorSizeSlug[item.color][item.size] = item.slug;
+      colorSizeSlug[item.color] = item.slug;
     } else {
       colorSizeSlug[item.color] = {};
-      colorSizeSlug[item.color][item.size] = item.slug;
+      colorSizeSlug[item.color] = item.slug;
     }
   }
 
