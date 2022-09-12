@@ -3,6 +3,35 @@
 "use strict";
 var mongoose = require("mongoose");
 var { Schema } = mongoose;
+let variantSchema = new Schema({
+  img: {
+    type: String,
+    // required: true
+  },
+  color: {
+    type: String,
+    // required: true
+  },
+  sizes: {
+    type: [Number],
+    // required: true
+  },
+  slug: {
+    type: String,
+    // required: true
+  },
+  price: {
+    type: Number,
+    // required: true
+  },
+  stock: {
+    type: Number,
+    // required: true
+  },
+  discount: {
+    type: Number,
+  },
+});
 let productSchema = new Schema({
   title: {
     type: String,
@@ -22,7 +51,7 @@ let productSchema = new Schema({
     required: true,
   },
   variant: {
-    type: [Object],
+    type: [variantSchema],
   },
   category: {
     type: String,

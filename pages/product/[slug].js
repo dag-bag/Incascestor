@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { BlurImage } from "../../components/BlurImage";
-
+import Link from "next/link";
 import ColorBtn from "../../components/buttons/ColorBtn";
 import { useAddProduct } from "../../lib/cartHooks";
 
@@ -25,29 +25,32 @@ const hashTag = [
 function ProductDetails({
   product,
   varients,
+  variantDetails,
   addToCart,
   Cart,
   removeFromCart,
 }) {
   const [mounted, setMounted] = useState(false);
+  console.log("product", product);
+  console.log("vairant details", variantDetails);
   console.log(varients);
+
   // COlor and Size Variables
-  const [color, setColor] = useState(product.color);
+  // const [color, setColor] = useState(product.color);
 
-  const [size, setSize] = useState(product.size[0]);
+  const [size, setSize] = useState(variantDetails.sizes[0]);
 
-  const refreshVarient = (newSize, newColor) => {
-    setColor(newColor);
-    setSize(newSize);
-    let url = `/product/${varients[newColor]}`;
-
+  const refreshVarient = (slug) => {
+    // setColor(newColor);
+    // setSize(newSize);
+    let url = `/product/${slug}`;
+    console.log(slug);
     next.router.push(url);
   };
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   return (
-    // <div></div>
     <div
       className={`grid grid-cols-1 md:flex  justify-evenly  flex-wrap   py-16 `}
     >
@@ -108,7 +111,8 @@ function ProductDetails({
             {/* first container */}
             <div className="text-left text-black ">
               <span className="text-lg font-semibold text-left text-black">
-                {product.title} ({size}cm/{product.color})
+                {product.title} ({size}cm/
+                {variantDetails.color})
               </span>
               <br />
               <span className="text-lg font-light text-left text-black">
@@ -123,7 +127,21 @@ function ProductDetails({
             {/* Sec container */}
             <div className="space-y-7">
               <ul className="flex flex-row  items-center mt-2 space-x-2">
-                {Object.keys(varients).includes("white") &&
+                {varients.map((item, index) => {
+                  return (
+                    // <Link key={index} href={`/${item.slug}`}>
+                    <button
+                      key={index}
+                      onClick={() => {
+                        refreshVarient(item.slug);
+                      }}
+                    >
+                      <ColorBtn color={item.color} />
+                    </button>
+                    // </Link>
+                  );
+                })}
+                {/* {Object.keys(varients).includes("white") &&
                   Object.keys(varients["white"]) && (
                     <button
                       onClick={() => {
@@ -199,7 +217,7 @@ function ProductDetails({
                     >
                       <ColorBtn color={"pink"} />
                     </button>
-                  )}
+                  )} */}
               </ul>
               <div className="space-x-4">
                 {/* <select
@@ -221,7 +239,7 @@ function ProductDetails({
                     <option>XXL</option>
                   )}
                 </select> */}
-                {product?.size?.map((i) => {
+                {variantDetails?.sizes?.map((i) => {
                   return (
                     <span
                       key={i}
@@ -467,24 +485,27 @@ export async function getStaticProps({ params }) {
   //   "Cache-Control",
   //   "public, s-maxage=3600, stale-while-revalidate=60"f
   // );
-  let product = await Product.findOne({ slug: params.slug });
+  let slug = params.slug;
+  let product = await Product.findOne({ "product.variant": slug });
 
-  let varients = await Product.find({ title: product.title });
+  let varients = product.variant;
+  let variantDetails = varients.find((item) => item.slug === slug);
 
-  let colorSizeSlug = {};
-  for (let item of varients) {
-    if (Object.keys(colorSizeSlug).includes(item.color)) {
-      colorSizeSlug[item.color] = item.slug;
-    } else {
-      colorSizeSlug[item.color] = {};
-      colorSizeSlug[item.color] = item.slug;
-    }
-  }
+  // let colorSizeSlug = {};
+  // for (let item of varients) {
+  //   if (Object.keys(colorSizeSlug).includes(item.color)) {
+  //     colorSizeSlug[item.color] = item.slug;
+  //   } else {
+  //     colorSizeSlug[item.color] = {};
+  //     colorSizeSlug[item.color] = item.slug;
+  //   }
+  // }
 
   return {
     props: {
       product: JSON.parse(JSON.stringify(product)),
-      varients: JSON.parse(JSON.stringify(colorSizeSlug)),
+      varients: JSON.parse(JSON.stringify(varients)),
+      variantDetails: JSON.parse(JSON.stringify(variantDetails)),
     }, // will be passed to the page component as props
   };
 }

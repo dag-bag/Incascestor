@@ -60,6 +60,7 @@ const handler = async (req, res) => {
           size: req.body[i].size,
           price: req.body[i].price,
           availableQty: req.body[i].availableQty,
+          variant: req.body[i].variant,
         });
         let savedProduct = await newProduct.save();
         console.log("savedProduct", savedProduct);

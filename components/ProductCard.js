@@ -59,7 +59,7 @@ function ProductCard({ fav, slug, title, desc, price, color, size, img }) {
             <div className="absolute bottom-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-white/60 opacity-0 group-hover:h-[60%] group-hover:opacity-100 duration-500">
               <h1 className="text-xl text-center text-[#333]">{title}</h1>
               <div className="space-x-1 mt-4">
-                {size[0].map((item, id) => {
+                {size.map((item, id) => {
                   return (
                     <span
                       key={id}
