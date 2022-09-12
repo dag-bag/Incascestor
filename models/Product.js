@@ -21,6 +21,9 @@ let productSchema = new Schema({
     type: String,
     required: true,
   },
+  variant: {
+    type: [Object],
+  },
   category: {
     type: String,
     required: true,
