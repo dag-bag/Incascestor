@@ -10,11 +10,7 @@ import { useRecoilState } from "recoil";
 import { favSelector } from "../atoms/CartAtom";
 function ProductCard({ fav, slug, title, desc, price, color, size, img }) {
   const [favItems, setFavItems] = useRecoilState(favSelector);
-  let a = [
-    { title: "a", id: "1" },
-    { title: "b", id: "2" },
-    { title: "c", id: "3" },
-  ];
+
   const removeFav = () => {
     let removesItem = _.reject(favItems, { title: title });
     setFavItems(removesItem);

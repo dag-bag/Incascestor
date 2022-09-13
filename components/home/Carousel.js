@@ -140,19 +140,19 @@ export default function Carousel({ products }) {
               ref={carousel}
               className="carousel-container relative flex gap-16 overflow-x-scroll scroll-smooth snap-x snap-mandatory touch-pan-x z-0 pb-16 scrollbar"
             >
-              {Object.keys(products).map((item) => {
+              {products.map((item) => {
                 return (
                   <ProductCard
-                    key={products[item].slug}
-                    title={products[item].title}
-                    img={products[item].img}
-                    src={products[item].img}
-                    desc={products[item].desc}
-                    slug={products[item].slug}
-                    category={products[item].category}
-                    size={products[item].size}
-                    price={products[item].price}
-                    color={products[item].color}
+                    key={item._id}
+                    title={item.title}
+                    img={item.variant[0].img}
+                    src={item.variant[0].img}
+                    desc={item.desc}
+                    slug={item.variant[0].slug}
+                    category={item.category}
+                    size={item.variant[0].sizes}
+                    price={item.variant[0].price}
+                    color={item.variant[0].color}
                   />
                 );
               })}

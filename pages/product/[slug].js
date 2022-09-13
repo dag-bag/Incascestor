@@ -32,7 +32,7 @@ function ProductDetails({
 }) {
   const [mounted, setMounted] = useState(false);
 
-  // console.log("vairant details", variantDetails);
+  console.log("vairant details", variantDetails);
   // console.log(varients);
 
   // COlor and Size Variables
@@ -47,9 +47,15 @@ function ProductDetails({
     console.log(slug);
     next.router.push(url);
   };
+
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
-
+  if (!product)
+    return (
+      <div className="flex justify-center items-center w-full h-[60vh] text-5xl">
+        Error 404 Not Found!
+      </div>
+    );
   return (
     <div
       className={`grid grid-cols-1 md:flex  justify-evenly  flex-wrap   py-16 `}
@@ -489,29 +495,26 @@ export async function getStaticProps({ params }) {
   let product = await Product.findOne({
     "variant.slug": slug,
   });
-  // console.log(product);
-  let varients = product.variant;
-  let variantDetails = varients.find((item) => item.slug === slug);
-  // console.log(varients);
-  // console.log(slug);
-  // console.log(variantDetails);
 
-  // let colorSizeSlug = {};
-  // for (let item of varients) {
-  //   if (Object.keys(colorSizeSlug).includes(item.color)) {
-  //     colorSizeSlug[item.color] = item.slug;
-  //   } else {
-  //     colorSizeSlug[item.color] = {};
-  //     colorSizeSlug[item.color] = item.slug;
-  // false
-  //   }
-  // }
-
-  return {
-    props: {
-      product: JSON.parse(JSON.stringify(product)),
-      varients: JSON.parse(JSON.stringify(varients)),
-      variantDetails: JSON.parse(JSON.stringify(variantDetails)),
-    }, // will be passed to the page component as props
-  };
+  if (product) {
+    let varients = product.variant;
+    let variantDetails = varients.find((item) => item.slug === slug);
+    return {
+      props: {
+        product: JSON.parse(JSON.stringify(product)),
+        varients: JSON.parse(JSON.stringify(varients)),
+        variantDetails: JSON.parse(JSON.stringify(variantDetails)),
+      }, // will be passed to the page component as props
+    };
+  } else {
+    return {
+      props: {
+        product: null,
+        varients: [],
+        variantDetails: {
+          sizes: [10],
+        },
+      }, // will be passed to the page component as props
+    };
+  }
 }
