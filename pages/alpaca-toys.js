@@ -139,6 +139,7 @@ function Peluches({ products }) {
                   size={item.variant[0].sizes}
                   price={item.variant[0].price}
                   color={item.variant[0].color}
+                  tag={item.tag}
                 />
                 // <ProductCard
                 //   key={item.variant[0].slug}
