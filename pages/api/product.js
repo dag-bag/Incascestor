@@ -32,23 +32,23 @@ const handler = async (req, res) => {
 
         let { title, price, desc, category, img } = req.body[i];
 
-        if (!title) return res.status(400).json({ error: "Name is required." });
-        console.log("I'm working Post");
-        if (!price) return res.status(400).json({ error: "Price is required" });
-        if (!desc)
-          return res.status(400).json({ error: "Description is required" });
-        if (!category)
-          return res.status(400).json({ error: "Category is required" });
-        if (!img) return res.status(400).json({ error: "Image is required" });
-        if (!slug) return res.status(400).json({ error: "Slug is required" });
-        const slugExists = await Product.findOne({ slug });
-        if (slugExists) {
-          return res.status(400).json({
-            error: "Slug already exists",
-            success: false,
-            msg: "Slug already exists",
-          });
-        }
+        // if (!title) return res.status(400).json({ error: "Name is required." });
+        // console.log("I'm working Post");
+        // if (!price) return res.status(400).json({ error: "Price is required" });
+        // if (!desc)
+        //   return res.status(400).json({ error: "Description is required" });
+        // if (!category)
+        //   return res.status(400).json({ error: "Category is required" });
+        // if (!img) return res.status(400).json({ error: "Image is required" });
+        // if (!slug) return res.status(400).json({ error: "Slug is required" });
+        // const slugExists = await Product.findOne({ slug });
+        // if (slugExists) {
+        //   return res.status(400).json({
+        //     error: "Slug already exists",
+        //     success: false,
+        //     msg: "Slug already exists",
+        //   });
+        // }
         let newProduct = new Product({
           title: req.body[i].title,
           tag: req.body[i].tag,

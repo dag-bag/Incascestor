@@ -1,5 +1,6 @@
 /** @format */
 
+import { concat, keyBy, merge, union } from "lodash";
 import connectDb from "../../lib/mongodb";
 import Blog from "../../models/Blog";
 import Product from "../../models/Product";
@@ -9,9 +10,17 @@ import Product from "../../models/Product";
 const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
-      const products = await Product.find({}).select("slug");
+      const products = await Product.find({}).select("variant");
 
-      return res.status(200).json(products);
+      const filterSlug = products.map((product) => {
+        return product.variant.map((variant, index) => {
+          let slugs = variant.slug;
+          return slugs;
+        });
+      });
+      let moreDo = concat(...filterSlug);
+
+      return res.status(200).json(moreDo);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

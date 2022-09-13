@@ -129,7 +129,7 @@ function Peluches({ products }) {
             {products.map((item) => {
               return (
                 <ProductCard
-                  key={item.variant[0].slug}
+                  key={item._id}
                   title={item.title}
                   img={item.variant[0].img}
                   src={item.variant[0].img}

@@ -18,7 +18,8 @@ let variantSchema = new Schema({
   },
   slug: {
     type: String,
-    // required: true
+    required: true,
+    unique: true,
   },
   price: {
     type: Number,
@@ -36,20 +37,13 @@ let productSchema = new Schema({
   title: {
     type: String,
     required: true,
+    unique: true,
   },
   desc: {
     type: String,
     required: true,
   },
-  slug: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  img: {
-    type: String,
-    required: true,
-  },
+
   variant: {
     type: [variantSchema],
   },
@@ -57,21 +51,7 @@ let productSchema = new Schema({
     type: String,
     required: true,
   },
-  color: {
-    type: String,
-    required: true,
-  },
-  size: {
-    type: [Number],
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  availableQty: {
-    type: Number,
-    required: true,
-  },
+
   tag: {
     type: String,
     default: "General",
