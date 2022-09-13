@@ -504,6 +504,7 @@ export async function getServerSideProps({ params }) {
   //   } else {
   //     colorSizeSlug[item.color] = {};
   //     colorSizeSlug[item.color] = item.slug;
+  // false
   //   }
   // }
 
