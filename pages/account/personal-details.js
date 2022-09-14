@@ -11,41 +11,36 @@ import Sidebar from "../../components/account/Sidebar";
 
 function PersonalDetails() {
   var { data: session } = useSession();
+  console.log(session);
 
   let username = session?.user.email.split("@")[0];
+  const [change, setChange] = useState(false);
 
   const UserData = [
     {
       label: "Username",
-      value: username,
     },
     {
       label: "Name",
-      value: session?.user.name,
     },
     {
       label: "Email",
-      value: session?.user.email,
     },
   ];
-  const [User, setUserDetail] = useState(UserData);
+
   useEffect(() => {
     const fetchUser = async () => {
       const user = await fetch("/api/user?email=" + session.user.email);
       const userData = await user.json();
-      setUserDetail(userData);
+      console.log(userData);
+      setUser(userData);
     };
 
     fetchUser();
   }, []);
 
-  let a = User.name;
+  const [user, setUser] = useState([]);
 
-  const [user, setUser] = useState({
-    name: a,
-    username: session?.user?.email.split("@")[0],
-  });
-  console.log(user);
   const handleChange = (e) => {
     setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -85,7 +80,7 @@ function PersonalDetails() {
             />
             <Input
               label={UserData[1].label}
-              value={User.name}
+              value={user.name}
               onChange={handleChange}
               name={"name"}
               placeholder="Enter your name"

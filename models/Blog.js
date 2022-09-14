@@ -13,6 +13,7 @@ const blogSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
+      
     },
     slug: {
       type: String,
