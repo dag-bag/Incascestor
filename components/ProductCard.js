@@ -8,6 +8,7 @@ import { BsSuitHeart } from "react-icons/bs";
 import { BlurImage } from "./BlurImage";
 import { useRecoilState } from "recoil";
 import { favSelector } from "../atoms/CartAtom";
+import { shuffle } from "lodash";
 function ProductCard({
   fav,
   slug,
@@ -21,12 +22,13 @@ function ProductCard({
   tag,
 }) {
   const [favItems, setFavItems] = useRecoilState(favSelector);
+  console.log(img);
 
   const removeFav = () => {
     let removesItem = _.reject(favItems, { title: title });
     setFavItems(removesItem);
   };
-  console.log(tag);
+  console.log(img);
   return (
     <div className="relative">
       <Link href={`/product/${slug}`}>
@@ -73,7 +75,7 @@ function ProductCard({
             </span>
           )}
           <div className="flex group relative  md:w-full bg-[#e8e8e8] h-[200px] md:h-[330px] justify-end items-center flex-col min-w-[300px]">
-            <BlurImage image={img} />
+            <BlurImage image={img[0]} />
             <div className="absolute bottom-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-white/60 opacity-0 group-hover:h-[60%] group-hover:opacity-100 duration-500">
               <h1 className="text-xl text-center text-[#333]">{title}</h1>
               <div className="space-x-1 mt-4">

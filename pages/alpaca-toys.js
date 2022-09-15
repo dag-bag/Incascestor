@@ -136,7 +136,7 @@ function Peluches({ products }) {
                   desc={item.desc}
                   slug={item.variant[0].slug}
                   category={item.category}
-                  size={item.variant[0].sizes}
+                  size={item.variant[0].size}
                   price={item.variant[0].price}
                   color={item.variant[0].color}
                   tag={item.tag}

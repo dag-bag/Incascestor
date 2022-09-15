@@ -5,16 +5,16 @@ var mongoose = require("mongoose");
 var { Schema } = mongoose;
 let variantSchema = new Schema({
   img: {
-    type: String,
-    // required: true
+    type: [String],
+    required: true,
   },
   color: {
     type: String,
-    // required: true
+    required: true,
   },
-  sizes: {
-    type: [Number],
-    // required: true
+  size: {
+    type: [String],
+    required: true,
   },
   slug: {
     type: String,
@@ -23,11 +23,11 @@ let variantSchema = new Schema({
   },
   price: {
     type: Number,
-    // required: true
+    required: true,
   },
-  stock: {
+  availableQty: {
     type: Number,
-    // required: true
+    required: true,
   },
   discount: {
     type: Number,

@@ -38,7 +38,7 @@ function ProductDetails({
   // COlor and Size Variables
   // const [color, setColor] = useState(product.color);
 
-  const [size, setSize] = useState(variantDetails.sizes[0]);
+  const [size, setSize] = useState(variantDetails.size[0]);
 
   const refreshVarient = (slug) => {
     // setColor(newColor);
@@ -63,7 +63,7 @@ function ProductDetails({
       {/* Left container */}
       <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
         <div className="w-full rounded-[3px] h-96  md:w-1/2 relative">
-          <BlurImage image={variantDetails.img} />
+          <BlurImage image={variantDetails.img[0]} />
           {/* <Image
             src={"/assets/product/1.jpg"}
             height={70}
@@ -245,7 +245,7 @@ function ProductDetails({
                     <option>XXL</option>
                   )}
                 </select> */}
-                {variantDetails?.sizes?.map((i) => {
+                {variantDetails?.size?.map((i) => {
                   return (
                     <span
                       key={i}
@@ -512,7 +512,7 @@ export async function getStaticProps({ params }) {
         product: null,
         varients: [],
         variantDetails: {
-          sizes: [10],
+          size: [10],
         },
       }, // will be passed to the page component as props
     };

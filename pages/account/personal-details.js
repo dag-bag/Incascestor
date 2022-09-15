@@ -1,6 +1,5 @@
 /** @format */
 
-import mongoose from "mongoose";
 import { getSession, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { atom, selector } from "recoil";
