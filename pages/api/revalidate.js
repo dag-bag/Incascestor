@@ -24,11 +24,16 @@ export default async function handler(req, res) {
   }
   const slugToValidate = body.slugToValidate;
   try {
-    if (slugToValidate) {
-      await res.revalidate(slugToValidate);
-
-      return res.json({ revalidated: true });
+    for (let i = 0; i < body.slugs.length; i++) {
+      const slug = body.slugs[i];
+      await res.revalidate(slug);
     }
+    res.status(200).json({ message: "Success" });
+    // if (slugToValidate) {
+    //   await res.revalidate(slugToValidate);
+
+    //   return res.json({ revalidated: true });
+    // }
   } catch (err) {
     // If there was an error, Next.js will continue
     // to show the last successfully generated pages
