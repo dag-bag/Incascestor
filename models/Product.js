@@ -25,9 +25,17 @@ let variantSchema = new Schema({
     type: Number,
     required: true,
   },
+  sellPrice: {
+    type: Number,
+    required: true,
+  },
   availableQty: {
     type: Number,
     required: true,
+  },
+  active: {
+    type: Boolean,
+    default: false,
   },
   discount: {
     type: Number,
@@ -55,6 +63,10 @@ let productSchema = new Schema({
   tag: {
     type: String,
     default: "General",
+  },
+  active: {
+    type: Boolean,
+    default: false,
   },
 });
 mongoose.models = {};

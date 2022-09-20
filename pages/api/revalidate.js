@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       const slug = body.slugs[i];
       await res.revalidate(slug);
     }
-    res.status(200).json({ message: "Success" });
+    res.status(200).json({ revalidated: true });
     // if (slugToValidate) {
     //   await res.revalidate(slugToValidate);
 

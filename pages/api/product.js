@@ -10,7 +10,7 @@ const cors = initMiddleware(
   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
   Cors({
     // Only allow requests with GET, POST and OPTIONS
-    methods: ["POST", "GET", "PUT"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
     origin: "*",
     optionsSuccessStatus: 200,
   })
@@ -53,6 +53,8 @@ const handler = async (req, res) => {
           return res.status(400).json({ error: "Color is required" });
         if (element.price <= 0)
           return res.status(400).json({ error: "Price is required" });
+        if (element.sellPrice <= 0)
+          return res.status(400).json({ error: "Sell Price is required" });
 
         let productSlug = await Product.findOne({
           "variant.slug": element.slug,
@@ -100,6 +102,12 @@ const handler = async (req, res) => {
 
     // await newProduct.save();
     res.status(200).json({ success: "Products updated Succesfully" });
+  }
+  if (req.method === "DELETE") {
+    let id = req.query.id;
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    // await newProduct.save();
+    res.status(200).json({ success: "Products Deleted Succesfully" });
   }
 };
 export default connectDb(handler);
