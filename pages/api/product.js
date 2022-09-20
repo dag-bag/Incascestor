@@ -93,12 +93,7 @@ const handler = async (req, res) => {
     res.status(200).json({ products });
   }
   if (req.method === "PUT") {
-    for (let i = 0; i < req.body.length; i++) {
-      let updateProduct = await Product.findByIdAndUpdate(
-        req.body[i]._id,
-        req.body[i]
-      );
-    }
+    let updateProduct = await Product.findByIdAndUpdate(req.body.id, req.body);
 
     // await newProduct.save();
     res.status(200).json({ success: "Products updated Succesfully" });
