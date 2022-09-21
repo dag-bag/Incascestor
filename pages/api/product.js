@@ -87,6 +87,7 @@ const handler = async (req, res) => {
       res.status(400).json({ error: "Product not Created", msg: error });
     }
   }
+
   if (req.method === "GET") {
     // await cors(req, res);
     let products = await Product.find();
