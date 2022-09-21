@@ -102,7 +102,9 @@ const handler = async (req, res) => {
     let id = req.query.id;
     const deletedProduct = await Product.findByIdAndDelete(id);
     // await newProduct.save();
-    res.status(200).json({ success: "Products Deleted Succesfully" });
+    res
+      .status(200)
+      .json({ success: true, msg: "Product Deleted Successfully" });
   }
 };
 export default connectDb(handler);

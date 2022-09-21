@@ -32,7 +32,7 @@ function Bolsa({ Cart, SubTotal, removeFromCart }) {
                       <li key={k} className="flex py-6 sm:py-10">
                         <div className="flex-shrink-0 ">
                           <Image
-                            src={Cart[k].img}
+                            src={Cart[k].img[0]}
                             alt="Front of men's Basic Tee in sienna."
                             className="w-24 h-24 rounded-md object-center object-cover sm:w-48 sm:h-48"
                             width={150}
