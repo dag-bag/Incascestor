@@ -136,14 +136,21 @@ function ProductDetails({
                 {varients.map((item, index) => {
                   return (
                     // <Link key={index} href={`/${item.slug}`}>
-                    <button
+                    <img
+                      src={item.img[0]}
+                      alt=""
                       key={index}
-                      onClick={() => {
-                        refreshVarient(item.slug);
-                      }}
-                    >
-                      <ColorBtn color={item.color} />
-                    </button>
+                      className="h-14 w-14  cursor-pointer"
+                      onClick={() => refreshVarient(item.slug)}
+                    />
+                    // <button
+                    //   key={index}
+                    //   onClick={() => {
+                    //     refreshVarient(item.slug);
+                    //   }}
+                    // >
+                    //   <ColorBtn color={item.color} />
+                    // </button>
                     // </Link>
                   );
                 })}

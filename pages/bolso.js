@@ -3,7 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { isEmpty } from "lodash";
 function Bolsa({ Cart, SubTotal, removeFromCart }) {
+  console.log("Cart", Cart);
   return (
     <>
       <div className="bg-white">
@@ -20,7 +22,7 @@ function Bolsa({ Cart, SubTotal, removeFromCart }) {
                 role="list"
                 className="border-t border-b border-gray-200 divide-y divide-gray-200"
               >
-                {!Cart && (
+                {isEmpty(Cart) && (
                   <h2 className="p-3 text-2xl">
                     No items in the cart. <br /> Please add few items in the
                     cart
@@ -160,7 +162,7 @@ function Bolsa({ Cart, SubTotal, removeFromCart }) {
               </ul>
             </section>
             {/* Order summary */}
-            {Cart && (
+            {!isEmpty(Cart) && (
               <section
                 aria-labelledby="summary-heading"
                 className="mt-16 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5"
