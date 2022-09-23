@@ -164,7 +164,7 @@ function Peluches({ products }) {
 
 export default Peluches;
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }

@@ -86,7 +86,7 @@ function Blog({ blogs }) {
 
 export default Blog;
 
-export async function getServerSideProps({ res }) {
+export async function getStaticProps({ res }) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
