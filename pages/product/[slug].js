@@ -8,7 +8,7 @@ import { BlurImage } from "../../components/BlurImage";
 import Link from "next/link";
 import ColorBtn from "../../components/buttons/ColorBtn";
 import { useAddProduct } from "../../lib/cartHooks";
-
+import { BsSuitHeart } from "react-icons/bs";
 import Product from "../../models/Product";
 const hashTag = [
   {
@@ -64,29 +64,31 @@ function ProductDetails({
       <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
         <div className="grid grid-cols-2 w-[90%] place-items-center gap-4">
           {variantDetails.img.map((item, index) => {
-            return index === 0 ? (
+            // return index === 0 ? (
+            //   <div
+            //     key={index}
+            //     className="w-full rounded-[3px] h-96  md:w-full relative  col-span-3"
+            //   >
+            //     <BlurImage key={index} image={item} />
+            //   </div>
+            // ) : (
+            return (
               <div
                 key={index}
-                className="w-full rounded-[3px] h-96  md:w-full relative  col-span-3"
+                className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative  "
               >
-                <BlurImage key={index} image={item} />;
-              </div>
-            ) : (
-              <div
-                key={index}
-                className="w-full rounded-[3px] h-96  md:w-[90%] relative  col-span-2"
-              >
-                <BlurImage key={index} image={item} />;
+                <BlurImage key={index} image={item} rounded="lg" />;
               </div>
             );
+            // );
           })}
         </div>
       </div>
       {/* Right container */}
       <div
-        className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[50%] relative`}
+        className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[40%] relative`}
       >
-        <div className="absolute top-5 right-44 flex items-center justify-center flex-col">
+        {/* <div className="absolute top-5 right-44 flex items-center justify-center flex-col">
           <div className="bg-primary-1 h-[70vh] w-1 "></div>
           <div className="flex flex-col justify-center items-center w-[34px] h-[34px]  gap-2.5 p-2 bg-[#bd9575] mt-2">
             <svg
@@ -107,7 +109,7 @@ function ProductDetails({
               />
             </svg>
           </div>
-        </div>
+        </div> */}
         <div className={` text-left mb-6 md:w-[70%] flex  h-full`}>
           <div className="w-full ">
             {/* first container */}
@@ -186,6 +188,24 @@ function ProductDetails({
                 }}
               >
                 Añadir a la bolsa
+              </button>
+              <button
+                className="rounded-[3px] border border-[#bd9575] text-primary-1 w-full flex justify-center items-center py-3 max-w-sm  "
+                onClick={() => {
+                  // addToCart(product.slug, 1, product.price);
+                  addToCart(
+                    variantDetails.slug,
+                    1,
+                    size,
+                    product.title,
+                    variantDetails.price,
+                    variantDetails.color,
+                    variantDetails.img
+                  );
+                }}
+              >
+                Add to Fav
+                <BsSuitHeart className="ml-3" />
               </button>
             </div>
             {/* Third container */}

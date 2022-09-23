@@ -28,7 +28,7 @@ function ProductCard({
     let removesItem = _.reject(favItems, { title: title });
     setFavItems(removesItem);
   };
-  console.log(img);
+
   return (
     <div className="relative">
       <Link href={`/product/${slug}`}>
