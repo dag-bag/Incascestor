@@ -81,27 +81,6 @@ function ProductDetails({
             );
           })}
         </div>
-        {/* <BlurImage image={variantDetails.img[0]} /> */}
-        {/* <Image
-            src={"/assets/product/1.jpg"}
-            height={70}
-            width={50}
-            layout="responsive"
-            alt="Product"
-            objectFit="cover"
-          /> */}
-        {/* <div className="flex space-x-4 mt-4 justify-end flex-col">
-          {hashTag.map((item, index) => {
-            return (
-              <p
-                key={index}
-                className="bg-[#e8e8e8] text-lg font-light text-left text-[#333]"
-              >
-                {item.tag}
-              </p>
-            );
-          })}
-        </div> */}
       </div>
       {/* Right container */}
       <div
@@ -171,104 +150,8 @@ function ProductDetails({
                     // </Link>
                   );
                 })}
-                {/* {Object.keys(varients).includes("white") &&
-                  Object.keys(varients["white"]) && (
-                    <button
-                      onClick={() => {
-                        refreshVarient(size, "white");
-                      }}
-                    >
-                      <span
-                        className={`block p-1 border-2  border-gray-500 rounded-full transition ease-in duration-300`}
-                      >
-                        <a
-                          href="#green"
-                          className="block w-6 h-6 bg-gray-200 rounded-full"
-                        ></a>
-                      </span>
-                    </button>
-                  )}
-                {Object.keys(varients).includes("black") &&
-                  Object.keys(varients["black"]) && (
-                    <button
-                      onClick={() => {
-                        refreshVarient(size, "black");
-                      }}
-                    >
-                      <ColorBtn color={"black"} />
-                    </button>
-                  )}
-                {Object.keys(varients).includes("yellow") &&
-                  Object.keys(varients["yellow"]) && (
-                    <button
-                      onClick={() => {
-                        refreshVarient(size, "yellow");
-                      }}
-                    >
-                      <ColorBtn color={"yellow"} />
-                    </button>
-                  )}
-                {Object.keys(varients).includes("red") &&
-                  Object.keys(varients["red"]) && (
-                    <button
-                      onClick={() => {
-                        refreshVarient(size, "red");
-                      }}
-                    >
-                      <ColorBtn color={"red"} />
-                    </button>
-                  )}
-                {Object.keys(varients).includes("green") &&
-                  Object.keys(varients["green"]) && (
-                    <button
-                      onClick={() => {
-                        refreshVarient(size, "green");
-                      }}
-                    >
-                      <ColorBtn color={"green"} />
-                    </button>
-                  )}
-                {Object.keys(varients).includes("blue") &&
-                  Object.keys(varients["blue"]) && (
-                    <button
-                      onClick={() => {
-                        refreshVarient(size, "blue");
-                      }}
-                    >
-                      <ColorBtn color={"blue"} />
-                    </button>
-                  )}
-                {Object.keys(varients).includes("pink") &&
-                  Object.keys(varients["pink"]) && (
-                    <button
-                      onClick={() => {
-                        refreshVarient(size, "pink");
-                      }}
-                    >
-                      <ColorBtn color={"pink"} />
-                    </button>
-                  )} */}
               </ul>
               <div className="space-x-4">
-                {/* <select
-                  className="w-full max-w-sm h-[58px] bg-white border border-[#333] p-4 "
-                  onChange={(e) => {
-                    refreshVarient(e.target.value, color);
-                  }}
-                >
-                  {Object.keys(varients[color]).includes("SM") && (
-                    <option>SM</option>
-                  )}
-                  {Object.keys(varients[color]).includes("XL") && (
-                    <option>XL</option>
-                  )}
-                  {Object.keys(varients[color]).includes("LG") && (
-                    <option>LG</option>
-                  )}
-                  {Object.keys(varients[color]).includes("XXL") && (
-                    <option>XXL</option>
-                  )}
-                </select> */}
                 {variantDetails?.size?.map((i) => {
                   return (
                     <span
