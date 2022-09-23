@@ -134,7 +134,7 @@ function ProductDetails({
                     // <Link key={index} href={`/${item.slug}`}>
                     <img
                       src={item.img[0]}
-                      alt=""
+                      alt="product"
                       key={index}
                       className="h-14 w-14  cursor-pointer"
                       onClick={() => refreshVarient(item.slug)}
