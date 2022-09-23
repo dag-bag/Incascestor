@@ -375,22 +375,22 @@ function ProductDetails({
 }
 
 export default ProductDetails;
-export async function getStaticPaths() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/allparams`);
-  const posts = await res.json();
+// export async function getStaticPaths() {
+//   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/allparams`);
+//   const posts = await res.json();
 
-  // Get the paths we want to pre-render based on posts
-  const paths = posts.map((slug) => ({
-    params: { slug: slug },
-  }));
+//   // Get the paths we want to pre-render based on posts
+//   const paths = posts.map((slug) => ({
+//     params: { slug: slug },
+//   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: blocking } will server-render pages
-  // on-demand if the path doesn't exist.
-  return { paths, fallback: "blocking" };
-}
+//   // We'll pre-render only these paths at build time.
+//   // { fallback: blocking } will server-render pages
+//   // on-demand if the path doesn't exist.
+//   return { paths, fallback: "blocking" };
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }

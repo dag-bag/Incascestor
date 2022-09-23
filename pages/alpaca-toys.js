@@ -164,36 +164,12 @@ function Peluches({ products }) {
 
 export default Peluches;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
     await mongoose.connect(process.env.MONGODB_URI);
   }
   let products = await Product.find({ category: "slipers" });
-  // let tshirts = {};
-  // for (let item of products) {
-  //   if (item.title in tshirts) {
-  //     if (
-  //       !tshirts[item.title].color?.includes(item.color) &&
-  //       item.availableQty > 0
-  //     ) {
-  //       await tshirts[item.title].color.push(item.color);
-  //     }
-  //     if (
-  //       !tshirts[item.title].size?.includes(item.size) &&
-  //       item.availableQty > 0
-  //     ) {
-  //       await tshirts[item.title].size.push(item.size);
-  //     }
-  //   } else {
-  //     tshirts[item.title] = await JSON.parse(JSON.stringify(item));
-  //     if (item.availableQty > 0) {
-  //       tshirts[item.title].color = [item.color];
-  //       tshirts[item.title].size = [item.size];
-  //     }
-  //   }
-  // }
-  // const resp = await fetch("http://localhost:3000/api/getproducts");
-  // const products = await resp.json();
+
   return {
     props: { products: JSON.parse(JSON.stringify(products)) },
     // revalidate: 60,
