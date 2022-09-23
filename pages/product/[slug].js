@@ -62,9 +62,27 @@ function ProductDetails({
     >
       {/* Left container */}
       <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
-        <div className="w-full rounded-[3px] h-96  md:w-1/2 relative">
-          <BlurImage image={variantDetails.img[0]} />
-          {/* <Image
+        <div className="grid grid-cols-2 w-[90%] place-items-center gap-4">
+          {variantDetails.img.map((item, index) => {
+            return index === 0 ? (
+              <div
+                key={index}
+                className="w-full rounded-[3px] h-96  md:w-full relative  col-span-3"
+              >
+                <BlurImage key={index} image={item} />;
+              </div>
+            ) : (
+              <div
+                key={index}
+                className="w-full rounded-[3px] h-96  md:w-[90%] relative  col-span-2"
+              >
+                <BlurImage key={index} image={item} />;
+              </div>
+            );
+          })}
+        </div>
+        {/* <BlurImage image={variantDetails.img[0]} /> */}
+        {/* <Image
             src={"/assets/product/1.jpg"}
             height={70}
             width={50}
@@ -72,7 +90,6 @@ function ProductDetails({
             alt="Product"
             objectFit="cover"
           /> */}
-        </div>
         {/* <div className="flex space-x-4 mt-4 justify-end flex-col">
           {hashTag.map((item, index) => {
             return (
@@ -461,7 +478,8 @@ function ProductDetails({
                     </span>
                   </p>
                 </div>
-                <div className="ml-9">
+                <div className="ml-9 ">
+                  {}
                   <Image src={product.image} alt="" width={200} height={70} />
                 </div>
               </div>
