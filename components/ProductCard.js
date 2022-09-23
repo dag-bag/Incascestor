@@ -22,7 +22,6 @@ function ProductCard({
   tag,
 }) {
   const [favItems, setFavItems] = useRecoilState(favSelector);
-  console.log(img);
 
   const removeFav = () => {
     let removesItem = _.reject(favItems, { title: title });

@@ -10,6 +10,8 @@ import ColorBtn from "../../components/buttons/ColorBtn";
 import { useAddProduct } from "../../lib/cartHooks";
 import { BsSuitHeart } from "react-icons/bs";
 import Product from "../../models/Product";
+import { favSelector } from "../../atoms/CartAtom";
+import { reject } from "lodash";
 const hashTag = [
   {
     tag: "#Alpaca",
@@ -30,6 +32,7 @@ function ProductDetails({
   Cart,
   removeFromCart,
 }) {
+  let fav = false;
   const [mounted, setMounted] = useState(false);
 
   console.log("vairant details", variantDetails);
@@ -47,6 +50,12 @@ function ProductDetails({
     console.log(slug);
     next.router.push(url);
   };
+  const [favItems, setFavItems] = useRecoilState(favSelector);
+
+  const removeFav = () => {
+    let removesItem = reject(favItems, { title: title });
+    setFavItems(removesItem);
+  };
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -62,7 +71,7 @@ function ProductDetails({
     >
       {/* Left container */}
       <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
-        <div className="grid grid-cols-2 w-[90%] place-items-center gap-4">
+        <div className="grid grid-cols-2 w-[90%] justify-center gap-4">
           {variantDetails.img.map((item, index) => {
             // return index === 0 ? (
             //   <div
@@ -134,13 +143,17 @@ function ProductDetails({
                 {varients.map((item, index) => {
                   return (
                     // <Link key={index} href={`/${item.slug}`}>
-                    <img
-                      src={item.img[0]}
-                      alt="product"
-                      key={index}
-                      className="h-14 w-14  cursor-pointer"
-                      onClick={() => refreshVarient(item.slug)}
-                    />
+                    <div key={index} className="h-14 w-14 relative ">
+                      <BlurImage
+                        image={item.img[0]}
+                        alt="product"
+                        key={index}
+                        className="h-14 w-14  cursor-pointer"
+                        handleClick={() => refreshVarient(item.slug)}
+                        rounded="lg"
+                        cursor="pointer"
+                      />
+                    </div>
                     // <button
                     //   key={index}
                     //   onClick={() => {
@@ -191,17 +204,25 @@ function ProductDetails({
               </button>
               <button
                 className="rounded-[3px] border border-[#bd9575] text-primary-1 w-full flex justify-center items-center py-3 max-w-sm  "
-                onClick={() => {
-                  // addToCart(product.slug, 1, product.price);
-                  addToCart(
-                    variantDetails.slug,
-                    1,
-                    size,
-                    product.title,
-                    variantDetails.price,
-                    variantDetails.color,
-                    variantDetails.img
-                  );
+                onClick={(e) => {
+                  e.stopPropagation();
+                  let newFavItems = [
+                    ...favItems,
+                    {
+                      id: variantDetails.slug,
+                      title: product.title,
+                      price: variantDetails.price,
+                      color: variantDetails.color,
+                      size: variantDetails.size,
+                      img: variantDetails.img,
+                    },
+                  ];
+                  if (!fav) {
+                    setFavItems(newFavItems);
+                  }
+                  if (fav) {
+                    removeFav();
+                  }
                 }}
               >
                 Add to Fav
