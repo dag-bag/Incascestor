@@ -2,11 +2,17 @@
 
 import Link from "next/link";
 import React from "react";
+import { selectorFamily, useRecoilValue } from "recoil";
 import Container from "../../components/account/Container";
 import Detail from "../../components/account/Detail";
 import Sidebar from "../../components/account/Sidebar";
+import { useSession, getSession } from "next-auth/react";
+import Order from "../../models/Order";
 
-function Orderhistory() {
+function Orderhistory({ orders }) {
+  console.log(orders);
+  const { data: session } = useSession();
+
   return (
     <>
       <Detail />
@@ -29,3 +35,15 @@ function Orderhistory() {
 }
 
 export default Orderhistory;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  const orders = await Order.find({ userEmail: session?.user?.email });
+
+  return {
+    props: {
+      orders: JSON.parse(JSON.stringify(orders)),
+    },
+  };
+}

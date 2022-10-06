@@ -3,9 +3,12 @@
 import Link from "next/link";
 import React from "react";
 
-function Btn({ text }) {
+function Btn({ text, onClick }) {
   return (
-    <button className="bg-[#333] text-white rounded-sm py-4 px-8 mt-4 w-full md:w-[24rem]">
+    <button
+      onClick={onClick}
+      className="bg-[#333] text-white rounded-sm py-4 px-8 mt-4 w-full md:w-[24rem]"
+    >
       {text}
     </button>
   );

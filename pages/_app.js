@@ -84,6 +84,7 @@ export default function App({
             Cart={Cart}
             removeFromCart={removeFromCart}
             SubTotal={SubTotal}
+            clearCart={clearCart}
           />
           <Footer />
         </>

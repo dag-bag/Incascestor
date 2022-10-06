@@ -71,28 +71,54 @@ function ProductDetails({
     >
       {/* Left container */}
       <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
-        <div className="grid grid-cols-2 w-[90%] justify-center gap-4">
+        <div className="grid grid-cols-1 w-[90%] justify-center gap-4">
           {variantDetails.img.map((item, index) => {
-            // return index === 0 ? (
-            //   <div
-            //     key={index}
-            //     className="w-full rounded-[3px] h-96  md:w-full relative  col-span-3"
-            //   >
-            //     <BlurImage key={index} image={item} />
-            //   </div>
-            // ) : (
             return (
-              <div
-                key={index}
-                className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative  "
-              >
-                <BlurImage key={index} image={item} rounded="lg" />;
-              </div>
+              index === 0 && (
+                <div
+                  key={index}
+                  className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative "
+                >
+                  <BlurImage key={index} image={item} />
+                </div>
+              )
+              // (
+              //   <div>
+              //     <div
+              //       key={index}
+              //       className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative  "
+              //     >
+              //       <BlurImage key={index} image={item} rounded="lg" />;
+              //     </div>
+              //   </div>
+              // )
             );
             // );
           })}
         </div>
       </div>
+      <div className="grid grid-cols-2">
+        <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
+          <div className="grid grid-cols-1 w-[90%] justify-center gap-4">
+            {variantDetails.img.map((item, index) => {
+              return index === 0 ? (
+                ""
+              ) : (
+                <div>
+                  <div
+                    key={index}
+                    className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative  "
+                  >
+                    <BlurImage key={index} image={item} rounded="lg" />;
+                  </div>
+                </div>
+              );
+              // );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* Right container */}
       <div
         className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[40%] relative`}
