@@ -9,14 +9,14 @@ function ReverseMissoin({ title, description, image }) {
     <div className={`flex  justify-evenly  flex-wrap  py-16 `}>
       <div className={`flex-1 flex  relative justify-center mr-2 ml-0  `}>
         <div
-          className={`w-[70%] h-[100%] rounded-[3px] absolute md:w-1/2 -top-12  bg-[#bd9575] left-0 md:left-12`}
+          className={`w-[70%] h-[100%] rounded-[3px] absolute md:w-1/2 -top-14  bg-[#bd9575] left-0 md:left-14`}
         ></div>
         <div className="w-[70%] rounded-[3px]  md:w-1/2">
           <Image
             src={image}
             alt="Artesano"
             width={576}
-            height={576}
+            height={620}
             layout="responsive"
           />
         </div>

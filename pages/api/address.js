@@ -26,6 +26,7 @@ const handler = async (req, res) => {
         zipcode,
         country,
         firstName,
+        lastName,
         phone,
         email,
         address2,
@@ -57,6 +58,7 @@ const handler = async (req, res) => {
         zipcode,
         country,
         firstName,
+        lastName,
         phone,
         email,
       });

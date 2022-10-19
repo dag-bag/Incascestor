@@ -9,7 +9,7 @@ const handler = async (req, res) => {
   //Capture order to complete payment
 
   const { orderID } = req.body;
-  console.log("orderID", orderID);
+
   const PaypalClient = client();
   const request = new paypal.orders.OrdersCaptureRequest(orderID);
   request.requestBody({});

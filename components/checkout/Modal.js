@@ -108,14 +108,14 @@ function Modal({
           //   onClick={onClose}
         />
         <div
-          className={`flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ${
+          className={`flex justify-center items-center overflow-scroll fixed inset-0 z-50 outline-none focus:outline-none ${
             showModal ? "opacity-100" : "pointer-events-none opacity-0"
           } transition-opacity duration-300 ease-in-out `}
         >
-          <div className="relative w-auto my-6 mx-auto ">
+          <div className="relative w-auto my-6 mx-auto mt-[17rem]">
             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none ">
               <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
-                <h3 className="text-3xl font=semibold">Add address</h3>
+                <h3 className="text-3xl font-semibold">Add address</h3>
                 <button
                   className="bg-transparent border-0 text-black float-right"
                   onClick={() => setShowModal(false)}
@@ -125,7 +125,7 @@ function Modal({
                   </span>
                 </button>
               </div>
-              <div className="relative p-6 flex-auto z-50 overflow-scroll">
+              <div className="relative p-6 flex-auto z-50 ">
                 <form className=" shadow-md rounded px-8 pt-6 pb-8 w-full flex flex-col items-start space-y-2">
                   <Flex>
                     <AdInput
@@ -146,8 +146,8 @@ function Modal({
                   <Select
                     onchange={handleChange}
                     name={"country"}
+                    placeholder="Country"
                     value={address.country}
-                    className="mt-4"
                     options={[
                       "India",
                       "China",
@@ -183,8 +183,8 @@ function Modal({
                     />
                     <Select
                       options={["Delhi", "Mumbai", "Goa"]}
-                      className="mt-10"
                       name={"state"}
+                      placeholder="State"
                       value={address.state}
                       onchange={handleChange}
                       disabled={address.country === "Select Country"}

@@ -15,22 +15,14 @@ import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import AddressCard from "../../components/utils/AddressCard";
 import { atom, useSetRecoilState } from "recoil";
+import AddressInfo from "../../lib/Address";
 
 function AddressBook() {
   // const setShowModal = useSetRecoilState(modalAtom);
   const setShowModal = useSetRecoilState(modalAtom);
-  const { data: session } = useSession();
-  const fetchAddress = async () => {
-    const res = await fetch("/api/address?email=" + session?.user?.email);
-    const data = await res.json();
-    return data;
-  };
-  const { data, error, mutate } = useSWR(
-    "/api/address?email=" + session?.user?.email,
-    fetchAddress
-  );
 
-  console.log(data);
+  const { data, error, mutate } = AddressInfo();
+
   return (
     <div>
       <Detail />
@@ -39,7 +31,15 @@ function AddressBook() {
         <div className=" mt-8 space-y-5">
           <h1 className="font-bold text-[#333] text-3xl">Address book</h1>
           {data?.map((item, i) => {
-            return <AddressCard {...item} key={i} mutate={mutate} da={data} />;
+            return (
+              <AddressCard
+                {...item}
+                key={i}
+                mutate={mutate}
+                da={data}
+                button={true}
+              />
+            );
           })}
 
           <Btn

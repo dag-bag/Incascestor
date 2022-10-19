@@ -22,7 +22,6 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       const { text, blog, user, createdAtPost } = req.body;
-      console.log(user);
 
       if (!text) {
         return res.status(400).json({

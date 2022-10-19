@@ -6,7 +6,7 @@ import Btn2 from "../buttons/Btn2";
 import { BlurImage } from "../BlurImage";
 function Mission({ title, description, image, boxType }) {
   return (
-    <div className={`flex  justify-evenly  flex-wrap-reverse  py-16 `}>
+    <div className={`flex  justify-evenly  flex-wrap-reverse pb-2 `}>
       <div
         className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[50%]`}
       >
@@ -34,61 +34,23 @@ function Mission({ title, description, image, boxType }) {
 
           <p className=" text-base  text-[#333] mt-12 ">{description}</p>
         </div>
-        {/* <div className="flex justify-end flex-col space-y-16">
-         
-          <div className="flex justify-end">
-            <svg
-              width={64}
-              height={64}
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-16 h-16 relative"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <path
-                d="M17 32H48M17 32L28 21M17 32L28 43"
-                stroke="#C7C7C7"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <svg
-              width={64}
-              height={64}
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-16 h-16 relative"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <path
-                d="M62 32H2M62 32L47 17M62 32L47 47"
-                stroke="#333333"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        </div> */}
+
         <Btn2>Cosmos</Btn2>
       </div>
       <div className={`flex-1 flex  ml-2 relative justify-center  `}>
         <div
           className={`w-[70%] h-[100%] rounded-[3px]  ${
             boxType === "center-center" ? "bg-[#e8e8e8]" : "bg-[#bd9575]"
-          } absolute md:w-1/2 -top-12  ${
+          } absolute md:w-1/2 -top-14  ${
             boxType === "left-right" && "right-0"
-          }      ${boxType === "center-left" && "left-0"} md:right-12`}
+          }      ${boxType === "center-left" && "left-0"} md:right-15`}
         ></div>
         <div className="w-[70%] rounded-[3px]   md:w-1/2">
           <Image
             src={image}
             alt="Artesano"
-            width={576}
-            height={576}
+            width={596}
+            height={682}
             layout="responsive"
           />
           {/* <BlurImage image={image} /> */}

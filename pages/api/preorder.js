@@ -12,16 +12,15 @@ const handler = async (req, res) => {
   // request.prefer("return=representation");
 
   if (req.method === "POST") {
-    const { Cart, userEmail } = req.body;
+    const { Cart, userEmail, total, address } = req.body;
 
-    let address = {
-      address_line_1: "123 Townsend St",
-      address_line_2: "Floor 6",
-      admin_area_2: "San Francisco",
-      admin_area_1: "CA",
-      postal_code: "94107",
-      country_code: "US",
-    };
+    console.log({
+      address,
+      Cart,
+      total,
+      userEmail,
+    });
+
     try {
       const PaypalClient = client();
       //This code is lifted from https://github.com/paypal/Checkout-NodeJS-SDK
@@ -47,8 +46,9 @@ const handler = async (req, res) => {
         address: address,
         products: Cart,
         userEmail: userEmail,
+        total: total,
       });
-      console.log("order", order);
+
       res.json({ orderID: response.result.id });
     } catch (error) {
       res.status(500).json({ message: error.message });

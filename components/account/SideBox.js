@@ -7,7 +7,7 @@ function SideBox({ label, Icon, link }) {
   console.log(link);
   return (
     <Link href={link}>
-      <div className="border border-[#333] px-5 py-8 flex  justify-center space-x-7 cursor-pointer group">
+      <div className="border border-[#333] px-5 py-8 flex  justify-center space-x-7 cursor-pointer group rounded-md ">
         {/* firsts container that contain icon */}
         <div>
           <Icon className="text-3xl mt-4  " />

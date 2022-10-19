@@ -30,7 +30,7 @@ function Account() {
       <Detail />
       <div className="flex flex-wrap-reverse">
         <Sidebar />
-        <div className="grid grid-cols-1 md:grid-cols-2 max-w-3xl md:ml-5 gap-5 mt-8 px-4 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-3xl md:ml-5 gap-5 mt-8 px-4 md:px-0 md:mb-4">
           {accountData.map((i, index) => {
             return (
               <SideBox

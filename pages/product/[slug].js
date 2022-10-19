@@ -71,47 +71,31 @@ function ProductDetails({
     >
       {/* Left container */}
       <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
-        <div className="grid grid-cols-1 w-[90%] justify-center gap-4">
+        <div className="grid grid-cols-1 w-[90%] justify-center gap-4 ">
           {variantDetails.img.map((item, index) => {
             return (
               index === 0 && (
                 <div
                   key={index}
-                  className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative "
+                  className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative ml-6"
                 >
-                  <BlurImage key={index} image={item} />
+                  <BlurImage key={index} image={item} rounded="md" />
                 </div>
               )
-              // (
-              //   <div>
-              //     <div
-              //       key={index}
-              //       className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative  "
-              //     >
-              //       <BlurImage key={index} image={item} rounded="lg" />;
-              //     </div>
-              //   </div>
-              // )
             );
             // );
           })}
-        </div>
-      </div>
-      <div className="grid grid-cols-2">
-        <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
-          <div className="grid grid-cols-1 w-[90%] justify-center gap-4">
+          <div className="grid grid-cols-2 gap-y-5">
             {variantDetails.img.map((item, index) => {
-              return index === 0 ? (
-                ""
-              ) : (
-                <div>
+              return (
+                index > 0 && (
                   <div
                     key={index}
-                    className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative  "
+                    className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative "
                   >
-                    <BlurImage key={index} image={item} rounded="lg" />;
+                    <BlurImage key={index} image={item} rounded="md" />
                   </div>
-                </div>
+                )
               );
               // );
             })}
@@ -123,28 +107,6 @@ function ProductDetails({
       <div
         className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[40%] relative`}
       >
-        {/* <div className="absolute top-5 right-44 flex items-center justify-center flex-col">
-          <div className="bg-primary-1 h-[70vh] w-1 "></div>
-          <div className="flex flex-col justify-center items-center w-[34px] h-[34px]  gap-2.5 p-2 bg-[#bd9575] mt-2">
-            <svg
-              width={22}
-              height={12}
-              viewBox="0 0 22 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="flex-grow-0 flex-shrink-0"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M1 11L11 1L21 11"
-                stroke="white"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        </div> */}
         <div className={` text-left mb-6 md:w-[70%] flex  h-full`}>
           <div className="w-full ">
             {/* first container */}
@@ -180,15 +142,6 @@ function ProductDetails({
                         cursor="pointer"
                       />
                     </div>
-                    // <button
-                    //   key={index}
-                    //   onClick={() => {
-                    //     refreshVarient(item.slug);
-                    //   }}
-                    // >
-                    //   <ColorBtn color={item.color} />
-                    // </button>
-                    // </Link>
                   );
                 })}
               </ul>

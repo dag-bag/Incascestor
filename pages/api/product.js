@@ -22,7 +22,7 @@ const handler = async (req, res) => {
     try {
       const { title, desc, variant, category, tag } = req.body;
       const titleExists = await Product.findOne({ title });
-      console.log("Variant", variant.length);
+
       if (!title)
         return res.status(400).json({ error: "Product Name is required." });
       // console.log("I'm working Post");

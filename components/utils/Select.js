@@ -13,19 +13,20 @@ function Select({
   disabled,
   currentCategory,
   className,
+  placeholder,
 }) {
   let classs =
     className +
     ` form-select appearance-none block disabled:opacity-60
-  w-full
+  w-[92%]
   px-3
   py-3
   text-base
   font-normal
   text-gray-700
   bg-white bg-clip-padding bg-no-repeat
-  border border-solid border-gray-300
-  rounded
+  border border-gray-200 rounded-md     focus:border-blue-400  focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40
+  
   transition
   ease-in-out
   m-0
@@ -35,6 +36,12 @@ function Select({
       {" "}
       <div className="flex justify-center">
         <div className="mb-3 xl:w-96">
+          <label
+            className="block  text-sm text-gray-600 mt-4 pb-1"
+            htmlFor={name}
+          >
+            {placeholder}
+          </label>
           <select
             disabled={disabled}
             className={classs}

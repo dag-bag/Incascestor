@@ -56,10 +56,10 @@ export default function Carousel({ products }) {
 
   return (
     <div className="container mx-auto ">
-      <div className="flex items-center justify-center w-full h-full py-10   px-4">
+      <div className="flex items-center justify-center w-full h-full    px-4">
         {/* Carousel for desktop and large size devices */}
         <div className="carousel my-12 mx-auto max-w-6xl relative hidden md:block">
-          <div className="flex justify-center absolute  -right-12 bottom-20  space-x-8 z-50">
+          {/* <div className="flex justify-center absolute  -right-12 bottom-20  space-x-8 z-50">
             <button
               onClick={movePrev}
               className=" text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
@@ -133,12 +133,12 @@ export default function Carousel({ products }) {
               </svg>
               <span className="sr-only">Next</span>
             </button>
-          </div>
+          </div> */}
 
           <div className="relative overflow-hidden">
             <div
               ref={carousel}
-              className="carousel-container relative flex gap-16 overflow-x-scroll scroll-smooth snap-x snap-mandatory touch-pan-x z-0 pb-16 scrollbar"
+              className="carousel-container relative flex gap-6 overflow-x-scroll scroll-smooth snap-x snap-mandatory touch-pan-x z-0 pb-16 scrollbar"
             >
               {products.map((item) => {
                 return (
