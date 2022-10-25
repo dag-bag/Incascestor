@@ -141,18 +141,6 @@ function Peluches({ products }) {
                   color={item.variant[0].color}
                   tag={item.tag}
                 />
-                // <ProductCard
-                //   key={item.variant[0].slug}
-                //   title={item.title}
-                //   img={item.variant[0].img}
-                //   src={item.variant[0].img}
-                //   desc={item.desc}
-                //   slug={item.variant[0].slug}
-                //   category={item.category}
-                //   size={item.variant.sizes}
-                //   price={item.variant[0].price}
-                //   color={item.variant[0].color}
-                // />
               );
             })}
           </Suspense>

@@ -161,7 +161,7 @@ export default function Carousel({ products }) {
         </div>
 
         {/* Carousel for mobile and Small size Devices */}
-        <div className="block md:hidden w-full">
+        <div className="block md:hidden w-full mt-10">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2  place-content-center-center">
             <Product />
             <Product />

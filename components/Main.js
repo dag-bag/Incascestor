@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import CaroselDaist from "./home/CaroselDaist";
 import Carousel from "./home/Carousel";
 import CoreValues from "./home/CoreValues";
 import Features from "./home/Features";
@@ -23,7 +24,9 @@ function Main({ products }) {
         image={"/assets/home/Artesano.jpg"}
         boxType="left-right"
       />
+      <CaroselDaist />
       <Features />
+      <CaroselDaist />
       <ReverseMissoin
         title={"Nuestros productos"}
         description={

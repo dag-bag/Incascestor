@@ -64,6 +64,7 @@
 @layer base {
   html {
     font-family: "Poppins", system-ui, sans-serif;
+    background-color: #ffffff !important;
   }
 }
 

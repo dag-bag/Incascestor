@@ -41,7 +41,7 @@ function ProductCard({
               {tag}
             </span>
           )}
-          <div className="flex group relative  md:w-full bg-[#e8e8e8] h-[200px] md:h-[330px] justify-end items-center flex-col min-w-[300px]">
+          <div className="flex group relative  md:w-full bg-[#e8e8e8] h-[161.66px] md:h-[287.425px] justify-end items-center flex-col min-w-[161.66px] md:min-w-[287.425px]">
             <BlurImage image={img[0]} rounded={"md"} />
             {/* <div className="absolute bottom-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-white/60 opacity-0 group-hover:h-[60%] group-hover:opacity-100 duration-500">
               <h1 className="text-xl text-center text-[#333]">{title}</h1>
