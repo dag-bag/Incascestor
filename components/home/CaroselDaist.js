@@ -21,20 +21,6 @@ function CaroselDaist() {
       <div className="carousel carousel-center max-w-7xl  m-auto p-4 space-x-4  rounded-box relative">
         <div
           id="slide1"
-          className="carousel-item min-w-[300px] min-h-[300px] relative"
-        >
-          <ProductCard
-            slug={"/helo"}
-            img={["/test.jpg"]}
-            price={100}
-            title={"Alpaca Shoes."}
-          />
-          {/* <img src="https://placeimg.com/250/180/arch" className="rounded-box " /> */}
-
-          {/* <img src="https://placeimg.com/250/180/arch" className="rounded-box " /> */}
-        </div>
-        <div
-          id="slide1"
           className="carousel-item min-w-[px] min-h-[300px] relative"
         >
           <ProductCard
