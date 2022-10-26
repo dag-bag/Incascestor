@@ -34,7 +34,7 @@ const ButtonWrapper = ({
     });
   }, [currency, showSpinner]);
 
-  const address = useRecoilValuemai(shipAddressAtom);
+  const address = useRecoilValue(shipAddressAtom);
 
   const { data: session } = useSession();
 
