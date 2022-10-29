@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import ProductCard from "../ProductCard";
 let svgClassName =
   "flex-grow-0 flex-shrink-0 md:w-14 md:h-14 relative xl:w-20 xl:h-20";
 const FeaturedData = [
@@ -179,12 +180,13 @@ function Features() {
       <h1 className=" text-2xl font-medium text-center text-[#bd9575] py-8 lg:text-3xl xl:text-4xl ">
         Sabemos que amas las <br /> alpacas
       </h1>
-      <div className="grid grid-cols-1 p-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-w-[90%] mx-auto md:py-16">
-        {FeaturedData.map((i) => {
+      <div className=" grid-cols-1 p-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-w-[90%] mx-auto md:py-16 relative md:grid hidden">
+        {FeaturedData.map((i, index) => {
           return (
             <div
               key={i.title}
-              className="flex justify-center items-center flex-col text-center space-y-4 pb-14"
+              id={"slide" + index}
+              className="flex justify-center items-center flex-col text-center space-y-4 pb-14  carousel-item  relative"
             >
               {i.svg}
               <h2 className="text-2xl font-semibold text-center text-[#333]">
@@ -197,6 +199,46 @@ function Features() {
             </div>
           );
         })}
+      </div>
+      <div className="relative md:hidden">
+        <a
+          href="#slide4"
+          className=" md:inline-flex btn btn-circle bg-white text-primary-1 absolute top-1/2  transform left-3  -translate-y-1/2"
+        >
+          ❮
+        </a>
+        <a
+          href="#slide5"
+          className=" md:inline-flex btn btn-circle absolute bg-white text-primary-1 top-1/2  transform right-3  -translate-y-1/2"
+        >
+          ❯
+        </a>
+        <div className="carousel carousel-center max-w-7xl  m-auto p-10 space-x-4  rounded-box relative">
+          {FeaturedData.map((i, index) => {
+            return (
+              <div
+                key={i.title}
+                id={"slide" + index}
+                className="flex justify-center items-center flex-col text-center space-y-4 pb-14  carousel-item  relative min-w-[350px]"
+              >
+                {i.svg}
+                <h2 className="text-2xl font-semibold text-center text-[#333]">
+                  {i.title}
+                </h2>
+                <span className="w-[27.44px] h-[1.42px] rounded-[54px] bg-[#bd9575]"></span>
+                <p className="text-sm text-center text-[#333]  m-auto max-w-[15rem]">
+                  {i.description}
+                </p>
+              </div>
+            );
+          })}
+          {/* <div
+            id="slide1"
+            className="carousel-item min-w-[px] min-h-[300px] relative"
+          >
+            
+          </div> */}
+        </div>
       </div>
     </div>
   );

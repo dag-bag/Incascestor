@@ -58,7 +58,7 @@ export default function Carousel({ products }) {
     <div className="container mx-auto ">
       <div className="flex items-center justify-center w-full h-full    px-4">
         {/* Carousel for desktop and large size devices */}
-        <div className="carousel my-12 mx-auto max-w-6xl relative hidden md:block">
+        <div className="carousel my-12 mx-auto max-w-6xl relative  md:block">
           {/* <div className="flex justify-center absolute  -right-12 bottom-20  space-x-8 z-50">
             <button
               onClick={movePrev}
@@ -161,14 +161,14 @@ export default function Carousel({ products }) {
         </div>
 
         {/* Carousel for mobile and Small size Devices */}
-        <div className="block md:hidden w-full mt-10">
+        {/* <div className="block md:hidden w-full mt-10">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2  place-content-center-center">
             <Product />
             <Product />
             <Product />
             <Product />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
