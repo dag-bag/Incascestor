@@ -219,12 +219,12 @@ function CoreValues() {
         </form>
       </div>
       {/* For the web version */}
-      <div className=" max-w-6xl mx-auto hidden md:block">
+      <div className=" max-w-[80%] mx-auto hidden md:block">
         <div className="relative   m-auto w-full  rounded-md">
           {/* <div className="w-[100%] h-[88%] m-auto absolute left-0 top-0 bottom-0 opacity-60 bg-[#bd9575] mix-blend-multiply z-20"></div> */}
           <div className="absolute top-0 left-0 z-40  items-center w-full h-full pt-36">
             <form className="m-auto p-5  space-y-9 max-w-xl mt-28">
-              <h4 className=" text-sm text-left text-white">
+              <h4 className="  xl:text-xl text-left text-white">
                 Recibe promociones exclusivas, ventas privadas y <br />{" "}
                 novedades
               </h4>

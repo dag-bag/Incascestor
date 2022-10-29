@@ -1,7 +1,8 @@
 /** @format */
 
 import React from "react";
-
+let svgClassName =
+  "flex-grow-0 flex-shrink-0 md:w-14 md:h-14 relative xl:w-20 xl:h-20";
 const FeaturedData = [
   {
     svg: (
@@ -11,7 +12,7 @@ const FeaturedData = [
         viewBox="0 0 56 57"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="flex-grow-0 flex-shrink-0 w-14 h-14 relative"
+        className={svgClassName}
         preserveAspectRatio="xMidYMid meet"
       >
         <path
@@ -51,7 +52,7 @@ const FeaturedData = [
         viewBox="0 0 56 56"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="flex-grow-0 flex-shrink-0 w-14 h-14 relative"
+        className={svgClassName}
         preserveAspectRatio="xMidYMid meet"
       >
         <path
@@ -83,7 +84,7 @@ const FeaturedData = [
         viewBox="0 0 56 56"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="flex-grow-0 flex-shrink-0 w-14 h-14 relative"
+        className={svgClassName}
         preserveAspectRatio="xMidYMid meet"
       >
         <path
@@ -103,7 +104,7 @@ const FeaturedData = [
         viewBox="0 0 56 56"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="flex-grow-0 flex-shrink-0 w-14 h-14 relative"
+        className={svgClassName}
         preserveAspectRatio="xMidYMid meet"
       >
         <path
@@ -127,7 +128,7 @@ const FeaturedData = [
         viewBox="0 0 34 55"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="flex-grow-0 flex-shrink-0 w-[34px] h-[55px] relative"
+        className={svgClassName}
         preserveAspectRatio="none"
       >
         <path
@@ -174,7 +175,7 @@ const FeaturedData = [
 function Features() {
   return (
     <div className="bg-[#e8e8e8] md:mb-0 mb-10">
-      <h1 className=" text-2xl font-medium text-center text-[#bd9575] py-8">
+      <h1 className=" text-2xl font-medium text-center text-[#bd9575] py-8 lg:text-3xl xl:text-4xl ">
         Sabemos que amas las <br /> alpacas
       </h1>
       <div className="grid grid-cols-1 p-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-w-[90%] mx-auto md:py-16">

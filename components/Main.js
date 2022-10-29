@@ -24,9 +24,7 @@ function Main({ products }) {
         image={"/assets/home/Artesano.jpg"}
         boxType="left-right"
       />
-      <CaroselDaist />
       <Features />
-      <CaroselDaist />
       <ReverseMissoin
         title={"Nuestros productos"}
         description={
@@ -34,6 +32,7 @@ function Main({ products }) {
         }
         image={"/assets/home/Group.png"}
       />
+      <CaroselDaist />
 
       <ThirdContainer
         title={"¿Quieres comprar en grandes cantidades?"}
@@ -43,6 +42,7 @@ function Main({ products }) {
         image={"/assets/home/3toys.png"}
         boxType="center-center"
       />
+      <CaroselDaist />
       <CoreValues />
     </main>
   );
