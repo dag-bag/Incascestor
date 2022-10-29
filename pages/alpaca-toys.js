@@ -30,7 +30,7 @@ function Peluches({ products }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="max-w-6xl  m-auto w-full relative">
+      <main className="max-w-[90%]  m-auto w-full relative">
         <div
           className={`w-full ${
             isSelected ? "h-auto md:h-[60vh]" : "h-0"
@@ -124,7 +124,7 @@ function Peluches({ products }) {
             </span>
           </button>
         </div>
-        <div className="grid px-2 grid-cols-2 md:grid-cols-3 gap-5 py-16">
+        <div className="grid px-2 grid-cols-2 md:grid-cols-3  gap-5 py-16">
           <Suspense fallback={<div>Loading...</div>}>
             {products.map((item) => {
               return (
