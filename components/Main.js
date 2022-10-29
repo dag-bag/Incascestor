@@ -19,7 +19,7 @@ function Main({ products }) {
       <Mission
         title={"Somos"}
         description={
-          " Inca Ancestry was born with the mission to make a change in the lives of the Andean communities while helping them to maintain ancestral traditions alive by visibility to their finest artisans to the world."
+          "Fluffy alpaca wool plushies make the perfect cuddling companion Temperature-regulating slippers keep you comfortable year-round  Made with all-natural, sustainable materials Each purchase supports local Peruvian artisans"
         }
         image={"/assets/home/Artesano.jpg"}
         boxType="left-right"
@@ -28,7 +28,7 @@ function Main({ products }) {
       <ReverseMissoin
         title={"Nuestros productos"}
         description={
-          "Loving my new KAILI watch from @matoa_id, the first ever Indonesian watch local brand that uses wood as their main material. Like any other Matoa products, KAILI is inspired by Indonesian heritage."
+          "At Incancestory, our vision is to not only support the local Peruvians that make our products, but their communities as a whole. We’re inspired by their connection to nature and their simple lifestyle. However, many of these traditional communities live far below the poverty line and their way of life is under threat. Our commitment to fair trading means the local shepherds can afford to continue looking after their alpacas and artisans can support their families. We also invest a portion of our profits back into the community to provide education and skill training for a better future for generations to come."
         }
         image={"/assets/home/Group.png"}
       />

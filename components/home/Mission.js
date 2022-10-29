@@ -9,9 +9,7 @@ function Mission({ title, description, image, boxType }) {
     <div
       className={`flex  justify-evenly  flex-wrap-reverse pb-2 mt-[8rem] mb-20 md:mb-0 md:mt-0`}
     >
-      <div
-        className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[50%]`}
-      >
+      <div className={`px-5 flex  flex-col   space-y-12 mt-8 md:w-[50%]`}>
         <div
           className={` ${
             boxType === "center-left" ? "text-left" : "text-right"

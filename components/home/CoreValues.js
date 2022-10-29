@@ -225,8 +225,9 @@ function CoreValues() {
           <div className="absolute top-0 left-0 z-40  items-center w-full h-full pt-36">
             <form className="m-auto p-5  space-y-9 max-w-xl mt-28">
               <h4 className="  xl:text-xl text-left text-white">
-                Recibe promociones exclusivas, ventas privadas y <br />{" "}
-                novedades
+                Want to be the first to know about new Incancestory products &
+                special offers? Subscribe to our mailing list so you don’t miss
+                out!
               </h4>
               <input
                 type="text"

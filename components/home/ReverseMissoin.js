@@ -1,5 +1,6 @@
 /** @format */
 
+import { truncate } from "lodash";
 import Image from "next/image";
 import React from "react";
 import Btn1 from "../buttons/Btn1";
@@ -21,9 +22,7 @@ function ReverseMissoin({ title, description, image }) {
           />
         </div>
       </div>
-      <div
-        className={`px-5 flex justify-end flex-col   space-y-12 mt-8 md:w-[50%]`}
-      >
+      <div className={`px-5 flex  flex-col   space-y-12 mt-8 md:w-[50%]`}>
         <div className={` text-left mb-6 md:w-[70%] mr-auto`}>
           <p className="relative  text-2xl  lg:text-4xl  text-[#333]">
             {title}
@@ -40,7 +39,12 @@ function ReverseMissoin({ title, description, image }) {
             </svg>
           </p>
 
-          <p className=" text-base  text-[#333] mt-12 ">{description}</p>
+          <p className=" text-base  text-[#333] mt-12 ">
+            {truncate(description, {
+              length: 250,
+              omission: "...",
+            })}
+          </p>
         </div>
 
         <Btn1>Cosmos</Btn1>

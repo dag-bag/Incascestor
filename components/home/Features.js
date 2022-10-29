@@ -41,8 +41,8 @@ const FeaturedData = [
         />
       </svg>
     ),
-    title: "Cuidado",
-    description: "El cuidado de tus productos es importante para nosotros",
+    title: "Hypoallergenic ",
+    description: "All-natural alpaca wool is gentle on your skin",
   },
   {
     svg: (
@@ -73,8 +73,8 @@ const FeaturedData = [
         />
       </svg>
     ),
-    title: "Lavado",
-    description: " Todos tus productos vienen con instrucciones de lavado.",
+    title: "Fluffy",
+    description: "Alpaca wool is unbelievably cushy.",
   },
   {
     svg: (
@@ -93,8 +93,8 @@ const FeaturedData = [
         />
       </svg>
     ),
-    title: "Disfruta",
-    description: "Distrufa la suavidad de la alpaca cada día",
+    title: "Fairtrade",
+    description: "Support Peruvians & their traditional way of life",
   },
   {
     svg: (
@@ -117,8 +117,9 @@ const FeaturedData = [
         />
       </svg>
     ),
-    title: "Lavad",
-    description: "Todos tus productos vienen con instrucciones de lavado.",
+    title: "Soft as a cloud",
+    description:
+      "Feathery alpaca wool is one of the softest natural materials.",
   },
   {
     svg: (
@@ -128,7 +129,7 @@ const FeaturedData = [
         viewBox="0 0 34 55"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={svgClassName}
+        className="flex-grow-0 flex-shrink-0 w-[4rem] h-[5rem] relative"
         preserveAspectRatio="none"
       >
         <path
@@ -168,8 +169,8 @@ const FeaturedData = [
         />
       </svg>
     ),
-    title: "Lavad",
-    description: "Todos tus productos vienen con instrucciones de lavado.",
+    title: "Sustainable",
+    description: "Wool is renewable & kind to the planet .",
   },
 ];
 function Features() {
@@ -191,7 +192,7 @@ function Features() {
               </h2>
               <span className="w-[27.44px] h-[1.42px] rounded-[54px] bg-[#bd9575]"></span>
               <p className="text-sm text-center text-[#333]  m-auto">
-                El cuidado de tus productos es importante para nosotros
+                {i.description}
               </p>
             </div>
           );
