@@ -18,7 +18,7 @@ function CaroselDaist() {
       >
         ❯
       </a>
-      <div className="carousel carousel-center max-w-7xl  m-auto p-4 space-x-4  rounded-box relative">
+      <div className="carousel carousel-center max-w-[90%]  m-auto p-4 space-x-4  rounded-box relative">
         <div
           id="slide1"
           className="carousel-item min-w-[px] min-h-[300px] relative"
