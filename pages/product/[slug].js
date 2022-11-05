@@ -31,7 +31,6 @@ function ProductDetails({
   variantDetails,
   addToCart,
   Cart,
-  removeFromCart,
 }) {
   let fav = false;
   const [mounted, setMounted] = useState(false);
