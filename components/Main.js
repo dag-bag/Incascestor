@@ -42,7 +42,7 @@ function Main({ products }) {
         image={"/assets/home/3toys.png"}
         boxType="center-center"
       />
-      <CaroselDaist />
+      {/* <CaroselDaist /> */}
       <CoreValues />
     </main>
   );

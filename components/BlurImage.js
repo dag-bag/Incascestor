@@ -8,7 +8,7 @@ import { useState } from "react";
 function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export function BlurImage({ image, rounded, cursor, handleClick, alt }) {
+export function BlurImage({ image, rounded, cursor, handleClick, alt, type }) {
   const [isLoading, setLoading] = useState(true);
 
   return (
@@ -17,7 +17,9 @@ export function BlurImage({ image, rounded, cursor, handleClick, alt }) {
         <Image
           alt={alt}
           src={image}
-          layout="fill"
+          layout={type === "responsive" ? "responsive" : "fill"}
+          width={100}
+          height={100}
           objectFit="cover"
           className={cn(
             `group-hover:opacity-75 duration-700 ease-in-out object-cover rounded-${rounded} ${

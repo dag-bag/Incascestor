@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { favAtom } from "../atoms/CartAtom";
 import Container from "../components/Container";
 import H1 from "../components/H1";
-
+import Head from "next/head";
 import ProductCard from "../components/ProductCard";
 import ProductContainer from "../components/ProductContainer";
 
@@ -17,6 +17,9 @@ function Favoritos() {
   );
   return (
     <div>
+      <Head>
+        <title>Alpaca - Favorites</title>
+      </Head>
       <H1>Favoritos</H1>
       <Container>
         {favItems.length <= 0 && (

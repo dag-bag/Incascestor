@@ -226,7 +226,7 @@ function Features() {
                   {i.title}
                 </h2>
                 <span className="w-[27.44px] h-[1.42px] rounded-[54px] bg-[#bd9575]"></span>
-                <p className="text-sm text-center text-[#333]  m-auto max-w-[15rem]">
+                <p className="text-[1em] text-center text-[#333]  m-auto max-w-[15rem]">
                   {i.description}
                 </p>
               </div>

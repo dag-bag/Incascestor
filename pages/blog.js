@@ -18,7 +18,12 @@ import Blogs from "../models/Blog";
 function Blog({ blogs }) {
   return (
     <div>
-      <Head></Head>
+      <Head>
+        <title>
+          Blog | Alpaca Store | Alpaca Shoes | Alpaca Clothing | Alpaca
+        </title>
+        <meta name="description" content="  " />
+      </Head>
       <div className="relative  md:block ">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center items-center flex-col w-full px-4">
           <H1 h1={"  Latest post on, <br /> animal world"} />

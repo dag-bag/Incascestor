@@ -8,6 +8,7 @@ import SideBox from "../../components/account/SideBox";
 import { useRecoilValue } from "recoil";
 import Link from "next/link";
 import Detail from "../../components/account/Detail";
+import Head from "next/head";
 function Account() {
   const accountData = useRecoilValue(accountAtom);
   const { data: session } = useSession();
@@ -27,6 +28,9 @@ function Account() {
   }
   return (
     <>
+      <Head>
+        <title> Incansestery- My Account. </title>
+      </Head>
       <Detail />
       <div className="flex flex-wrap-reverse">
         <Sidebar />

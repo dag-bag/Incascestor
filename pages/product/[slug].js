@@ -12,6 +12,7 @@ import { BsSuitHeart } from "react-icons/bs";
 import Product from "../../models/Product";
 import { favSelector } from "../../atoms/CartAtom";
 import { reject } from "lodash";
+import Head from "next/head";
 const hashTag = [
   {
     tag: "#Alpaca",
@@ -69,6 +70,12 @@ function ProductDetails({
     <div
       className={`grid grid-cols-1 md:flex  justify-evenly  flex-wrap   py-16 `}
     >
+      <Head>
+        <title>
+          {product.title} | Alpaca Store | Alpaca Clothing | Alpaca Shoes
+        </title>
+        <meta name="description" content={product.desc} />
+      </Head>
       {/* Left container */}
       <div className={`flex-1 flex  relative justify-center   md:mt-10`}>
         <div className="grid grid-cols-1 w-[90%] justify-center gap-4 ">
@@ -77,9 +84,14 @@ function ProductDetails({
               index === 0 && (
                 <div
                   key={index}
-                  className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative ml-6"
+                  className="w-full rounded-[3px] h-auto  md:w-[90%] relative ml-6 shadow-lg"
                 >
-                  <BlurImage key={index} image={item} rounded="md" />
+                  <BlurImage
+                    key={index}
+                    image={item}
+                    rounded="md"
+                    type={"responsive"}
+                  />
                 </div>
               )
             );
@@ -93,7 +105,12 @@ function ProductDetails({
                     key={index}
                     className="w-full rounded-[3px] h-[26rem]  md:w-[90%] relative "
                   >
-                    <BlurImage key={index} image={item} rounded="md" />
+                    <BlurImage
+                      key={index}
+                      image={item}
+                      rounded="md"
+                      type={"responsive"}
+                    />
                   </div>
                 )
               );
