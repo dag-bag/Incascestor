@@ -28,7 +28,7 @@ function AddressBook() {
       <Detail />
       <div className="flex ">
         <Sidebar />
-        <div className=" mt-8 space-y-5">
+        <div className=" my-8 space-y-5">
           <h1 className="font-bold text-[#333] text-3xl">Address book</h1>
           {data?.map((item, i) => {
             return (
@@ -42,10 +42,7 @@ function AddressBook() {
             );
           })}
 
-          <Btn
-            text={"Add another address"}
-            onClick={() => setShowModal(true)}
-          />
+          <Btn text={"Add another address"} />
           <Suspense fallback={<p>Loading...</p>}>
             <Modal mutate={mutate} ad={data} />
           </Suspense>

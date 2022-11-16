@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import { fakeData } from "../atoms/fakedata";
 import CaroselDaist from "./home/CaroselDaist";
 import Carousel from "./home/Carousel";
 import CoreValues from "./home/CoreValues";
@@ -24,7 +25,9 @@ function Main({ products }) {
         image={"/assets/home/Artesano.jpg"}
         boxType="left-right"
       />
+      <Carousel products={fakeData} />
       <Features />
+
       <ReverseMissoin
         title={"Nuestros productos"}
         description={
@@ -32,7 +35,7 @@ function Main({ products }) {
         }
         image={"/assets/home/Group.png"}
       />
-      <CaroselDaist />
+      <Carousel products={fakeData} />
 
       <ThirdContainer
         title={"¿Quieres comprar en grandes cantidades?"}
@@ -43,7 +46,7 @@ function Main({ products }) {
         boxType="center-center"
       />
       {/* <CaroselDaist /> */}
-      <CoreValues />
+      {/* <CoreValues /> */}
     </main>
   );
 }

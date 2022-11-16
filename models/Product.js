@@ -40,6 +40,14 @@ let variantSchema = new Schema({
   discount: {
     type: Number,
   },
+  title: {
+    type: String,
+    required: true,
+  },
+  metadesc: {
+    type: String,
+    required: true,
+  },
 });
 let productSchema = new Schema({
   title: {

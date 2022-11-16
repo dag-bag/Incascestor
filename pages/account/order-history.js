@@ -24,6 +24,9 @@ function Orderhistory({ orders }) {
         <Sidebar />
         <div className="mt-10 space-y-4">
           <h1 className="font-bold text-[#333] text-3xl">Order History</h1>
+          <p>
+            Check the status of recent and old orders & discover more products
+          </p>
           {orders.length === 0 && (
             <>
               <p className="font-semibold text-[#333] text-xl">
@@ -40,10 +43,6 @@ function Orderhistory({ orders }) {
             orders.map((item, index) => {
               return (
                 <div className="pb-10" key={index}>
-                  <p>
-                    Check the status of recent and old orders & discover more
-                    products
-                  </p>
                   <div className="flex  rounded-md border border-gray-300 w-[60rem]">
                     <div className="bg-gray-100 w-64 px-10 py-10 rounded-md space-y-4 flex justify-center flex-col">
                       <div>

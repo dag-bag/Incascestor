@@ -23,26 +23,9 @@ const ButtonWrapper = ({
   Cart,
   clearCart,
   SubTotal,
+  // address,
 }) => {
-  useEffect(() => {
-    dispatch({
-      type: "resetOptions",
-      value: {
-        ...options,
-        currency: currency,
-      },
-    });
-  }, [currency, showSpinner]);
-
   const address = useRecoilValue(shipAddressAtom);
-
-  const { data: session } = useSession();
-
-  const router = useRouter();
-
-  // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
-  // This is the main reason to wrap the PayPalButtons in a new component
-  const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
   const createOrder = async () => {
     const resp = await fetch("/api/preorder", {
       method: "POST",
@@ -59,6 +42,24 @@ const ButtonWrapper = ({
     const order = await resp.json();
     return order.orderID;
   };
+  useEffect(() => {
+    dispatch({
+      type: "resetOptions",
+      value: {
+        ...options,
+        currency: currency,
+      },
+    });
+  }, [currency, showSpinner]);
+
+  const { data: session } = useSession();
+
+  const router = useRouter();
+
+  // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
+  // This is the main reason to wrap the PayPalButtons in a new component
+  const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+
   const onApprove = async (data, actions) => {
     const resp = await fetch("/api/captureorder", {
       method: "POST",
@@ -92,7 +93,7 @@ const ButtonWrapper = ({
   );
 };
 
-export default function Pay({ Cart, clearCart, SubTotal }) {
+export default function Pay({ Cart, clearCart, SubTotal, address }) {
   return (
     <div className=" w-full justify-start ml-16 flex items-center h-auto min-h-[40vh] min-w-[60rem]">
       <PayPalScriptProvider
@@ -108,6 +109,7 @@ export default function Pay({ Cart, clearCart, SubTotal }) {
           Cart={Cart}
           clearCart={clearCart}
           SubTotal={SubTotal}
+          address={address}
         />
       </PayPalScriptProvider>
     </div>

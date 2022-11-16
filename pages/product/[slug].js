@@ -3,16 +3,18 @@
 import mongoose from "mongoose";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { BlurImage } from "../../components/BlurImage";
 import Link from "next/link";
 import ColorBtn from "../../components/buttons/ColorBtn";
 import { useAddProduct } from "../../lib/cartHooks";
-import { BsSuitHeart } from "react-icons/bs";
+import { BsCheckLg, BsSuitHeart } from "react-icons/bs";
 import Product from "../../models/Product";
-import { favSelector } from "../../atoms/CartAtom";
+
 import { reject } from "lodash";
 import Head from "next/head";
+import { favSelector, cartSelector, cartTotal } from "../../atoms/CartAtom";
+
 const hashTag = [
   {
     tag: "#Alpaca",
@@ -35,12 +37,6 @@ function ProductDetails({
   let fav = false;
   const [mounted, setMounted] = useState(false);
 
-  console.log("vairant details", variantDetails);
-  // console.log(varients);
-
-  // COlor and Size Variables
-  // const [color, setColor] = useState(product.color);
-
   const [size, setSize] = useState(variantDetails.size[0]);
 
   const refreshVarient = (slug) => {
@@ -56,6 +52,7 @@ function ProductDetails({
     let removesItem = reject(favItems, { title: title });
     setFavItems(removesItem);
   };
+  const [cart, SetCart] = useRecoilState(cartSelector);
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -193,6 +190,18 @@ function ProductDetails({
                     variantDetails.color,
                     variantDetails.img
                   );
+                  let newProduct = {
+                    title: product.title,
+                    uni: `${variantDetails.slug}-${size}-${variantDetails.color}`,
+                    price: variantDetails.price,
+                    color: variantDetails.color,
+                    size: size,
+                    img: variantDetails.img,
+                    slug: variantDetails.slug,
+                    id: variantDetails._id,
+                    qty: 1,
+                  };
+                  SetCart(newProduct);
                 }}
               >
                 Añadir a la bolsa

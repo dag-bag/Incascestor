@@ -43,6 +43,7 @@ const handler = async (req, res) => {
       }
       for (let i = 0; i < variant.length; i++) {
         let element = variant[i];
+
         if (!element.slug)
           return res.status(400).json({ error: "Slug is required" });
         if (!element.img)
@@ -55,6 +56,12 @@ const handler = async (req, res) => {
           return res.status(400).json({ error: "Price is required" });
         if (element.sellPrice <= 0)
           return res.status(400).json({ error: "Sell Price is required" });
+        if (!element.title)
+          return res.status(400).json({ error: "Title is required" });
+        if (!element.metadesc)
+          return res
+            .status(400)
+            .json({ error: "Meta Description is required" });
 
         let productSlug = await Product.findOne({
           "variant.slug": element.slug,

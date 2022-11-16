@@ -67,7 +67,7 @@ function PersonalDetails() {
         }}
       >
         <Sidebar />
-        <div className=" mt-8 space-y-5">
+        <div className=" my-8 space-y-5">
           <h1 className="font-bold text-[#333] text-3xl">Personal Details</h1>
           <div className="space-y-6">
             <Input

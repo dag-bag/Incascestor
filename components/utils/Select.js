@@ -18,7 +18,9 @@ function Select({
   let classs =
     className +
     ` form-select appearance-none block disabled:opacity-60
-  w-[92%]
+   md:w-[92%]
+   w-full
+   
   px-3
   py-3
   text-base
@@ -34,8 +36,8 @@ function Select({
   return (
     <Suspense fallback={<h1>Loading.....</h1>}>
       {" "}
-      <div className="flex justify-center">
-        <div className="mb-3 xl:w-96">
+      <div className="">
+        <div className="mb-3 w-full md:w-96">
           <label
             className="block  text-sm text-gray-600 mt-4 pb-1"
             htmlFor={name}
@@ -43,6 +45,7 @@ function Select({
             {placeholder}
           </label>
           <select
+            id="name"
             disabled={disabled}
             className={classs}
             aria-label="Default select example"

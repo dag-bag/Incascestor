@@ -11,10 +11,7 @@ import ProductContainer from "../components/ProductContainer";
 
 function Favoritos() {
   const favItems = useRecoilValue(favAtom);
-  console.log(
-    "🚀 ~ file: favoritos.js ~ line 1 ~ Favoritos ~ favItems",
-    favItems
-  );
+
   return (
     <div>
       <Head>

@@ -40,9 +40,10 @@ function Yourdata({ Cart, clearCart, SubTotal }) {
     2: "Pending",
     3: "Pending",
   });
-  console.log(state);
 
   const [complete, setComplete] = useState(false);
+  let [selectedAddress, setSelectedAddress] = useState();
+
   return (
     <div className="flex">
       {/* <CheckOutHeader level={2} /> */}
@@ -87,6 +88,7 @@ function Yourdata({ Cart, clearCart, SubTotal }) {
                         onClick={() => {
                           setActive(item._id);
                           setAddress(item);
+                          setSelectedAddress(item);
                         }}
                       />
                     );
@@ -428,7 +430,12 @@ function Yourdata({ Cart, clearCart, SubTotal }) {
               },
             ]}
           />
-          <Pay Cart={Cart} clearCart={clearCart} SubTotal={SubTotal} />
+          <Pay
+            Cart={Cart}
+            clearCart={clearCart}
+            SubTotal={SubTotal}
+            address={selectedAddress}
+          />
         </ShipContainer>
       </div>
       <Sidebar Subtotal={SubTotal} />

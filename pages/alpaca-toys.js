@@ -15,12 +15,6 @@ const ProductCard = dynamic(() => import("../components/ProductCard"));
 // import ProductCard from "../components/ProductCard";
 
 function Peluches({ products }) {
-  console.log(products);
-
-  products.map((item) => {
-    console.log({});
-  });
-
   var [isSelected, setSelect] = useRecoilState(filterAtom);
   return (
     <div>
